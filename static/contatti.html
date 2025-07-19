@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soluzioni Commerciali Afore</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="contatti.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>
+
+        <!-- ===== Download Hero Section ===== -->
+<section class="download-hero">
+    <div class="download-hero__overlay container">
+      <h1 class="download-hero__title">CONTATTACI</h1>
+    </div>
+  </section>
+  <!-- 最外层容器 -->
+  <div class="contact-page">
+    <!-- 左侧：表单 -->
+    <section class="contact-form">
+      <h1>Contatta AFORE Italia</h1>
+      <p class="note">
+        Nota: Per le questioni tecniche preghiamo di contattare direttamente il nostro
+        <a href="#">Servizio di assistenza tecnica AFORE</a> o di registrarvi su
+        <a href="#">Prenota Servizio Online</a>.
+      </p>
+      <form>
+        <div class="field-group">
+          <label for="oggetto">Oggetto*</label>
+          <select id="oggetto">
+            <option>Seleziona…</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="messaggio">Messaggio*</label>
+          <textarea id="messaggio" rows="5"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="nome">Nome*</label>
+            <input id="nome" type="text">
+          </div>
+          <div class="field-group">
+            <label for="cognome">Cognome*</label>
+            <input id="cognome" type="text">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="societa">Nome società</label>
+          <input id="societa" type="text">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="telefono">Telefono</label>
+            <input id="telefono" type="tel">
+          </div>
+          <div class="field-group">
+            <label for="cellulare">Cellulare*</label>
+            <input id="cellulare" type="tel">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="email">E-mail*</label>
+          <input id="email" type="email">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="via">Via/Viale/Piazza</label>
+            <input id="via" type="text">
+          </div>
+          <div class="field-group">
+            <label for="ncivico">N. civico</label>
+            <input id="ncivico" type="text">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="cap">CAP</label>
+            <input id="cap" type="text">
+          </div>
+          <div class="field-group">
+            <label for="citta">Città</label>
+            <input id="citta" type="text">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="provincia">Provincia*</label>
+            <select id="provincia">
+              <option>Seleziona…</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="regione">Regione*</label>
+            <select id="regione">
+              <option>Seleziona…</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="paese">Paese</label>
+            <select id="paese">
+              <option>Italia</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="privacy-text">
+          È possibile scaricare e prendere visione dell’informativa privacy tramite il seguente link:
+          <a href="#">https://www.afore.it/informativa-privacy.html</a>
+        </p>
+
+        <div class="field-group consent">
+          <p>Consenso al trattamento dei dati per finalità di marketing (1.b)*</p>
+          <label><input type="radio" name="consenso" value="si"> Acconsento</label>
+          <label><input type="radio" name="consenso" value="no"> Non acconsento</label>
+        </div>
+        <div class="field-group consent">
+          <label>
+            <input type="checkbox">
+            Sì, desidero esser sempre aggiornato sulle anteprime di AFORE Italia
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit">Invia</button>
+      </form>
+    </section>
+
+    <!-- 右侧：联系方式侧边栏 -->
+    <aside class="contact-info">
+      <div class="info-box">
+        <h3>Indirizzo</h3>
+        <p>AFORE Italia S.r.l.<br>
+          Commercity,MODULO L43<br>
+          Viale Alexandre Gustave Eiffel, 100<br>
+          00148 Roma RM<br>
+          Italia</p>
+      <!-- 新增这一行 -->
+      <p class="map-link">
+        <a href="https://maps.app.goo.gl/Qmmf64Kv63eVRdBP7"
+           target="_blank"
+           rel="noopener">
+          📍 Siamo Qui
+        </a>
+      </p>
+    </div>
+      <div class="info-box">
+        <h3>Centralino</h3>
+        <a href="tel:+390640419655">+39 064 041 9655</a>
+      </div>
+      <div class="info-box">
+        <h3>Assistenza – Service AFORE</h3>
+        <a href="tel:+393513399999">+39 351 339 9999</a>
+      </div>
+      <div class="info-box">
+        <h3>Ordini</h3>
+        <a href="mailto:afore@aforeitaly.com">afore@aforeitaly.com</a>
+      </div>
+      <div class="info-box">
+        <h3>SIAMO APERTI</h3>
+      
+        <div class="info-box__list">
+          <div class="info-box__row">
+            <span class="giorno">Lunedì – Venerdì</span>
+            <span class="orario">9:00 – 18:00</span>
+          </div>
+          <div class="info-box__row">
+            <span class="giorno">Sabato</span>
+            <span class="orario">Chiuso</span>
+          </div>
+          <div class="info-box__row">
+            <span class="giorno">Domenica</span>
+            <span class="orario">9:00 – 16:00</span>
+          </div>
+        </div>
+      </div>      
+      <!-- 其余联系方式… -->
+    </aside>
+  </div>
+</body>
+
+        </section>
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container newsletter__inner">
+          <div class="newsletter__text">
+            <h2 class="newsletter__title">Rimani aggiornato sulle ultime novità!</h2>
+            <p class="newsletter__subtitle">
+              Qui trovate approfondimenti industriali e notizie su Afore.
+            </p>
+          </div>
+          <form class="newsletter__form">
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="Email"
+              required>
+            <button type="submit" class="newsletter__btn">Invia</button>
+          </form>
+        </div>
+      </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <div class="footer__socials">
+          <a href="#"><img src="image/linkedin_social.svg"   alt="LinkedIn"></a>
+          <a href="#"><img src="image/whatsapp_social.svg"   alt="WhatsApp"></a>
+          <a href="#"><img src="image/facebook_social.svg"   alt="Facebook"></a>
+          <a href="#"><img src="image/instagram_social.svg"  alt="Instagram"></a>
+          <a href="#"><img src="image/x_social.svg"          alt="X"></a>
+          <a href="#"><img src="image/tiktok_social.svg"     alt="TikTok"></a>
+          <a href="#"><img src="image/youtube_social.svg"    alt="YouTube"></a>
+        </div>
+        <div class="footer__copyright">
+          © 2025 copyright @Afore Italia S.R.L.
+        </div>
+        <div class="footer__logo">
+          <img src="image/logo_afore_light.svg" alt="Afore Logo">
+        </div>
+      </div>
+    </footer>
+    </body>
+    </html>
+

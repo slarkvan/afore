@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soluzioni Commerciali Afore</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="eventi_style.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>
+
+        <!-- ===== Download Hero Section ===== -->
+<section class="download-hero">
+    <div class="download-hero__overlay container">
+      <h1 class="download-hero__title">EVENTI</h1>
+      <form class="download-search">
+        <div class="download-search__input">
+          <input type="text" placeholder="DIGITA IL NOME DEL FILE DA SCARICARE" />
+          <button type="submit" class="search-icon" aria-label="Search">
+            🔍
+          </button>
+        </div>
+        <button type="submit" class="download-search__btn">CERCA</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- ===== Download Filters Section ===== -->
+  <section class="download-filters container">
+    <h2 class="download-filters__heading">DOWNLOAD RELATIVI AI PRODOTTI</h2>
+    <div class="download-filters__grid">
+      <div class="filter">
+        <label>Tipo di prodotto</label>
+        <select>
+          <option>SELEZIONA</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Tipo di documento</label>
+        <select>
+          <option>SELEZIONA</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Lingua di documento</label>
+        <select>
+          <option>SELEZIONA</option>
+        </select>
+      </div>
+      <!-- 如果你还有更多维度，再继续复制 .filter 块 -->
+    </div>
+  </section>
+
+    <section class="other-download">
+        <h2 class="other-download__title">ALTRI DOWNLOAD</h2>
+        <div class="other-download__cards">
+            <a href="#" class="card">
+            <img src="image/desktopeventi_icon1.svg" alt="EVENTI Icon" class="card-icon">
+            <p class="card-label">EVENTI</p>
+          </a>
+          <a href="#" class="card">
+            <img src="image/desktopeventi_icon2.svg" alt="WEBINAR ICON" class="card-icon">
+            <p class="card-label">WEBINAR</p>
+          </a>
+        </div>
+      </section>
+      <section class="events">
+  
+          <!-- 1. 选项卡导航 -->
+          <div class="events__inner">
+            <!-- 2. 标题和下划线 -->
+            <h2 class="events__title">IN ARRIVO</h2>
+        
+            <!-- 3. 筛选区域 -->
+            <div class="events__filters">
+              <div class="filter">
+                <label for="filter-country">Nazione</label>
+                <select id="filter-country">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+              <div class="filter">
+                <label for="filter-date">Data</label>
+                <select id="filter-date">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+              <div class="filter">
+                <label for="filter-type">Tipo</label>
+                <select id="filter-type">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+            </div>
+        
+            <!-- 4. 卡片区域 -->
+            <div class="events__cards">
+              <article class="event-card">
+                <figure class="event-card__media">
+                  <img src="image/desktopeventi_image2.jpg" alt="Power Tour">
+                </figure>
+                <div class="event-card__content">
+                  <p class="event-card__date">2025-05-22 – 2025-12-22</p>
+                  <h3 class="event-card__heading">AFORE POWER TOUR</h3>
+                  <p class="event-card__text">
+                    Partecipa agli eventi Sungrow, incontra il nostro Power Team e scopri tutta la gamma di prodotti.
+                  </p>
+                  <a href="#" class="event-card__btn">Read More →</a>
+                </div>
+              </article>
+
+              <article class="event-card">
+                <figure class="event-card__media">
+                  <img src="image/desktopcarousel_image1.jpg" alt="Power Tour">
+                </figure>
+                <div class="event-card__content">
+                  <p class="event-card__date">2025-05-22 – 2025-12-22</p>
+                  <h3 class="event-card__heading">AFORE POWER TOUR</h3>
+                  <p class="event-card__text">
+                    Partecipa agli eventi Sungrow, incontra il nostro Power Team e scopri tutta la gamma di prodotti.
+                  </p>
+                  <a href="#" class="event-card__btn">Read More →</a>
+                </div>
+              </article>
+              <!-- 如果有多张卡片，复制上面这个 <article>…</article> 即可 -->
+            </div>
+          </div>
+        </section>
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container newsletter__inner">
+          <div class="newsletter__text">
+            <h2 class="newsletter__title">Rimani aggiornato sulle ultime novità!</h2>
+            <p class="newsletter__subtitle">
+              Qui trovate approfondimenti industriali e notizie su Afore.
+            </p>
+          </div>
+          <form class="newsletter__form">
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="Email"
+              required>
+            <button type="submit" class="newsletter__btn">Invia</button>
+          </form>
+        </div>
+      </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <div class="footer__socials">
+          <a href="#"><img src="image/linkedin_social.svg"   alt="LinkedIn"></a>
+          <a href="#"><img src="image/whatsapp_social.svg"   alt="WhatsApp"></a>
+          <a href="#"><img src="image/facebook_social.svg"   alt="Facebook"></a>
+          <a href="#"><img src="image/instagram_social.svg"  alt="Instagram"></a>
+          <a href="#"><img src="image/x_social.svg"          alt="X"></a>
+          <a href="#"><img src="image/tiktok_social.svg"     alt="TikTok"></a>
+          <a href="#"><img src="image/youtube_social.svg"    alt="YouTube"></a>
+        </div>
+        <div class="footer__copyright">
+          © 2025 copyright @Afore Italia S.R.L.
+        </div>
+        <div class="footer__logo">
+          <img src="image/logo_afore_light.svg" alt="Afore Logo">
+        </div>
+      </div>
+    </footer>
+    </body>
+

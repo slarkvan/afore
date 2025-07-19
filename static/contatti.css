@@ -1,0 +1,586 @@
+/* ========== 全局 Reset & 基础布局 ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+  }
+  body {
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+  }
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  .page-content {
+    flex: 1;
+    padding-top: 4rem; /* 如果 header 高度是 4rem，可调整 */
+  }
+  
+  /* ========== Header ========== */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-logo img {
+    height: 50px;
+    display: block;
+  }
+  
+  /* 导航 */
+  .site-nav { display: none; }
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: .5rem;
+  }
+  .nav-list a {
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .site-nav.is-open { display: block; }
+  
+  @media (min-width: 768px) {
+    .mobile-menu-toggle { display: none; }
+    .site-nav { display: block; margin-left: auto; }
+    .nav-list {
+      flex-direction: row;
+      gap: 24px;
+      margin-top: 0;
+    }
+  }
+  
+  /* ========== Download Hero 区域 ========== */
+  .download-hero {
+    position: relative;
+    background: url("image/desktopcontatti_image1.jpg") center/cover no-repeat;
+    height: 60vh;
+    overflow: hidden;
+    margin-top: -4rem; /* 保证在 header 之下 */
+    padding-top: 4rem; /* 再给内部留同样的间距，确保内容不被导航栏挡住 */
+  }
+  .download-hero__overlay {
+    position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  /* 改成竖直排列，居中对齐 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+  .download-hero__title {
+    font-size: clamp(2.5rem,8vw,5rem);
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+/* ========== 搜索框容器 ========== */
+.download-search {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;     /* 居中 */
+  }
+  
+  /* 输入区自动撑满剩余空间 */
+  .download-search__input {
+    position: relative;
+    flex: 1;
+  }
+  
+  /* 文本输入框 */
+  .download-search__input input {
+    width: 100%;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  /* 放大镜图标（如果是按钮，保持可点击） */
+  .download-search__input .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  
+  /* 提交按钮 */
+  .download-search__btn {
+    flex: 0 0 180px;     /* 初始固定宽度 */
+    background: #C01C20;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: flex-basis 0.2s, font-size 0.2s;
+  }
+  
+  /* 中等屏：按钮略微变小 */
+  @media (max-width: 1200px) {
+    .download-search__btn {
+      flex: 0 0 150px;
+    }
+  }
+  
+  /* 小平板：按钮和输入框字体更紧凑 */
+  @media (max-width: 992px) {
+    .download-search__btn {
+      flex: 0 0 130px;
+      font-size: 0.9rem;
+    }
+    .download-search__input input {
+      padding: 0.6rem 2.5rem 0.6rem 0.8rem;
+    }
+  }
+  
+  /* 手机窄屏：上下堆叠，宽度 100% */
+  @media (max-width: 767px) {
+    .download-search {
+      flex-direction: column;
+    }
+    .download-search__input,
+    .download-search__btn {
+      width: 100%;
+      flex: none;
+    }
+    .download-search__btn {
+      font-size: 1rem;
+    }
+  }
+  
+  /* contact-style.css */
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  background:#fafafa;
+  color:#333;
+}
+.contact-page {
+  display: flex;
+  flex-wrap: wrap;
+  max-width:1200px;
+  margin:2rem auto;
+  gap:2rem;
+}
+/* —— 左侧表单 —— */
+.contact-form {
+  flex:1 1 600px;
+  background:#fff;
+  padding:2rem;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.contact-form h1 {
+  font-size:1.75rem;
+  margin-bottom:1rem;
+}
+.contact-form .note {
+  font-size:0.9rem;
+  margin-bottom:1.5rem;
+}
+.contact-form .note a {
+  color:#C01C20;
+  text-decoration:underline;
+}
+.form fieldset { border:0; margin:0; }
+/* 通用字段组 */
+.field-group {
+  margin-bottom:1.25rem;
+}
+.field-row {
+  display:flex;
+  gap:1rem;
+}
+.field-row .field-group { flex:1; }
+.field-group label {
+  display:block;
+  margin-bottom:0.5rem;
+  font-size:0.9rem;
+  font-weight:600;
+}
+.field-group input,
+.field-group select,
+.field-group textarea {
+  width:100%;
+  padding:0.75rem 1rem;
+  border:1px solid #ddd;
+  border-radius:4px;
+  font-size:1rem;
+}
+.field-group textarea {
+  resize:vertical;
+}
+/* 隐私说明 */
+.privacy-text {
+  font-size:0.9rem;
+  margin:1.5rem 0;
+  text-align: left
+}
+/* 同意选项 */
+.consent p {
+  font-weight:600;
+  margin-bottom:0.5rem;
+}
+.field-group.consent,
+.consent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 强制子元素都靠左 */
+  gap: 0.5rem;             /* 各行之间垂直间距 */
+  margin-bottom: 1.5rem;   /* 与下方按钮留空 */
+}
+/* —— 每一行输入框 + 文本 —— */
+.field-group.consent label,
+.consent label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;     /* 文本不换行 */
+}
+.btn-submit {
+  display:inline-block;
+  padding:0.75rem 1.5rem;
+  background:#C01C20;
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  font-size:1rem;
+  cursor:pointer;
+}
+.btn-submit:hover {
+  background:#791213;
+}
+
+/* —— 右侧侧边栏 —— */
+.contact-info {
+  flex:0 0 300px;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+.info-box {
+  background:#fff;
+  padding:1rem;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+/* 地图链接 */
+.info-box .map-link {
+  margin-top: 0.5rem;
+  text-align: left;           /* 链接左对齐 */
+}
+
+.info-box .map-link a {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  color: #C01C20;
+  text-decoration: none;
+  border: 1px solid #C01C20;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.info-box .map-link a:hover {
+  background: #C01C20;
+  color: #fff;
+}
+.info-box h2 {
+  font-size:1rem;
+  margin-bottom:0.5rem;
+  text-transform:uppercase;
+  font-weight:600;
+}
+}
+.info-box h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.info-box__list {
+  display: grid;
+  gap: 0.5rem;
+}
+.info-box__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eee;
+}
+.info-box__row:first-child {
+  border-top: none;
+}
+.info-box p,
+.info-box a {
+  font-size:0.9rem;
+  color:#333;
+  text-decoration:none;
+}
+.info-box a:hover {
+  text-decoration:underline;
+}
+
+/* —— 响应式 —— */
+@media (max-width: 992px) {
+  .contact-page {
+    flex-direction:column;
+  }
+  .field-row {
+    flex-direction:column;
+  }
+  .contact-info {
+    flex:1 1 auto;
+  }
+}
+
+/* ========== Newsletter ========== */
+.newsletter {
+    padding: 4rem 0;
+    margin-top: 5rem;
+  }
+  .newsletter__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+  .newsletter__input {
+    flex: 1 1 300px;
+    padding: 0.75rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #DDD;
+  }
+  .newsletter__btn {
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: none;
+    background-color: #C01C20;
+    color: #FFF;
+  }
+  
+  /* ========== Footer ========== */
+  .site-footer {
+    background: #000;
+    color: #FFF;
+    padding: 2rem 0;
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  .footer__socials a {
+    margin-right: 0.5rem;
+  }
+  .footer__socials img {
+    width: 24px;
+    height: auto;
+  }
+  
+  /* ===== Newsletter Signup ===== */
+  .newsletter {
+    background: #fff;
+    padding: 4rem 0;
+  }
+  
+  .newsletter__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .newsletter__text {
+    flex: 1 1 300px;
+  }
+  
+  .newsletter__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter__subtitle {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .newsletter__form {
+    flex: 1 1 300px;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .newsletter__input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    height: au;
+    border: 1px solid #ddd;
+    border-radius: 9999px 0 0 9999px;
+    font-size: 1rem;
+  }
+  
+  .newsletter__btn {
+    padding: 0 1.5rem;
+    width: 30%;
+    background-color: #C01C20;
+    color: #fff;
+    border: none;
+    border-radius: 0 9999px 9999px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .newsletter__btn:hover {
+    background-color: #621c1c;
+  }
+  
+  /* Mobile: form 堆叠 */
+  @media (max-width: 600px) {
+    .newsletter__inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .newsletter__form {
+      flex-direction: column;
+    }
+    .newsletter__input,
+    .newsletter__btn {
+      border-radius: 9999px;
+    }
+  }
+  
+  /* ===== Footer ===== */
+  .site-footer {
+    background: #000;
+    color: #fff;
+    padding: 2rem 0;
+    height: 300px
+  }
+  
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .footer__socials a img {
+    width: 24px;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  .footer__socials {
+    flex: 1 1 200px;
+  }
+  
+  .footer__copyright {
+    flex: 1 1 200px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .footer__logo img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .footer__logo {
+    flex: 1 1 200px;
+    text-align: right;
+  }
+  
+  /* Mobile: 堆叠居中 */
+  @media (max-width: 600px) {
+    .footer__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .footer__socials,
+    .footer__copyright,
+    .footer__logo {
+      flex: none;
+      margin-bottom: 1rem;
+    }
+    .footer__socials a img {
+      margin-right: 1rem;
+    }
+  }
+  
+  /* 1) 让 html、body 占满整个视口高度 */
+  html, body {
+    height: 100%;
+    margin: 0;          /* 清除默认 margin */
+    padding: 0;
+  }
+  
+  /* 2) body 作为 flex 容器，纵向排列 */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 3) 主内容区自动拉伸 */
+  .page-content {
+    flex: 1;            /* 占据 header/footer 以外的所有剩余空间 */
+  }
+  
+  /* 4) footer 固定在底部，不拉伸 */
+  .site-footer {
+    flex-shrink: 0;
+  }
+  

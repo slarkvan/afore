@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soluzioni Commerciali Afore</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="soluzione.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>
+      
+
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="container">        
+            <!-- ↓ video ↓ -->
+            <video
+              class="hero-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="image/desktopsoluzione_heroimage1.jpg"
+              src="image/desktopsoluzione_heroimage1.jpg"
+            >
+              <!--
+              <source src="image/desktophero_video (70-110kW).webm" type="video/webm">
+              -->
+              Il tuo browser non supporta HTML5 video.
+            </video>
+        </section>
+            <!-- ↑ Vide结束 ↑ -->
+
+            <!-- 面包屑 -->
+        <div class="container">
+            <div class="breadcrumb">
+              <a href="#">HOME</a> 
+              <span class="separator">&gt;</span>
+              <span class="current">Soluzione</span>
+              
+            </div>
+          </div>
+          
+            <!-- ====== Stats 区块：图标＋文字 ====== -->
+        <section class="stats">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon2.png" alt="Years icon" class="stat-card__icon">
+                <p class="stat-card__value">Garanzia</p>
+                <p class="stat-card__label">Garantiamo 10 anni di garanzia</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon3.png" alt="Efficiency icon" class="stat-card__icon">
+                <p class="stat-card__value">Assistenza Telefonica</p>
+                <p class="stat-card__label">Telefonaci per l’assistenza</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon1.png" alt="Team icon" class="stat-card__icon">
+                <p class="stat-card__value">Prenota Servizio</p>
+                <p class="stat-card__label">Richiedi assistenza online</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== soluzione Section ====== -->
+          <section class="energy-solutions">
+            <div class="container">
+              <div class="solution-grid">
+                <!-- 卡片 1 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image1.jpg" alt="Home Energy Solution">
+                  <h3>AFORE Soluzione Residenziale</h3>
+                  <p>Produci energia pulita dal tuo tetto di casa, 24 ore su 24</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+          
+                <!-- 卡片 2 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image2.jpg" alt="Commercial Energy Solution">
+                  <h3>AFORE Soluzione Commerciale</h3>
+                  <p>Riduci i costi energetici della tua attività e opera in modo sostenibile</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+          
+                <!-- 卡片 3 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image3.jpg" alt="Large Scale Energy Solutions">
+                  <h3>AFORE Soluzione Large Scale</h3>
+                  <p>Le nostre soluzioni flessibili sono ideali per impianti fotovoltaici e di accumulo per grandi progetti</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div class="newsletter__text">
+          <h2 class="newsletter__title">Rimani aggiornato sulle ultime novità!</h2>
+          <p class="newsletter__subtitle">
+            Qui trovate approfondimenti industriali e notizie su Afore.
+          </p>
+        </div>
+        <form class="newsletter__form">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="Email"
+            required>
+          <button type="submit" class="newsletter__btn">Invia</button>
+        </form>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__socials">
+        <a href="#"><img src="image/linkedin_social.svg"   alt="LinkedIn"></a>
+        <a href="#"><img src="image/whatsapp_social.svg"   alt="WhatsApp"></a>
+        <a href="#"><img src="image/facebook_social.svg"   alt="Facebook"></a>
+        <a href="#"><img src="image/instagram_social.svg"  alt="Instagram"></a>
+        <a href="#"><img src="image/x_social.svg"          alt="X"></a>
+        <a href="#"><img src="image/tiktok_social.svg"     alt="TikTok"></a>
+        <a href="#"><img src="image/youtube_social.svg"    alt="YouTube"></a>
+      </div>
+      <div class="footer__copyright">
+        © 2025 copyright @Afore Italia S.R.L.
+      </div>
+      <div class="footer__logo">
+        <img src="image/logo_afore_light.svg" alt="Afore Logo">
+      </div>
+    </div>
+  </footer>
+  </body>
+
+
