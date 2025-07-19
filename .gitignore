@@ -1,3 +1,4 @@
 static/video/*
 static/image/*
 .DS_Store
+node_modules
