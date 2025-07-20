@@ -48,3 +48,29 @@
           </button>
         </div>
       </header>
+
+      <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+          const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+          const siteNav = document.querySelector('.site-nav');
+          
+          if (mobileMenuToggle && siteNav) {
+            mobileMenuToggle.addEventListener('click', function() {
+              const isOpen = siteNav.classList.contains('is-open');
+              
+              if (isOpen) {
+                siteNav.classList.remove('is-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+                mobileMenuToggle.innerHTML = '☰';
+              } else {
+                siteNav.classList.add('is-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                mobileMenuToggle.setAttribute('aria-label', 'Close menu');
+                mobileMenuToggle.innerHTML = '✕';
+              }
+            });
+          }
+        });
+      </script>
