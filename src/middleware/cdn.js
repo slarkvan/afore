@@ -37,7 +37,7 @@ function cdnMiddleware(req, res, next) {
   const originalRender = res.render;
 
   // 重写 res.render 方法来处理 CDN 转换
-  res.render = function(view, options, callback) {
+  res.render = function (view, options, callback) {
     // 调用原始 render 方法获取渲染结果
     originalRender.call(this, view, options, (err, html) => {
       if (err) {
@@ -72,6 +72,15 @@ function cdnMiddleware(req, res, next) {
         (match, path) => {
           const newPath = buildCdnUrl(path);
           return `background-image: url('${newPath}')`;
+        }
+      );
+
+      // 替换 background 属性中的 url() 引用（兼容 background:url() 简写形式）
+      processedHtml = processedHtml.replace(
+        /background:\s*url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)([^;}]*)/gi,
+        (match, path, additionalProps) => {
+          const newPath = buildCdnUrl(path);
+          return `background: url('${newPath}')${additionalProps}`;
         }
       );
 
