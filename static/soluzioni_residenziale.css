@@ -1,0 +1,86 @@
+/* 基础样式 - 可以复制自其他CSS文件或创建简化版本 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  font-weight: 400;
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.page-content {
+  flex: 1;
+  padding-top: 4rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Page Hero */
+.page-hero {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Solutions Content */
+.solutions-content {
+  padding: 4rem 0;
+}
+
+.solutions-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.solutions-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .page-hero p {
+    font-size: 1rem;
+  }
+  
+  .solutions-content h2 {
+    font-size: 1.5rem;
+  }
+}

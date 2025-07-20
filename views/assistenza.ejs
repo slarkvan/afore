@@ -1,18 +1,119 @@
 <%- include('partials/header') %>
 
-<!-- Assistenza page content -->
-<section class="page-hero">
-  <div class="container">
-    <h1>Assistenza</h1>
-    <p>Supporto tecnico e assistenza clienti</p>
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="container">        
+            <!-- ↓ video ↓ -->
+            <video
+              class="hero-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="image/desktophomepage_banner_image1.jpg"
+              src="image/desktophomepage_banner_image1.jpg"
+            >
+              <!--
+              <source src="image/desktophero_video (70-110kW).webm" type="video/webm">
+              -->
+              Il tuo browser non supporta HTML5 video.
+            </video>
+        </section>
+            <!-- ↑ Vide结束 ↑ -->
+            <!-- ====== Stats 区块：图标＋文字 ====== -->
+        <section class="stats">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon2.png" alt="Years icon" class="stat-card__icon">
+                <p class="stat-card__value">Garanzia</p>
+                <p class="stat-card__label">Garantiamo 10 anni di garanzia</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon3.png" alt="Efficiency icon" class="stat-card__icon">
+                <p class="stat-card__value">Assistenza Telefonica</p>
+                <p class="stat-card__label">Telefonaci per l’assistenza</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon1.png" alt="Team icon" class="stat-card__icon">
+                <p class="stat-card__value">Prenota Servizio</p>
+                <p class="stat-card__label">Richiedi assistenza online</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== Assistance Section ====== -->
+<section class="assistance">
+  <div class="container assistance__inner">
+    <!-- 左侧文案区 -->
+    <div class="assistance__text">
+      <h2 class="assistance__title">
+        UNA VERA ASSISTENZA SIGNIFICA<br>
+        UNA RELAZIONE DURATURA
+      </h2>
+
+      <div class="assistance__decor"></div>
+
+      <div class="assistance__columns">
+        <div class="assistance__col">
+          <p>
+            Con AFORE, l’assistenza inizia ancora prima dell’acquisto: il nostro team di esperti ti accompagna nella progettazione dell’impianto fotovoltaico, offrendoti consulenza tecnica personalizzata e simulazioni di resa energetica.
+          </p>
+          <p>
+            Durante l’installazione, garantiamo un supporto costante in loco e formazione completa per i tuoi installatori, così da assicurare messa in servizio rapida e senza imprevisti.
+          </p>
+        </div>
+        <div class="assistance__col">
+          <p>
+            Una volta operativo, la rete AFORE ti assicura magazzini locali sempre riforniti di ricambi originali e un servizio di customer care attivo 7 giorni su 7, per minimizzare i tempi di fermo e massimizzare il ritorno sull’investimento.
+          </p>
+          <p>
+            Il nostro programma di manutenzione predittiva ti avvisa in anticipo sui controlli da effettuare, mentre i nostri tecnici certificati restano a tua disposizione per interventi rapidi e assistenza remota.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧图片区 -->
+    <div class="assistance__media">
+      <img src="image/desktopassistenza_servizio_image1.jpg" alt="Assistenza" />
+    </div>
   </div>
 </section>
 
-<section class="support-content">
-  <div class="container">
-    <h2>Centro Assistenza</h2>
-    <p>Contenuto della pagina assistenza che verrà estratto dal file originale...</p>
+<!-- ====== Sezione Service Highlights ====== -->
+<section class="service-highlights">
+  <div class="container service-highlights__inner">
+    <!-- 第一行：文字在右，图片在左 -->
+    <div class="service-item service-item--reverse">
+      <div class="service-item__media">
+        <img src="image/desktopassistenza_servizio_image2.jpg" alt="Strategia di assistenza AFORE">
+      </div>
+      <div class="service-item__content">
+        <h3 class="service-item__title">LA STRATEGIA DI ASSISTENZA AFORE</h3>
+        <p class="service-item__text">
+          Il nostro team di tecnici certificati AFORE garantisce un’assistenza uniforme in tutto il territorio:  
+          formazione continua, help-desk 24/7 e interventi in loco entro 48 h.
+        </p>
+        <a href="#" class="service-item__btn">Leggi di più →</a>
+      </div>
+    </div>
+
+    <!-- 第二行：图片在右，文字在左 -->
+    <div class="service-item">
+      <div class="service-item__media">
+        <img src="image/desktopassistenza_servizio_image3.jpg" alt="Servizi in garanzia e gestione progetto">
+      </div>
+      <div class="service-item__content">
+        <h3 class="service-item__title">SERVIZI IN GARANZIA E GESTIONE PROGETTO</h3>
+        <p class="service-item__text">
+          Contratti O&M AFORE con garanzia estesa, SLA personalizzati e magazzini locali riforniti:  
+          consegna ricambi e supporto tecnico nei tempi prestabiliti.
+        </p>
+        <a href="#" class="service-item__btn">Leggi di più →</a>
+      </div>
+    </div>
   </div>
 </section>
+
 
 <%- include('partials/footer') %>

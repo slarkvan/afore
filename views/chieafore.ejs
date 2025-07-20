@@ -1,18 +1,175 @@
 <%- include('partials/header') %>
 
-<!-- Chi è Afore page content -->
-<section class="page-hero">
-  <div class="container">
-    <h1>Chi è Afore</h1>
-    <p>Scopri la nostra storia e missione</p>
-  </div>
-</section>
+        <!-- ===== Chieafore Hero Section ===== -->
+<section class="chieafore-hero">
+    <div class="chieafore-hero__overlay container">
+    </div>
+  </section>
+  <!-- 最外层容器 -->
+  <div class="contact-page">
+    <section class="about-afore">
+         <!-- 面包屑 -->
+         <div class="container">
+          <div class="breadcrumb">
+            <a href="#">HOME</a> 
+            <span class="separator">&gt;</span>
+            <span class="current">Chi è Afore</span>
+          </div>
+        </div>
+      
+        <!-- Tab 导航 -->
+        <nav class="about-tabs">
+          <button class="tab tab--active" data-panel="intro">Introduzione</button>
+          <button class="tab" data-panel="mission">La nostra Missione</button>
+          <button class="tab" data-panel="sustain">Sostenibilità</button>
+          <button class="tab" data-panel="careers">Lavora con noi</button>
+        </nav>
+      
+        <!-- 内容面板 -->
+        <div class="about-panels">
+          <!-- Introduzione -->
+          <div class="panel panel--active" id="intro">
+            <h2 class="about-title">CHI È <span class="highlight">AFORE</span></h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p>
+                    AFORE, con oltre dieci anni di esperienza nella ricerca e produzione di inverter di stringa per il fotovoltaico, Afore è un fornitore leader di inverter di stringa per il fotovoltaico in Cina. Gli inverter Afore sono stati installati in Europa, Australia, Cina, India, Giappone, Nord America e Sud America, soddisfacendo centinaia di migliaia di utenti in tutto il mondo. Forniamo inverter di stringa fotovoltaici mono e trifase ad alta efficienza con capacità da 1kW a 60kW, inverter di accumulo e prodotti di accumulo all-in-one. Tutti i nostri inverter sono integrati con un sistema di monitoraggio intelligente. Non offriamo solo buoni prodotti, ma anche un'assistenza locale efficiente ai nostri partner e utenti per tutta la durata di vita dell'inverter. Assicuratevi che i clienti ricevano un ritorno affidabile scegliendo Afore!
+                </p>
+              </div>
+              <div class="about-media">
+                <img src="image/desktopchieafore_image2.jpg" alt="AFORE Headquarters">
+              </div>
+            </div>
+          </div>
+      
+          <!-- La nostra Missione -->
+          <div class="panel" id="mission">
+            <h2 class="about-title">La nostra <span class="highlight">Missione</span></h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p>
+                    Sviluppare e fornire soluzioni all'avanguardia, a basse emissioni di carbonio e rispettose dell'ambiente, che favoriscano la transizione verso l'energia pulita e migliorino la qualità della vita.
+                </p>
+              </div>
+              <div class="about-media">
+                <img src="image/desktopchieafore_image5.jpg" alt="Our mission">
+              </div>
+            </div>
+          </div>
+      
+          <!-- Sostenibilità -->
+          <div class="panel" id="sustain">
+            <h2 class="about-title">Sosten<span class="highlight">ibilità</span></h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p>
+                  Impegnati per l'ambiente, adottiamo processi produttivi eco‑compatibili
+                  e riduciamo l’impronta carbonica dei nostri impianti, promuovendo
+                  soluzioni circolari e il recupero delle materie prime.
+                </p>
+              </div>
+              <div class="about-media">
+                <img src="image/desktopchieafore_image6.jpg" alt="Sustainability">
+              </div>
+            </div>
+          </div>
+      
+          <!-- Lavora con noi -->
+          <div class="panel" id="careers">
+            <h2 class="about-title">Lavora con <span class="highlight">noi</span></h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p>
+                  Unisciti al nostro team dinamico di ricerca e sviluppo: cresci professionalmente
+                  in un ambiente internazionale e contribuisci alla transizione verso energie pulite.
+                </p>
+              </div>
+              <div class="about-media">
+                <img src="image/desktopchieafore_image4.jpg" alt="Careers at Afore">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 别忘了在页面底部或合适位置引入这段脚本，处理 Tab 切换 -->
+      <script>
+        document.querySelectorAll('.about-tabs .tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            // 切换激活状态
+            document.querySelectorAll('.about-tabs .tab').forEach(t => t.classList.remove('tab--active'));
+            tab.classList.add('tab--active');
+            // 切换面板
+            const panelId = tab.dataset.panel;
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('panel--active'));
+            document.getElementById(panelId).classList.add('panel--active');
+          });
+        });
+      </script>
 
-<section class="about-content">
-  <div class="container">
-    <h2>La Nostra Storia</h2>
-    <p>Contenuto della pagina chi è afore che verrà estratto dal file originale...</p>
-  </div>
-</section>
+<section class="milestones">
+    <h2 class="milestones__title">
+        Afore è un fornitore leader di inverter fotovoltaici <span class="highlight">nel Mondo</span>
+    </h2>
+    <div class="milestones__list">
+      <div class="milestone">
+        <div class="milestone__year">2022</div>
+        <div class="milestone__content">
+          <p class="milestone__heading">2022</p>
+          <p>你的 2022 年要展示的文字。</p>
+          <a href="#" class="milestone__link">→</a>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone__year">2021</div>
+        <div class="milestone__content">
+          <p class="milestone__heading">2021</p>
+          <p>你的 2021 年要展示的文字。</p>
+          <a href="#" class="milestone__link">→</a>
+        </div>
+      </div>
+      <!-- …同理再多几个 -->
+    </div>
+  </section>
+
+  <section class="about-section">
+    <!-- 第一块：图片在左，文字在右 -->
+    <div class="about-item">
+      <div class="about-media">
+        <img src="image/desktopchieafore_icon1.svg" alt="Innovazione">
+      </div>
+      <div class="about-content">
+        <h3>La nostra <span class="highlight">Visione</span></h3>
+        <p>
+            Essere leader nel settore delle energie rinnovabili, promuovendo tecnologie innovative che contribuiscano a un futuro sostenibile e a preservare l'ambiente per le generazioni future.
+        </p>
+      </div>
+    </div>
+  
+    <!-- 第二块：图片在右，文字在左 -->
+    <div class="about-item reverse">
+      <div class="about-media">
+        <img src="image/desktopchieafore_icon2.svg" alt="Orientamento Strategico">
+      </div>
+      <div class="about-content">
+        <h3>La nostra <span class="highlight">Missione</span></h3>
+        <p>
+            Sviluppare e fornire soluzioni all'avanguardia, a basse emissioni di carbonio e rispettose dell'ambiente, che favoriscano la transizione verso l'energia pulita e migliorino la qualità della vita.
+        </p>
+      </div>
+    </div>
+  
+    <!-- 第三块：图片在左 -->
+    <div class="about-item">
+      <div class="about-media">
+        <img src="image/desktopchieafore_icon3.svg" alt="Pietre Miliari">
+      </div>
+      <div class="about-content">
+        <h3>I nostri <span class="highlight">Valori</span></h3>
+        <p>
+            Innovazione, sostenibilità, integrità, attenzione al cliente, eccellenza.
+      </div>
+    </div>
+  </section>
 
 <%- include('partials/footer') %>

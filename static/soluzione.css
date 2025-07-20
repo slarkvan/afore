@@ -1,305 +1,350 @@
 /* ========== 全局字体 ========= */
 html {
-    font-family: 'Open Sans', sans-serif;
-  }
-  /* 正文 400 */
-  body {
-    font-weight: 400;
-  }
-  
-  /* 中等强调 600 */
-  strong,
-  h3, h4 {
-    font-weight: 600;
-  }
-  
-  /* 标题 700 或 800 */
-  h1, h2 {
-    font-weight: 700;
-  }
-  /* ========== Reset & Base ========== */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  ul {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  /* —— 基础，把 html/body 拉满高度 —— */
-  html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* —— 外层容器 —— */
-    .page-wrapper {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-    
-    /* —— 主体内容区，会自动撑满空白 —— */
-    .page-content {
-      flex: 1;
-    }
-    
-    /* —— Footer 黏底 —— */
-    .site-footer {
-      flex-shrink: 0;      /* 不被压缩，保持自身高度 */
-      background: #000;
-      color: #fff;
-      padding: 2rem 0;
-    }
-    
-    /* —— Footer 内部布局 —— */
-    .footer__inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    /* … 其余 .footer__socials/.footer__copyright/.footer__logo 样式照旧 … */
-    
-  /* ========== Header & Layout ========== */
-  .site-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 1rem 0
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .page-content {
-    padding-top: 0px; 
-  }
-    /* 留出 header 高度，避免内容被遮挡 */
+  font-family: 'Open Sans', sans-serif;
+}
 
-  
-  /* ========== Logo ========== */
-  .site-logo img {
-    display: block;
-    height: 50px;
-  }
-  
-  /* ========== Nav & Toggle ========== */
-  /* 移动端：隐藏主导航，只显示汉堡按钮 */
-  .site-nav {
+/* 正文 400 */
+body {
+  font-weight: 400;
+}
+
+/* 中等强调 600 */
+strong,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+/* 标题 700 或 800 */
+h1,
+h2 {
+  font-weight: 700;
+}
+
+/* ========== Reset & Base ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* —— 基础，把 html/body 拉满高度 —— */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* —— 外层容器 —— */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* —— 主体内容区，会自动撑满空白 —— */
+.page-content {
+  flex: 1;
+}
+
+/* —— Footer 黏底 —— */
+.site-footer {
+  flex-shrink: 0;
+  /* 不被压缩，保持自身高度 */
+  background: #000;
+  color: #fff;
+  padding: 2rem 0;
+}
+
+/* —— Footer 内部布局 —— */
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* … 其余 .footer__socials/.footer__copyright/.footer__logo 样式照旧 … */
+
+/* ========== Header & Layout ========== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 1rem 0
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-content {
+  padding-top: 0px;
+}
+
+/* 留出 header 高度，避免内容被遮挡 */
+
+
+/* ========== Logo ========== */
+.site-logo img {
+  display: block;
+  height: 50px;
+}
+
+/* ========== Nav & Toggle ========== */
+/* 移动端：隐藏主导航，只显示汉堡按钮 */
+.site-nav {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 菜单列表 */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 0.5rem;
+  /* 下拉菜单时给点间距 */
+}
+
+.nav-list a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* 当 .site-nav 加上 .is-open 时展开（移动端） */
+.site-nav.is-open {
+  display: block;
+}
+
+/* ========== Tablet & Desktop（≥768px） ========== */
+@media (min-width: 768px) {
+
+  /* 隐藏汉堡，显示主导航 */
+  .mobile-menu-toggle {
     display: none;
   }
-  .mobile-menu-toggle {
+
+  .site-nav {
     display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+    margin-left: auto;
+    /* 把菜单推到右边 */
   }
-  
-  /* 菜单列表 */
+
+  /* 水平排列菜单 */
   .nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 0.5rem; /* 下拉菜单时给点间距 */
+    flex-direction: row;
+    gap: 24px;
+    margin-top: 0;
+    /* 取消下拉间距 */
   }
-  .nav-list a {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-    text-transform: uppercase;
+}
+
+/* ========== Hero 区域 ========== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  /* 整个视口高度 */
+  overflow: hidden;
+  /* 裁切超出的部分 */
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  z-index: 1;
+  * 关键：开启动画并保持在中央缩放 */ transform-origin: center center;
+  animation: hero-zoom 20s ease-in-out infinite alternate;
+}
+
+/* 2️⃣ 定义 keyframes：从 1 倍慢慢缩放到 1.05 倍，再反过来 */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
   }
-  
-  /* 当 .site-nav 加上 .is-open 时展开（移动端） */
-  .site-nav.is-open {
-    display: block;
+
+  to {
+    transform: scale(1.05);
   }
-  
-  /* ========== Tablet & Desktop（≥768px） ========== */
-  @media (min-width: 768px) {
-    /* 隐藏汉堡，显示主导航 */
-    .mobile-menu-toggle {
-      display: none;
-    }
-    .site-nav {
-      display: block;
-      margin-left: auto; /* 把菜单推到右边 */
-    }
-  
-    /* 水平排列菜单 */
-    .nav-list {
-      flex-direction: row;
-      gap: 24px;
-      margin-top: 0; /* 取消下拉间距 */
-    }
-  }
-  
-  /* ========== Hero 区域 ========== */
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 60vh;          /* 整个视口高度 */
-    overflow: hidden;       /* 裁切超出的部分 */
-  }
-  
-  .hero-media {
-    position: absolute;
-    inset: 0;               /* top:0; right:0; bottom:0; left:0; */
-    width: 100%;
-    height: 90%;
-    object-fit: cover;
-    z-index: 1;* 关键：开启动画并保持在中央缩放 */
-    transform-origin: center center;
-    animation: hero-zoom 20s ease-in-out infinite alternate;
-  }
-  
-  /* 2️⃣ 定义 keyframes：从 1 倍慢慢缩放到 1.05 倍，再反过来 */
-  @keyframes hero-zoom {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.05);
-    }
-  }
-  }
-  
+}
+}
+
+.hero-media__overlay {
+  position: absolute;
+  /* 改用 bottom 保持距底部一定距离 */
+  bottom: 6%;
+  /* 距视频底部 10% */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  /* 根据设计稿限制 overlay 宽度 */
+  max-width: 1200px;
+  color: #fff;
+  z-index: 2;
+}
+
+/* 文本排版 */
+.hero-media__overlay p {
+  font-size: 1rem;
+  /* 副标题 */
+  margin-bottom: 0.5rem;
+}
+
+.hero-media__overlay h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  /* clamp(min, 弹性值, max)：视口越小，字体不会小于 1.5rem，越大不会超 2.5rem */
+  line-height: 1.2;
+}
+
+/* ====== 响应式 ===== */
+@media (max-width: 768px) {
   .hero-media__overlay {
-    position: absolute;
-    /* 改用 bottom 保持距底部一定距离 */
-    bottom: 6%;            /* 距视频底部 10% */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;             /* 根据设计稿限制 overlay 宽度 */
-    max-width: 1200px;
-    color: #fff;
-    z-index: 2;
+    bottom: 10%;
+    /* 小屏时再往上挪一点 */
+    width: auto;
+    left: auto;
+    padding: 0 1rem;
   }
-  
-  /* 文本排版 */
+
   .hero-media__overlay p {
-    font-size: 1rem;        /* 副标题 */
-    margin-bottom: 0.5rem;
-  }
-  
-  .hero-media__overlay h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);  
-    /* clamp(min, 弹性值, max)：视口越小，字体不会小于 1.5rem，越大不会超 2.5rem */
-    line-height: 1.2;
-  }
-  
-  /* ====== 响应式 ===== */
-  @media (max-width: 768px) {
-    .hero-media__overlay {
-      bottom: 10%;          /* 小屏时再往上挪一点 */
-      width: auto;
-      left: auto;
-      padding: 0 1rem;
-    }
-    .hero-media__overlay p {
-      font-size: 0.9rem;
-    }
-    .hero-media__overlay h2 {
-      font-size: clamp(1.25rem, 6vw, 2rem);
-    }
-  }
-  /* 面包屑样式 */
-  .breadcrumb {
     font-size: 0.9rem;
-    margin: 2rem 0;
-    color: #555;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.25rem;
   }
-  
-  /* 链接项 */
-  .breadcrumb a {
-    color: #555;
-    text-decoration: none;
+
+  .hero-media__overlay h2 {
+    font-size: clamp(1.25rem, 6vw, 2rem);
   }
-  
-  /* 当前页面红色高亮 */
-  .breadcrumb .current {
-    color: #C01C20;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  
-  /* 分隔符 */
-  .breadcrumb .separator {
-    color: #555;
-  }
-  
+}
+
+/* 面包屑样式 */
+.breadcrumb {
+  font-size: 0.9rem;
+  margin: 2rem 0;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* 链接项 */
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+}
+
+/* 当前页面红色高亮 */
+.breadcrumb .current {
+  color: #C01C20;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* 分隔符 */
+.breadcrumb .separator {
+  color: #555;
+}
+
 /* ====== Stats 区块基础样式 ====== */
 .stats {
-    margin: 4rem auto;             /* 与上下内容留白 */
-    padding: 0 1rem;               /* 两侧内边距防止贴边 */
-    max-width: 1200px;
-    margin-top: 2rem; /* 取消下拉间距 */
-  }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* 三列等宽 */
-    gap: 2rem;                              /* 列间距 */
-  }
-  .stat-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;                            /* 图标、数字、标签之间垂直间距 */
-  }
-  .stat-card__icon {
-    width: 48px;
-    height: auto;
-    margin-top: 0
-  rem; /* ← 这里自己调节距离 */
-    margin-bottom: 1rem;
-  }
-  .stat-card__value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1;
-  }
-  .stat-card__label {
-    font-size: 1rem;
-    margin: 0;
-    color: #666;
-  }
-  
-  /* —— 圆形背景，默认透明 —— */
+  margin: 4rem auto;
+  /* 与上下内容留白 */
+  padding: 0 1rem;
+  /* 两侧内边距防止贴边 */
+  max-width: 1200px;
+  margin-top: 2rem;
+  /* 取消下拉间距 */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 三列等宽 */
+  gap: 2rem;
+  /* 列间距 */
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  /* 图标、数字、标签之间垂直间距 */
+}
+
+.stat-card__icon {
+  width: 48px;
+  height: auto;
+  margin-top: 0 rem;
+  /* ← 这里自己调节距离 */
+  margin-bottom: 1rem;
+}
+
+.stat-card__value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-card__label {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+/* —— 圆形背景，默认透明 —— */
 .stat-card::before {
   content: "";
   position: absolute;
-  top: 0;                        /* 与 padding-top 对齐 */
+  top: 0;
+  /* 与 padding-top 对齐 */
   left: 50%;
   transform: translateX(-50%);
-  width: 72px;                   /* 背景比图标略大 */
+  width: 72px;
+  /* 背景比图标略大 */
   height: 72px;
   border-radius: 50%;
   background-color: transparent;
   transition: background-color .3s ease;
-  z-index: 0;                    /* 背景层 */
+  z-index: 0;
+  /* 背景层 */
 }
 
 /* —— Hover 整体微微提升 —— */
@@ -309,110 +354,123 @@ html {
 
 /* —— Hover 时圆背景变橙，并把图标变白 —— */
 .stat-card:hover::before {
-  background-color: #C01C20;     /* 你的品牌橙色 */
+  background-color: #C01C20;
+  /* 你的品牌橙色 */
 }
+
 .stat-card:hover .stat-card__icon {
   filter: brightness(0) invert(1);
 }
-  
-  /* ====== 响应式：窄屏时一列 ====== */
-  @media (max-width: 768px) {
-    .stats-grid {
-      grid-template-columns: 1fr;  /* 变成单列 */
-      gap: 1.5rem;                 /* 缩小间距 */
-    }
-    .stat-card__value {
-      font-size: 2rem;             /* 适当减小数字字号 */
-    }
-  }
-  
-/* ====== Grid 布局基础样式 ====== */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-.energy-solutions {
-    padding: 4rem 1rem;
-    background-color: #f8f8f8;
+
+/* ====== 响应式：窄屏时一列 ====== */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    /* 变成单列 */
+    gap: 1.5rem;
+    /* 缩小间距 */
   }
 
-  .solution-card {
-    flex: 1 1 300px; /* 最小宽度 300px，允许自动换行 */
-    max-width: 350px;
-    background: #fff;
-    border-radius: 10px;
+  .stat-card__value {
+    font-size: 2rem;
+    /* 适当减小数字字号 */
   }
-  /* === 网格布局 === */
-  .solution-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* 或 space-between / space-around */
-    gap: 2rem;
-  }
-  
-  /* === 单张卡片样式 === */
-  .solution-card {
-        flex: 1 1 300px; /* 最小宽度 300px，允许自动换行 */
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 100%;
-    max-width: 400px;
-    height: 100%;
-    min-height: 480px; /* 强制统一卡片高度 */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  
+}
+
+/* ====== Grid 布局基础样式 ====== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.energy-solutions {
+  padding: 4rem 1rem;
+  background-color: #f8f8f8;
+}
+
+.solution-card {
+  flex: 1 1 300px;
+  /* 最小宽度 300px，允许自动换行 */
+  max-width: 350px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+/* === 网格布局 === */
+.solution-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* 或 space-between / space-around */
+  gap: 2rem;
+}
+
+/* === 单张卡片样式 === */
+.solution-card {
+  flex: 1 1 300px;
+  /* 最小宽度 300px，允许自动换行 */
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  min-height: 480px;
+  /* 强制统一卡片高度 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.solution-card h3 {
+  font-size: 1.2rem;
+  margin: 1rem;
+  color: #111;
+}
+
+.solution-card p {
+  margin: 0 1rem 1rem 1rem;
+  color: #555;
+  flex-grow: 1;
+}
+
+.solution-card .btn-link {
+  margin: 1rem;
+  color: #C01C20;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* === 悬浮动画 === */
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.solution-card:hover .btn-link {
+  color: #e95555;
+  text-decoration: underline;
+}
+
+/* === 响应式适配 === */
+@media (max-width: 768px) {
   .solution-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 180px;
   }
-  
+
   .solution-card h3 {
-    font-size: 1.2rem;
-    margin: 1rem;
-    color: #111;
+    font-size: 1.1rem;
   }
-  
-  .solution-card p {
-    margin: 0 1rem 1rem 1rem;
-    color: #555;
-    flex-grow: 1;
-  }
-  
-  .solution-card .btn-link {
-    margin: 1rem;
-    color: #007BFF;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  /* === 悬浮动画 === */
-  .solution-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  .solution-card:hover .btn-link {
-    color: #0056b3;
-    text-decoration: underline;
-  }
-  
-  /* === 响应式适配 === */
-  @media (max-width: 768px) {
-    .solution-card img {
-      height: 180px;
-    }
-    .solution-card h3 {
-      font-size: 1.1rem;
-    }
-  }
+}
 
 /* ========== Footer ========== */
 .site-footer {
@@ -420,6 +478,7 @@ html {
   color: #FFF;
   padding: 2rem 0;
 }
+
 .footer__inner {
   display: flex;
   flex-wrap: wrap;
@@ -429,9 +488,11 @@ html {
   margin: 0 auto;
   gap: 1rem;
 }
+
 .footer__socials a {
   margin-right: 0.5rem;
 }
+
 .footer__socials img {
   width: 24px;
   height: auto;
@@ -503,9 +564,11 @@ html {
     flex-direction: column;
     align-items: stretch;
   }
+
   .newsletter__form {
     flex-direction: column;
   }
+
   .newsletter__input,
   .newsletter__btn {
     border-radius: 9999px;
@@ -560,21 +623,25 @@ html {
     flex-direction: column;
     text-align: center;
   }
+
   .footer__socials,
   .footer__copyright,
   .footer__logo {
     flex: none;
     margin-bottom: 1rem;
   }
+
   .footer__socials a img {
     margin-right: 1rem;
   }
 }
 
 /* 1) 让 html、body 占满整个视口高度 */
-html, body {
+html,
+body {
   height: 100%;
-  margin: 0;          /* 清除默认 margin */
+  margin: 0;
+  /* 清除默认 margin */
   padding: 0;
 }
 
@@ -586,7 +653,8 @@ body {
 
 /* 3) 主内容区自动拉伸 */
 .page-content {
-  flex: 1;            /* 占据 header/footer 以外的所有剩余空间 */
+  flex: 1;
+  /* 占据 header/footer 以外的所有剩余空间 */
 }
 
 /* 4) footer 固定在底部，不拉伸 */

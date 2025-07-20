@@ -1,18 +1,87 @@
 <%- include('partials/header') %>
 
-<!-- Soluzione page content -->
-<section class="page-hero">
-  <div class="container">
-    <h1>Soluzioni Afore</h1>
-    <p>Le nostre soluzioni innovative per l'energia sostenibile</p>
-  </div>
-</section>
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="container">        
+            <!-- ↓ video ↓ -->
+            <video
+              class="hero-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="image/desktopsoluzione_heroimage1.jpg"
+              src="image/desktopsoluzione_heroimage1.jpg"
+            >
+              <!--
+              <source src="image/desktophero_video (70-110kW).webm" type="video/webm">
+              -->
+              Il tuo browser non supporta HTML5 video.
+            </video>
+        </section>
+            <!-- ↑ Vide结束 ↑ -->
 
-<section class="solutions-content">
-  <div class="container">
-    <h2>Soluzioni per il Futuro</h2>
-    <p>Contenuto della pagina soluzioni che verrà estratto dal file originale...</p>
-  </div>
-</section>
+            <!-- 面包屑 -->
+        <div class="container">
+            <div class="breadcrumb">
+              <a href="#">HOME</a> 
+              <span class="separator">&gt;</span>
+              <span class="current">Soluzione</span>
+              
+            </div>
+          </div>
+          
+            <!-- ====== Stats 区块：图标＋文字 ====== -->
+        <section class="stats">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon2.png" alt="Years icon" class="stat-card__icon">
+                <p class="stat-card__value">Garanzia</p>
+                <p class="stat-card__label">Garantiamo 10 anni di garanzia</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon3.png" alt="Efficiency icon" class="stat-card__icon">
+                <p class="stat-card__value">Assistenza Telefonica</p>
+                <p class="stat-card__label">Telefonaci per l’assistenza</p>
+              </div>
+              <div class="stat-card">
+                <img src="image/desktopassistenza_servizio_icon1.png" alt="Team icon" class="stat-card__icon">
+                <p class="stat-card__value">Prenota Servizio</p>
+                <p class="stat-card__label">Richiedi assistenza online</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== soluzione Section ====== -->
+          <section class="energy-solutions">
+            <div class="container">
+              <div class="solution-grid">
+                <!-- 卡片 1 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image1.jpg" alt="Home Energy Solution">
+                  <h3>AFORE Soluzione Residenziale</h3>
+                  <p>Produci energia pulita dal tuo tetto di casa, 24 ore su 24</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+          
+                <!-- 卡片 2 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image2.jpg" alt="Commercial Energy Solution">
+                  <h3>AFORE Soluzione Commerciale</h3>
+                  <p>Riduci i costi energetici della tua attività e opera in modo sostenibile</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+          
+                <!-- 卡片 3 -->
+                <div class="solution-card">
+                  <img src="image/desktopsoluzione_image3.jpg" alt="Large Scale Energy Solutions">
+                  <h3>AFORE Soluzione Large Scale</h3>
+                  <p>Le nostre soluzioni flessibili sono ideali per impianti fotovoltaici e di accumulo per grandi progetti</p>
+                  <a href="#" class="btn-link">Scopri come →</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
 
 <%- include('partials/footer') %>

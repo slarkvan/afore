@@ -1,18 +1,95 @@
 <%- include('partials/header') %>
 
-<!-- Eventi page content -->
-<section class="page-hero">
-  <div class="container">
-    <h1>Eventi</h1>
-    <p>I nostri eventi e fiere del settore</p>
-  </div>
-</section>
+        <!-- ===== Download Hero Section ===== -->
+<section class="download-hero">
+    <div class="download-hero__overlay container">
+      <h1 class="download-hero__title">EVENTI</h1>
+      <form class="download-search">
+        <div class="download-search__input">
+          <input type="text" placeholder="DIGITA IL NOME DEL FILE DA SCARICARE" />
+          <button type="submit" class="search-icon" aria-label="Search">
+            🔍
+          </button>
+        </div>
+        <button type="submit" class="download-search__btn">CERCA</button>
+      </form>
+    </div>
+  </section>
 
-<section class="events-content">
-  <div class="container">
-    <h2>Prossimi Eventi</h2>
-    <p>Contenuto della pagina eventi che verrà estratto dal file originale...</p>
-  </div>
-</section>
+    <section class="other-download">
+        <h2 class="other-download__title">PROSSIME FIERE / CONFERENZE</h2>
+        <div class="other-download__cards">
+            <a href="#" class="card">
+            <img src="image/desktopeventi_icon1.svg" alt="EVENTI Icon" class="card-icon">
+            <p class="card-label">EVENTI</p>
+          </a>
+          <a href="#" class="card">
+            <img src="image/desktopeventi_icon2.svg" alt="WEBINAR ICON" class="card-icon">
+            <p class="card-label">WEBINAR</p>
+          </a>
+        </div>
+      </section>
+      <section class="events">
+  
+          <!-- 1. 选项卡导航 -->
+          <div class="events__inner">
+            <!-- 2. 标题和下划线 -->
+            <h2 class="events__title">IN ARRIVO</h2>
+        
+            <!-- 3. 筛选区域 -->
+            <div class="events__filters">
+              <div class="filter">
+                <label for="filter-country">Nazione</label>
+                <select id="filter-country">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+              <div class="filter">
+                <label for="filter-date">Data</label>
+                <select id="filter-date">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+              <div class="filter">
+                <label for="filter-type">Tipo</label>
+                <select id="filter-type">
+                  <option>Seleziona</option>
+                </select>
+              </div>
+            </div>
+        
+            <!-- 4. 卡片区域 -->
+            <div class="events__cards">
+              <article class="event-card">
+                <figure class="event-card__media">
+                  <img src="image/desktopeventi_image2.jpg" alt="Power Tour">
+                </figure>
+                <div class="event-card__content">
+                  <p class="event-card__date">2025-05-22 – 2025-12-22</p>
+                  <h3 class="event-card__heading">AFORE POWER TOUR</h3>
+                  <p class="event-card__text">
+                    Partecipa agli eventi Afore, incontra il nostro Power Team e scopri tutta la gamma di prodotti.
+                  </p>
+                  <a href="#" class="event-card__btn">Read More →</a>
+                </div>
+              </article>
+
+              <article class="event-card">
+                <figure class="event-card__media">
+                  <img src="image/desktopcarousel_image1.jpg" alt="Power Tour">
+                </figure>
+                <div class="event-card__content">
+                  <p class="event-card__date">2025-05-22 – 2025-12-22</p>
+                  <h3 class="event-card__heading">AFORE POWER TOUR</h3>
+                  <p class="event-card__text">
+                    Partecipa agli eventi Afore, incontra il nostro Power Team e scopri tutta la gamma di prodotti.
+                  </p>
+                  <a href="#" class="event-card__btn">Read More →</a>
+                </div>
+              </article>
+              <!-- 如果有多张卡片，复制上面这个 <article>…</article> 即可 -->
+            </div>
+          </div>
+        </section>
 
 <%- include('partials/footer') %>
