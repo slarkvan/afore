@@ -95,4 +95,64 @@ function cdnMiddleware(req, res, next) {
   next();
 }
 
-module.exports = cdnMiddleware;
+// CSS 文件 CDN 处理中间件
+function cssMiddleware(req, res, next) {
+  // 如果没有启用 CDN 或不是 CSS 文件，直接继续
+  if (!ENABLE_CDN || !req.path.endsWith('.css')) {
+    return next();
+  }
+
+  // 构建 CSS 文件的完整路径
+  const cssFilePath = path.join(__dirname, '..', '..', 'static', req.path);
+
+  // 检查文件是否存在
+  if (!fs.existsSync(cssFilePath)) {
+    return next();
+  }
+
+  // 读取 CSS 文件内容
+  fs.readFile(cssFilePath, 'utf8', (err, data) => {
+    if (err) {
+      return next(err);
+    }
+
+    // 处理 CSS 中的 CDN 路径
+    let processedCss = data;
+
+    // 替换 background: url() 形式
+    processedCss = processedCss.replace(
+      /background:\s*url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)([^;}]*)/gi,
+      (match, path, additionalProps) => {
+        const newPath = buildCdnUrl(path);
+        return `background: url('${newPath}')${additionalProps}`;
+      }
+    );
+
+    // 替换 background-image: url() 形式
+    processedCss = processedCss.replace(
+      /background-image:\s*url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
+      (match, path) => {
+        const newPath = buildCdnUrl(path);
+        return `background-image: url('${newPath}')`;
+      }
+    );
+
+    // 替换其他 url() 引用
+    processedCss = processedCss.replace(
+      /url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
+      (match, path) => {
+        const newPath = buildCdnUrl(path);
+        return `url('${newPath}')`;
+      }
+    );
+
+    // 设置正确的 Content-Type
+    res.setHeader('Content-Type', 'text/css');
+    res.send(processedCss);
+  });
+}
+
+module.exports = {
+  cdnMiddleware,
+  cssMiddleware
+};

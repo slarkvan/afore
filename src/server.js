@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const cdnMiddleware = require("./middleware/cdn");
+const { cdnMiddleware, cssMiddleware } = require("./middleware/cdn");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,8 +15,11 @@ const ENABLE_CDN = process.env.ENABLE_CDN === "true";
 const CDN_HOST = process.env.CDN_HOST || "";
 const CDN_PATH_PREFIX = process.env.CDN_PATH_PREFIX || "";
 
-// 应用 CDN 中间件
+// 应用 CDN 中间件（HTML 模板）
 app.use(cdnMiddleware);
+
+// CSS 文件 CDN 处理中间件（需要在静态文件中间件之前）
+app.use(cssMiddleware);
 
 // 页面路由映射
 const pageRoutes = {
