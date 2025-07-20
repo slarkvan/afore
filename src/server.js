@@ -6,6 +6,10 @@ const cdnMiddleware = require("./middleware/cdn");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// 设置 EJS 模板引擎
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "..", "views"));
+
 // CDN 配置
 const ENABLE_CDN = process.env.ENABLE_CDN === "true";
 const CDN_HOST = process.env.CDN_HOST || "";
@@ -14,19 +18,75 @@ const CDN_PATH_PREFIX = process.env.CDN_PATH_PREFIX || "";
 // 应用 CDN 中间件
 app.use(cdnMiddleware);
 
-// 设置静态文件目录
-app.use(express.static(path.join(__dirname, "..", "static")));
+// 页面路由映射
+const pageRoutes = {
+  "/": {
+    template: "homepage",
+    title: "Afore Italia - Home",
+    stylesheet: "homepage_style.css"
+  },
+  "/prodotti.html": {
+    template: "prodotti",
+    title: "Prodotti - Afore Italia",
+    stylesheet: "prodotti.css"
+  },
+  "/soluzione.html": {
+    template: "soluzione",
+    title: "Soluzioni - Afore Italia",
+    stylesheet: "soluzione.css"
+  },
+  "/chieafore.html": {
+    template: "chieafore",
+    title: "Chi è Afore - Afore Italia",
+    stylesheet: "chieafore_style.css"
+  },
+  "/contatti.html": {
+    template: "contatti",
+    title: "Contatti - Afore Italia",
+    stylesheet: "contatti.css"
+  },
+  "/documentazione.html": {
+    template: "documentazione",
+    title: "Documentazione - Afore Italia",
+    stylesheet: "documentazione.css"
+  },
+  "/Assistenza.html": {
+    template: "assistenza",
+    title: "Assistenza - Afore Italia",
+    stylesheet: "Assistenza.css"
+  },
+  "/eventi.html": {
+    template: "eventi",
+    title: "Eventi - Afore Italia",
+    stylesheet: "eventi_style.css"
+  },
+};
 
-// 默认路由，返回主页
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "static", "homepage.html"));
+// 动态路由处理
+Object.keys(pageRoutes).forEach((route) => {
+  app.get(route, (req, res) => {
+    const pageConfig = pageRoutes[route];
+    res.render(pageConfig.template, {
+      title: pageConfig.title,
+      stylesheet: pageConfig.stylesheet,
+    });
+  });
+});
+
+// 静态文件中间件，但跳过HTML文件（由EJS模板处理）
+app.use((req, res, next) => {
+  if (req.path.endsWith(".html")) {
+    return next(); // 跳过HTML文件，让路由处理
+  }
+  express.static(path.join(__dirname, "..", "static"))(req, res, next);
 });
 
 // 404处理
 app.use((req, res) => {
-  res
-    .status(404)
-    .sendFile(path.join(__dirname, "..", "static", "homepage.html"));
+  res.status(404).render("homepage", {
+    title: "Afore Italia - Home",
+    stylesheet: "homepage_style.css"
+  });
 });
 
 // 启动服务器

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 页面样式表 -->
+  <link rel="stylesheet" href="<%= stylesheet %>" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="/" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="/chieafore.html" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="/soluzione.html" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="/prodotti.html" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="/Assistenza.html" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="/documentazione.html" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="/eventi.html" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="/contatti.html" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>

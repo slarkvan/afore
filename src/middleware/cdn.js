@@ -26,71 +26,64 @@ function buildCdnUrl(originalPath) {
   return `${cdnUrl}${pathPrefix}/${cleanPath}`;
 }
 
-// HTML 文件 CDN 处理中间件
+// EJS 渲染结果 CDN 处理中间件
 function cdnMiddleware(req, res, next) {
-  // 只处理 HTML 文件请求
-  if (!req.path.endsWith(".html") && req.path !== "/") {
-    return next();
-  }
-
   // 如果没有启用 CDN，直接继续
   if (!ENABLE_CDN) {
     return next();
   }
 
-  // 确定要读取的文件路径
-  let filePath;
-  if (req.path === "/") {
-    filePath = path.join(__dirname, "..", "..", "static", "homepage.html");
-  } else {
-    filePath = path.join(__dirname, "..", "..", "static", req.path);
-  }
+  // 保存原始的 res.render 方法
+  const originalRender = res.render;
 
-  // 检查文件是否存在
-  if (!fs.existsSync(filePath)) {
-    return next();
-  }
-
-  // 读取并处理 HTML 文件
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      return next();
-    }
-
-    // 替换 image/ 和 video/ 路径
-    let processedHtml = data;
-
-    // 替换各种形式的 image/ 路径（避免重复处理已转换的 URL）
-    processedHtml = processedHtml.replace(
-      /(src|href|poster)=["'](?!https?:\/\/)([^"']*(?:image|video)\/[^"']*)["']/gi,
-      (match, attr, path) => {
-        const newPath = buildCdnUrl(path);
-        return `${attr}="${newPath}"`;
+  // 重写 res.render 方法来处理 CDN 转换
+  res.render = function(view, options, callback) {
+    // 调用原始 render 方法获取渲染结果
+    originalRender.call(this, view, options, (err, html) => {
+      if (err) {
+        if (callback) return callback(err);
+        return next(err);
       }
-    );
 
-    // 替换 CSS 中的 url() 引用（避免重复处理已转换的 URL）
-    processedHtml = processedHtml.replace(
-      /url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
-      (match, path) => {
-        const newPath = buildCdnUrl(path);
-        return `url('${newPath}')`;
+      // 对渲染后的 HTML 进行 CDN 路径替换
+      let processedHtml = html;
+
+      // 替换各种形式的 image/ 路径（避免重复处理已转换的 URL）
+      processedHtml = processedHtml.replace(
+        /(src|href|poster)=["'](?!https?:\/\/)([^"']*(?:image|video)\/[^"']*)["']/gi,
+        (match, attr, path) => {
+          const newPath = buildCdnUrl(path);
+          return `${attr}="${newPath}"`;
+        }
+      );
+
+      // 替换 CSS 中的 url() 引用（避免重复处理已转换的 URL）
+      processedHtml = processedHtml.replace(
+        /url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
+        (match, path) => {
+          const newPath = buildCdnUrl(path);
+          return `url('${newPath}')`;
+        }
+      );
+
+      // 替换 style 属性中的背景图片（避免重复处理已转换的 URL）
+      processedHtml = processedHtml.replace(
+        /background-image:\s*url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
+        (match, path) => {
+          const newPath = buildCdnUrl(path);
+          return `background-image: url('${newPath}')`;
+        }
+      );
+
+      if (callback) {
+        callback(null, processedHtml);
+      } else {
+        res.send(processedHtml);
       }
-    );
+    });
+  };
 
-    // 替换 style 属性中的背景图片（避免重复处理已转换的 URL）
-    processedHtml = processedHtml.replace(
-      /background-image:\s*url\(['"]?(?!https?:\/\/)([^'"]*(?:image|video)\/[^'"]*)['"]?\)/gi,
-      (match, path) => {
-        const newPath = buildCdnUrl(path);
-        return `background-image: url('${newPath}')`;
-      }
-    );
-
-    // 设置正确的 Content-Type 并发送处理后的 HTML
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.send(processedHtml);
-  });
+  next();
 }
 
 module.exports = cdnMiddleware;

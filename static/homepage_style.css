@@ -2,6 +2,7 @@
 html {
   font-family: 'Open Sans', sans-serif;
 }
+
 /* 正文 400 */
 body {
   font-weight: 400;
@@ -9,76 +10,87 @@ body {
 
 /* 中等强调 600 */
 strong,
-h3, h4 {
+h3,
+h4 {
   font-weight: 600;
 }
 
 /* 标题 700 或 800 */
-h1, h2 {
+h1,
+h2 {
   font-weight: 700;
 }
+
 /* ========== Reset & Base ========== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 ul {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 /* —— 基础，把 html/body 拉满高度 —— */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* —— 外层容器 —— */
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-  }
-  
-  /* —— 主体内容区，会自动撑满空白 —— */
-  .page-content {
-    flex: 1;
-  }
-  
-  /* —— Footer 黏底 —— */
-  .site-footer {
-    flex-shrink: 0;      /* 不被压缩，保持自身高度 */
-    background: #000;
-    color: #fff;
-    padding: 2rem 0;
-  }
-  
-  /* —— Footer 内部布局 —— */
-  .footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* … 其余 .footer__socials/.footer__copyright/.footer__logo 样式照旧 … */
-  
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* —— 外层容器 —— */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* —— 主体内容区，会自动撑满空白 —— */
+.page-content {
+  flex: 1;
+}
+
+/* —— Footer 黏底 —— */
+.site-footer {
+  flex-shrink: 0;
+  /* 不被压缩，保持自身高度 */
+  background: #000;
+  color: #fff;
+  padding: 2rem 0;
+}
+
+/* —— Footer 内部布局 —— */
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* … 其余 .footer__socials/.footer__copyright/.footer__logo 样式照旧 … */
+
 /* ========== Header & Layout ========== */
 .site-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   padding: 1rem 0
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -89,8 +101,9 @@ html, body {
 }
 
 .page-content {
-  padding-top: 
-0px; /* 留出 header 高度，避免内容被遮挡 */
+  padding-top:
+    0px;
+  /* 留出 header 高度，避免内容被遮挡 */
 }
 
 /* ========== Logo ========== */
@@ -104,6 +117,7 @@ html, body {
 .site-nav {
   display: none;
 }
+
 .mobile-menu-toggle {
   display: block;
   background: none;
@@ -117,8 +131,10 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 0.5rem; /* 下拉菜单时给点间距 */
+  margin-top: 0.5rem;
+  /* 下拉菜单时给点间距 */
 }
+
 .nav-list a {
   font-size: 1rem;
   font-weight: 500;
@@ -133,20 +149,24 @@ html, body {
 
 /* ========== Tablet & Desktop（≥768px） ========== */
 @media (min-width: 768px) {
+
   /* 隐藏汉堡，显示主导航 */
   .mobile-menu-toggle {
     display: none;
   }
+
   .site-nav {
     display: block;
-    margin-left: auto; /* 把菜单推到右边 */
+    margin-left: auto;
+    /* 把菜单推到右边 */
   }
 
   /* 水平排列菜单 */
   .nav-list {
     flex-direction: row;
     gap: 24px;
-    margin-top: 0; /* 取消下拉间距 */
+    margin-top: 0;
+    /* 取消下拉间距 */
   }
 }
 
@@ -161,7 +181,10 @@ html, body {
 /* 1) 外层裁切容器 */
 .hero-video-wrapper {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
   z-index: 1;
 }
@@ -182,7 +205,8 @@ html, body {
 
 .hero-media {
   position: absolute;
-  inset: 0;               /* top:0; right:0; bottom:0; left:0; */
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0; */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -192,10 +216,12 @@ html, body {
 .hero-media__overlay {
   position: absolute;
   /* 改用 bottom 保持距底部一定距离 */
-  bottom: 6%;            /* 距视频底部 10% */
+  bottom: 6%;
+  /* 距视频底部 10% */
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;             /* 根据设计稿限制 overlay 宽度 */
+  width: 100%;
+  /* 根据设计稿限制 overlay 宽度 */
   max-width: 1200px;
   color: #fff;
   z-index: 2;
@@ -203,12 +229,13 @@ html, body {
 
 /* 文本排版 */
 .hero-media__overlay p {
-  font-size: 1rem;        /* 副标题 */
+  font-size: 1rem;
+  /* 副标题 */
   margin-bottom: 0.5rem;
 }
 
 .hero-media__overlay h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);  
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   /* clamp(min, 弹性值, max)：视口越小，字体不会小于 1.5rem，越大不会超 2.5rem */
   line-height: 1.2;
 }
@@ -216,14 +243,17 @@ html, body {
 /* ====== 响应式 ===== */
 @media (max-width: 768px) {
   .hero-media__overlay {
-    bottom: 10%;          /* 小屏时再往上挪一点 */
+    bottom: 10%;
+    /* 小屏时再往上挪一点 */
     width: 100%;
     left: 50%;
     padding: 0 1rem;
   }
+
   .hero-media__overlay p {
     font-size: 0.9rem;
   }
+
   .hero-media__overlay h2 {
     font-size: clamp(1.25rem, 6vw, 2rem);
   }
@@ -232,26 +262,35 @@ html, body {
 /* ========== Solution Info ========== */
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 桌面端 2 列 */
-  gap: 1.5rem;                           /* 网格间距 */
+  grid-template-columns: repeat(2, 1fr);
+  /* 桌面端 2 列 */
+  gap: 1.5rem;
+  /* 网格间距 */
   max-width: 99%;
-  margin: 4rem auto;                     /* 上下外边距 + 居中 */
-  padding: 0 1rem;                       /* 两侧内边距 防止贴边 */
+  margin: 4rem auto;
+  /* 上下外边距 + 居中 */
+  padding: 0 1rem;
+  /* 两侧内边距 防止贴边 */
 }
 
 /* ========== 单张卡片 ========== */
 .solution-card {
   position: relative;
-  flex: 1 1 calc(25% - 1.5rem); /* 四列布局，自动减去间距 */
-  min-height: 240px;            /* 卡片高度，可根据需求调整 */
+  flex: 1 1 calc(25% - 1.5rem);
+  /* 四列布局，自动减去间距 */
+  min-height: 240px;
+  /* 卡片高度，可根据需求调整 */
   background-size: cover;
   background-position: center;
-  text-decoration: none;        /* 去掉链接下划线 */
+  text-decoration: none;
+  /* 去掉链接下划线 */
   color: inherit;
   display: flex;
-  align-items: flex-end;        /* 遮罩放到底部 */
+  align-items: flex-end;
+  /* 遮罩放到底部 */
   border-radius: 8px;
-  overflow: hidden;             /* 裁切溢出部分 */
+  overflow: hidden;
+  /* 裁切溢出部分 */
   transition: transform .3s ease;
 }
 
@@ -290,6 +329,7 @@ html, body {
     /* 一列 */
     grid-template-columns: 1fr;
   }
+
   .solution-card {
     /* 可根据需要调整高度 */
     min-height: 180px;
@@ -298,76 +338,87 @@ html, body {
 
 /* Banner */
 .banner {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  .banner__grid {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-  .banner__card {
-    display: block;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    cursor: pointer;
-    transition:
-      transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1),
-      box-shadow 0.3s cubic-bezier(0.4, 0.2, 0.2, 1),
-      border 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
-    border: 4px solid transparent;
-  }
-  .banner__card img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  /* Banner text below image, centered */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner__grid {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.banner__card {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0.2, 0.2, 1),
+    border 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border: 4px solid transparent;
+}
+
+.banner__card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Banner text below image, centered */
+.banner-media__overlay {
+  width: 100%;
+  max-width: 1500px;
+  margin: 1rem auto 0 auto;
+  color: #C01C20;
+  z-index: 2;
+  text-align: center;
+  padding: 0 2rem;
+  pointer-events: none;
+  position: static;
+  margin-bottom: 4rem;
+  /* 取消下拉间距 */
+}
+
+.banner-media__overlay p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.banner-media__overlay h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0;
+  color: #C01C20;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
   .banner-media__overlay {
     width: 100%;
-    max-width: 1500px;
-    margin: 1rem auto 0 auto;
-    color: #C01C20;
-    z-index: 2;
-    text-align: center;
-    padding: 0 2rem;
-    pointer-events: none;
-    position: static;
-    margin-bottom: 4rem; /* 取消下拉间距 */
+    padding: 0 1rem;
   }
+
   .banner-media__overlay p {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #555;
+    font-size: 0.9rem;
   }
+
   .banner-media__overlay h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.2;
-    margin: 0;
-    color: #C01C20;
+    font-size: clamp(1.25rem, 6vw, 2rem);
   }
-  /* Responsive for mobile */
-  @media (max-width: 768px) {
-    .banner-media__overlay {
-      width: 100%;
-      padding: 0 1rem;
-    }
-    .banner-media__overlay p {
-      font-size: 0.9rem;
-    }
-    .banner-media__overlay h2 {
-      font-size: clamp(1.25rem, 6vw, 2rem);
-    }
-  }
-  /* Interactive hover & active (click) effects */
+}
+
+/* Interactive hover & active (click) effects */
 .banner__card:hover,
 .banner__card:active,
 .banner__card:focus {
@@ -388,46 +439,57 @@ html, body {
 .banner__card:focus img,
 .banner__card:active img {
   transform: scale(1.04);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 1.5px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 1.5px 8px rgba(0, 0, 0, 0.10);
   border: 4px solid #00000000;
 }
 
-  .banner__card:active {
-    filter: brightness(0.98);
-  }
+.banner__card:active {
+  filter: brightness(0.98);
+}
 
 /* ====== Stats 区块基础样式 ====== */
 .stats {
-  margin: 4rem auto;             /* 与上下内容留白 */
-  padding: 0 1rem;               /* 两侧内边距防止贴边 */
+  margin: 4rem auto;
+  /* 与上下内容留白 */
+  padding: 0 1rem;
+  /* 两侧内边距防止贴边 */
   max-width: 1200px;
-  margin-top: 2rem; /* 取消下拉间距 */
+  margin-top: 2rem;
+  /* 取消下拉间距 */
 }
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 三列等宽 */
-  gap: 2rem;                              /* 列间距 */
+  grid-template-columns: repeat(3, 1fr);
+  /* 三列等宽 */
+  gap: 2rem;
+  /* 列间距 */
 }
+
 .stat-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.5rem;                            /* 图标、数字、标签之间垂直间距 */
+  gap: 0.5rem;
+  /* 图标、数字、标签之间垂直间距 */
 }
+
 .stat-card__icon {
   width: 48px;
   height: auto;
-  margin-top: 0
-rem; /* ← 这里自己调节距离 */
+  margin-top: 0 rem;
+  /* ← 这里自己调节距离 */
   margin-bottom: 1rem;
 }
+
 .stat-card__value {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
   line-height: 1;
 }
+
 .stat-card__label {
   font-size: 1rem;
   margin: 0;
@@ -437,277 +499,311 @@ rem; /* ← 这里自己调节距离 */
 /* ====== 响应式：窄屏时一列 ====== */
 @media (max-width: 768px) {
   .stats-grid {
-    grid-template-columns: 1fr;  /* 变成单列 */
-    gap: 1.5rem;                 /* 缩小间距 */
+    grid-template-columns: 1fr;
+    /* 变成单列 */
+    gap: 1.5rem;
+    /* 缩小间距 */
   }
+
   .stat-card__value {
-    font-size: 2rem;             /* 适当减小数字字号 */
+    font-size: 2rem;
+    /* 适当减小数字字号 */
   }
 }
 
 /* ====== NEWS ====== */
 .news-carousel {
-    overflow-x: auto;
-    padding: 1.5rem;
-    width: 90%;              /* 整体容器宽度 */
-    margin: 0 auto;          /* 整体容器居中 */
-  }
-  
-  /* ========= 幻灯片行 ========= */
-  .news-slides {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-    flex-wrap: nowrap; /* 禁止换行 */
-  }
-  
-  /* ========= 单张卡片（默认态） ========= */
-  .news-slide {
-    flex: 1;                         /* 所有卡片平分宽度，可被拉伸 */
-    display: flex;
-    flex-direction: column;          /* 上半图，下半文 */
-    min-height: 360px;               /* 可根据需求调整 */
-    background: #fff;                /* 默认白底 */
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    box-shadow:
-      0 2px 32px rgba(0,0,0,0.15),
-      0 1.5px 8px rgba(0,0,0,0.10);
-    transition:
-      flex .3s ease,                /* 宽度动画 */
-      background .3s ease,
-      transform .3s ease,
-      box-shadow .3s ease;
-  }
-  
-  /* ====== 响应式：屏幕宽度 ≤768px 时卡片上下堆叠 ====== */
+  overflow-x: auto;
+  padding: 1.5rem;
+  width: 90%;
+  /* 整体容器宽度 */
+  margin: 0 auto;
+  /* 整体容器居中 */
+}
+
+/* ========= 幻灯片行 ========= */
+.news-slides {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+  /* 禁止换行 */
+}
+
+/* ========= 单张卡片（默认态） ========= */
+.news-slide {
+  flex: 1;
+  /* 所有卡片平分宽度，可被拉伸 */
+  display: flex;
+  flex-direction: column;
+  /* 上半图，下半文 */
+  min-height: 360px;
+  /* 可根据需求调整 */
+  background: #fff;
+  /* 默认白底 */
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow:
+    0 2px 32px rgba(0, 0, 0, 0.15),
+    0 1.5px 8px rgba(0, 0, 0, 0.10);
+  transition:
+    flex .3s ease,
+    /* 宽度动画 */
+    background .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+/* ====== 响应式：屏幕宽度 ≤768px 时卡片上下堆叠 ====== */
 @media (max-width: 768px) {
-    .news-slides {
-      flex-direction: column;  /* 纵向排列 */
-      gap: 1.5rem;             /* 竖直间距 */
-    }
-    .news-slide {
-      flex: 1 0 auto;          /* 每张卡片自行撑高 */
-      width: 100%;             /* 撑满父容器宽度 */
-    }
+  .news-slides {
+    flex-direction: column;
+    /* 纵向排列 */
+    gap: 1.5rem;
+    /* 竖直间距 */
   }
-  /* —— 图片（上半部分） —— */
-  .news-slide img {
+
+  .news-slide {
+    flex: 1 0 auto;
+    /* 每张卡片自行撑高 */
     width: 100%;
-    height: 250px;                   /* 固定高度，三张一致 */
-    object-fit: cover;
-    display: block;
-    flex: 0 0 auto;                  /* 取消图片 flex 分配 */
+    /* 撑满父容器宽度 */
   }
-  
-  /* —— 文本（下半部分） —— */
-  .news-content {
-    flex: 1;                         /* 占剩余高度 */
-    padding: 1.5rem;
-  }
-  .news-content h3 {
-    margin: 0 0 .75rem;
-    font-size: 1.25rem;
-    color: #C01C20;                  /* 默认橘红色 */
-  }
-  .news-content p {
-    margin: 0;
-    line-height: 1.6;
-    color: #333;
-    font-size: 0.95rem;
-  }
-  
-  /* —— 箭头（默认隐藏） —— */
-  .news-slide .arrow {
-    display: none;
-  }
-  
-  /* ========= 悬停态（hover） ========= */
-  .news-slide:hover {
-    flex: 1.2;                       /* 变宽 20% */
-    background: #002d5a;             /* 深蓝背景 */
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-  }
-  
-  /* —— 悬停时文字高对比 —— */
-  .news-slide:hover .news-content h3 {
-    color: #fff;
-  }
-  .news-slide:hover .news-content p {
-    color: #eee;
-  }
-  
-  /* —— 悬停时显示箭头 —— */
-  .news-slide:hover .arrow {
-    display: block;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: #C01C20;
-    color: #fff;
-    width: 2.2rem;
-    height: 2.2rem;
-    line-height: 2.2rem;
-    text-align: center;
-    border-radius: 50%;
-  
-  /* ===== Newsletter Signup ===== */
-  .newletter{
-    background: #fff;
-    padding: 4rem 0;
-  }
-  
+}
+
+/* —— 图片（上半部分） —— */
+.news-slide img {
+  width: 100%;
+  height: 250px;
+  /* 固定高度，三张一致 */
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;
+  /* 取消图片 flex 分配 */
+}
+
+/* —— 文本（下半部分） —— */
+.news-content {
+  flex: 1;
+  /* 占剩余高度 */
+  padding: 1.5rem;
+}
+
+.news-content h3 {
+  margin: 0 0 .75rem;
+  font-size: 1.25rem;
+  color: #C01C20;
+  /* 默认橘红色 */
+}
+
+.news-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* —— 箭头（默认隐藏） —— */
+.news-slide .arrow {
+  display: none;
+}
+
+/* ========= 悬停态（hover） ========= */
+.news-slide:hover {
+  flex: 1.2;
+  /* 变宽 20% */
+  background: #002d5a;
+  /* 深蓝背景 */
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* —— 悬停时文字高对比 —— */
+.news-slide:hover .news-content h3 {
+  color: #fff;
+}
+
+.news-slide:hover .news-content p {
+  color: #eee;
+}
+
+/* —— 悬停时显示箭头 —— */
+.news-slide:hover .arrow {
+  display: block;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: #C01C20;
+  color: #fff;
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* ===== Newsletter Signup ===== */
+.newsletter {
+  background: #fff;
+  padding: 4rem 0;
+}
+
+.newsletter__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.newsletter__text {
+  flex: 1 1 300px;
+}
+
+.newsletter__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter__subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+.newsletter__form {
+  flex: 1 1 300px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  height: au;
+  border: 1px solid #ddd;
+  border-radius: 9999px 0 0 9999px;
+  font-size: 1rem;
+}
+
+.newsletter__btn {
+  padding: 0 1.5rem;
+  width: 30%;
+  background-color: #C01C20;
+  color: #fff;
+  border: none;
+  border-radius: 0 9999px 9999px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newsletter__btn:hover {
+  background-color: #621c1c;
+}
+
+/* Mobile: form 堆叠 */
+@media (max-width: 600px) {
   .newsletter__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .newsletter__text {
-    flex: 1 1 300px;
-  }
-  
-  .newsletter__title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  
-  .newsletter__subtitle {
-    font-size: 1rem;
-    color: #666;
-  }
-  
+
   .newsletter__form {
-    flex: 1 1 300px;
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .newsletter__input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    height: au;
-    border: 1px solid #ddd;
-    border-radius: 9999px 0 0 9999px;
-    font-size: 1rem;
-  }
-  
-  .newsletter__btn {
-    padding: 0 1.5rem;
-    width: 30%;
-    background-color: #C01C20;
-    color: #fff;
-    border: none;
-    border-radius: 0 9999px 9999px 0;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  .newsletter__btn:hover {
-    background-color: #621c1c;
-  }
-  
-  /* Mobile: form 堆叠 */
-  @media (max-width: 600px) {
-    .newsletter__inner {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .newsletter__form {
-      flex-direction: column;
-    }
-    .newsletter__input,
-    .newsletter__btn {
-      border-radius: 9999px;
-    }
-  }
-  
-  /* ===== Footer ===== */
-  .site-footer {
-    background: #000;
-    color: #fff;
-    padding: 2rem 0;
-    height: 300px
-  }
-  
-  .footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  
-  .footer__socials a img {
-    width: 24px;
-    height: auto;
-    margin-right: 0.5rem;
-  }
-  
-  .footer__socials {
-    flex: 1 1 200px;
-  }
-  
-  .footer__copyright {
-    flex: 1 1 200px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  
-  .footer__logo img {
-    height: 40px;
-    width: auto;
-  }
-  
-  .footer__logo {
-    flex: 1 1 200px;
-    text-align: right;
-  }
-  
-  /* Mobile: 堆叠居中 */
-  @media (max-width: 600px) {
-    .footer__inner {
-      flex-direction: column;
-      text-align: center;
-    }
-    .footer__socials,
-    .footer__copyright,
-    .footer__logo {
-      flex: none;
-      margin-bottom: 1rem;
-    }
-    .footer__socials a img {
-      margin-right: 1rem;
-    }
-  }
-  
-  /* 1) 让 html、body 占满整个视口高度 */
-  html, body {
-    height: 100%;
-    margin: 0;          /* 清除默认 margin */
-    padding: 0;
-  }
-  
-  /* 2) body 作为 flex 容器，纵向排列 */
-  body {
-    display: flex;
     flex-direction: column;
   }
-  
-  /* 3) 主内容区自动拉伸 */
-  .page-content {
-    flex: 1;            /* 占据 header/footer 以外的所有剩余空间 */
+
+  .newsletter__input,
+  .newsletter__btn {
+    border-radius: 9999px;
   }
-  
-  /* 4) footer 固定在底部，不拉伸 */
-  .site-footer {
-    flex-shrink: 0;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background: #000;
+  color: #fff;
+  padding: 2rem 0;
+  height: 300px
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer__socials a img {
+  width: 24px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.footer__socials {
+  flex: 1 1 200px;
+}
+
+.footer__copyright {
+  flex: 1 1 200px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.footer__logo {
+  flex: 1 1 200px;
+  text-align: right;
+}
+
+/* Mobile: 堆叠居中 */
+@media (max-width: 600px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
   }
-  
+
+  .footer__socials,
+  .footer__copyright,
+  .footer__logo {
+    flex: none;
+    margin-bottom: 1rem;
+  }
+
+  .footer__socials a img {
+    margin-right: 1rem;
+  }
+}
+
+/* 1) 让 html、body 占满整个视口高度 */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  /* 清除默认 margin */
+  padding: 0;
+}
+
+/* 2) body 作为 flex 容器，纵向排列 */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3) 主内容区自动拉伸 */
+.page-content {
+  flex: 1;
+  /* 占据 header/footer 以外的所有剩余空间 */
+}
+
+/* 4) footer 固定在底部，不拉伸 */
+.site-footer {
+  flex-shrink: 0;
+}
