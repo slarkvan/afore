@@ -1,4 +1,11 @@
-require("dotenv").config();
+// 环境变量：优先读取 .env.local，没则读 .env
+const fs = require("fs");
+const dotenv = require("dotenv");
+if (fs.existsSync(".env.local")) {
+  dotenv.config({ path: ".env.local" });
+} else {
+  dotenv.config();
+}
 const express = require("express");
 const path = require("path");
 const { cdnMiddleware, cssMiddleware } = require("./middleware/cdn");
