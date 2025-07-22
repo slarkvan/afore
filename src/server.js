@@ -1,7 +1,9 @@
-// 环境变量：优先读取 .env.local，没则读 .env
+// 环境变量：开发环境读取 .env.local，生产环境读取 .env
 const fs = require("fs");
 const dotenv = require("dotenv");
-if (fs.existsSync(".env.local")) {
+// - npm run dev 会设置 NODE_ENV=development，优先使用 .env.local 文件
+// - npm start 会设置 NODE_ENV=production，使用 .env 文件
+if (process.env.NODE_ENV !== "production" && fs.existsSync(".env.local")) {
   dotenv.config({ path: ".env.local" });
 } else {
   dotenv.config();
@@ -33,42 +35,42 @@ const pageRoutes = {
   "/": {
     template: "homepage",
     title: "Afore Italia - Home",
-    stylesheet: "homepage_style.css"
+    stylesheet: "homepage_style.css",
   },
   "/prodotti.html": {
     template: "prodotti",
     title: "Prodotti - Afore Italia",
-    stylesheet: "prodotti.css"
+    stylesheet: "prodotti.css",
   },
   "/soluzione.html": {
     template: "soluzione",
     title: "Soluzioni - Afore Italia",
-    stylesheet: "soluzione.css"
+    stylesheet: "soluzione.css",
   },
   "/chieafore.html": {
     template: "chieafore",
     title: "Chi è Afore - Afore Italia",
-    stylesheet: "chieafore_style.css"
+    stylesheet: "chieafore_style.css",
   },
   "/contatti.html": {
     template: "contatti",
     title: "Contatti - Afore Italia",
-    stylesheet: "contatti.css"
+    stylesheet: "contatti.css",
   },
   "/documentazione.html": {
     template: "documentazione",
     title: "Documentazione - Afore Italia",
-    stylesheet: "documentazione.css"
+    stylesheet: "documentazione.css",
   },
   "/Assistenza.html": {
     template: "assistenza",
     title: "Assistenza - Afore Italia",
-    stylesheet: "Assistenza.css"
+    stylesheet: "Assistenza.css",
   },
   "/eventi.html": {
     template: "eventi",
     title: "Eventi - Afore Italia",
-    stylesheet: "eventi_style.css"
+    stylesheet: "eventi_style.css",
   },
 };
 
@@ -95,7 +97,7 @@ app.use((req, res, next) => {
 app.use((req, res) => {
   res.status(404).render("homepage", {
     title: "Afore Italia - Home",
-    stylesheet: "homepage_style.css"
+    stylesheet: "homepage_style.css",
   });
 });
 

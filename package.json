@@ -4,8 +4,8 @@
   "description": "Afore Italy 静态网站服务器",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "dev": "NODE_ENV=development nodemon src/server.js",
     "pm2:start": "pm2 start ecosystem.config.js",
     "pm2:stop": "pm2 stop afore-italy",
     "pm2:restart": "pm2 restart afore-italy",
