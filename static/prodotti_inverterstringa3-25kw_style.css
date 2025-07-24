@@ -225,7 +225,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 5%;
+    padding: 4rem 15%;
     height: 100vh;
     color: white;
   }
@@ -235,13 +235,13 @@
   }
   
   .product-hero__content h2 {
-    font-size: 2.5rem;
+    font-size: 5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
   }
   
   .product-hero__model {
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
   
@@ -546,6 +546,77 @@
     }
   }
   
+  /* ====== 基础容器 ====== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ====== 顶排图标 Grid ====== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+.feature-item .feature-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.5rem;
+}
+.feature-title {
+  font-size: 1rem;
+  margin: 0.5rem 0 0.25rem;
+  text-transform: uppercase;
+}
+.feature-sub {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* ====== 底部更多优势 ====== */
+.section-heading {
+  margin: 3rem 0 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* 两列列表，移动端单列 */
+.advantages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.adv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.adv-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.adv-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem; /* 图标与文字垂直对齐 */
+}
+.adv-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ====== 响应式断点 ====== */
+@media (max-width: 768px) {
+  .advantages {
+    grid-template-columns: 1fr;
+  }
+}
+
   /* ========== Product Grid ========== */
   /* 包裹标题和卡片整体 */
 .product-grid-wrapper {
