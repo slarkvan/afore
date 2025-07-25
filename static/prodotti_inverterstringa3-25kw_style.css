@@ -602,7 +602,7 @@
   .features-grid {
     flex-wrap: wrap;
     overflow-x: visible;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .feature-item {
     flex: 1 1 calc(50% - 1rem);
@@ -618,29 +618,40 @@
   }
 }
 
-/* 2. 统一灰色背景 */
+/* —— 底部：灰底优势区 —— */
+.features .container {
+  padding: 0 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .advantages {
-  /* 去掉 max-width: 1200px; margin: 0 auto; */
-  width: 100%;            /* 撑满容器 */
-  background-color: var(--bg);
+  background-color: var(--bg); /* #f7f7f7 */
   padding: 2rem 5%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: flex-start; /* ← 改这里 */
+  gap: 2rem;                   /* 用 gap 代替 space-between */
+  max-width: 1200px;           /* 或者你想要的容器宽度 */
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
-
-/* 每列列表 */
+/* 每列列表，各占 50% */
 .adv-list {
-  flex: 1 1 45%;
+  flex: 0 0 calc(50% - 1rem); /* 50% 宽度，减去一半的 gap */
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* 如果要让第二列再左移一点（对齐第一列文字），可以加这条 */
+/* 可选 */
+.adv-list + .adv-list {
+  margin-left: -1rem;
 }
 
 /* 列表项 */
@@ -656,12 +667,12 @@
 @media (max-width: 768px) {
   .advantages {
     flex-direction: column;
-    align-items: center;
     gap: 2rem;
   }
   .adv-list {
     flex: 1 1 100%;
     max-width: 100%;
+    margin-left: 0 !important;
   }
 }
 
