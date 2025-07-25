@@ -142,7 +142,7 @@
 /* ========== 字体调整 + 分隔线 ========== */
 
 .product-hero__content h2 {
-  font-size: 10rem; /* 原本是 2.5rem，放大 4 倍 */
+  font-size: 8rem; /* 原本是 2.5rem，放大 4 倍 */
   font-weight: 700;
   margin-bottom: 1rem;
 }
@@ -159,7 +159,7 @@
   background-color: #C01C20;
   margin: 1.5rem 0;
   border-radius: 4px;
-}
+}/image/product_bg.jpg
 
 /* 响应式修复：让图片和文字垂直排列 */
 @media (max-width: 768px) {
@@ -285,37 +285,36 @@
     padding: 2rem 1rem;
   }
   
-  /* 面包屑 */
-  breadcrumb {
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    color: #555;            /* HOME 默认灰 */
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  
-  /* HOME */
-  .breadcrumb a {
-    color: inherit;         /* 继承上面 #555 */
-    text-decoration: none;
-    font-weight: normal;
-    margin-bottom: 2rem;
-  }
-  
-  /* “>” 箭头 */
-  .breadcrumb span.separator {
-    color: #555;
-  }
-  
-  /* 最后一个 span，也就是 “Chi è AFORE” */
-  .breadcrumb span.current {
-    color: #C01C20;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  
+/* 面包屑容器 */
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #555;             /* HOME 等的灰色 */
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 2rem;        /* 面包屑上方空白 */
+  margin-bottom: 2rem;     /* 面包屑下方空白 */
+}
+
+/* “HOME” 链接 */
+.breadcrumb a {
+  color: inherit;          /* 继承 #555 */
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/* “>” 分隔符 */
+.breadcrumb .separator {
+  color: #555;
+}
+
+/* 最后一个 当前页 文本 */
+.breadcrumb .current:last-of-type {
+  color: #C01C20;          /* 红色 */
+  font-weight: 600;
+  text-decoration: underline;
+}
+
   /* Tab 导航 */
   .about-tabs {
     display: flex;
@@ -414,7 +413,6 @@
   }
   
 /* ======== Milestones Section ======== */
-
 /* 高亮色 & 背景色 */
 :root {
     --primary: #C01C20;
@@ -545,76 +543,423 @@
       background: var(--primary);
     }
   }
-  
-  /* ====== 基础容器 ====== */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 0;
+
+/* 正确注释 */
+.model-section {
+  /* 让它填满父容器，而不是视口 */
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ====== 顶排图标 Grid ====== */
+/* XR 容器也同理，不要用 100vh 去撑它 */
+.xr-container {
+  width: 100%;
+  max-width: 900px;
+  height: auto;      /* 或者一个具体的 px 值 */
+  max-height: 700px;
+  background: transparent !important;
+}
+
+
+/* 父容器：垂直布局 */
+.features .container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;           /* features 与 advantages 之间留空 */
+  padding: 0 5%;
+}
+
+/* 1. 强制图标区不换行，自动水平滚动 */
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;         /* 永不换行 */
+  justify-content: flex-start;/* 从左对齐 */
   gap: 2rem;
-  text-align: center;
-}
-.feature-item .feature-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 0.5rem;
-}
-.feature-title {
-  font-size: 1rem;
-  margin: 0.5rem 0 0.25rem;
-  text-transform: uppercase;
-}
-.feature-sub {
-  font-size: 0.875rem;
-  color: #555;
+  overflow-x: auto;          /* 宽度不够时水平滚动 */
+  padding-bottom: 1rem;      /* 滚动条下方留点空 */
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 100%;
 }
 
-/* ====== 底部更多优势 ====== */
-.section-heading {
-  margin: 3rem 0 1.5rem;
-  font-size: 1.5rem;
+/* 每行三列（桌面）*/
+.feature-item {
+  flex: 1 1 calc(33.333% - 2rem);
+  max-width: calc(33.333% - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* 两列列表，移动端单列 */
+/* 屏幕 ≤ 768px 时才允许换行，2 列布局 */
+@media (max-width: 768px) {
+  .features-grid {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
+  .feature-item {
+    flex: 1 1 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+/* 更小屏幕 ≤ 480px 单列 */
+@media (max-width: 480px) {
+  .feature-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* 2. 统一灰色背景 */
 .advantages {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* 去掉 max-width: 1200px; margin: 0 auto; */
+  width: 100%;            /* 撑满容器 */
+  background-color: var(--bg);
+  padding: 2rem 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 2rem;
+  box-sizing: border-box;
 }
+
+
+/* 每列列表 */
 .adv-list {
+  flex: 1 1 45%;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.adv-list li {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-.adv-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-  margin-top: 0.15rem; /* 图标与文字垂直对齐 */
-}
-.adv-list li:last-child {
-  margin-bottom: 0;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* ====== 响应式断点 ====== */
+/* 列表项 */
+.adv-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* 响应式：≤768px 单列堆叠 */
 @media (max-width: 768px) {
   .advantages {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
   }
+  .adv-list {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* 给图标加上平滑过渡 */
+.feature-icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform, filter;
+}
+
+/* 悬浮时向上微移并放大，加一点阴影 */
+.feature-item:hover .feature-icon {
+  transform: translateY(-6px) scale(1.1);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+/* （可选）如果还想让标题也有点效果，比如变色或微放大 */
+.feature-item .feature-title {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.feature-item:hover .feature-title {
+  color: var(--primary);      /* 如果你在 :root 定义了 --primary */
+  transform: scale(1.05);
+}
+
+/* ===== DISTRIBUTORS & SUPPORT SECTION ===== */
+.dist-support {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 4rem auto;              /* 与上下区块留空 */
+  max-width: 1200px;              /* 你页面的容器宽度 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dist-support__card {
+  position: relative;
+  flex: 1 1 calc(50% - 0.5rem);
+  min-height: 300px;
+  color: #fff;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 模糊和轻微放大 */
+.dist-support__card::before {
+  filter: blur(8px);
+  transform: scale(1.1);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  z-index: 0;
+}
+
+/* 卡片内容要盖在最上层 */
+.dist-support__card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 悬浮时：背景缩小模糊、卡片放大 */
+.dist-support__card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.dist-support__card:hover::before {
+  filter: blur(4px);
+  transform: scale(1.05);
+}
+
+.dist-support__card--distributors {
+  background-image: url('../image/distributors.jpg');
+}
+
+.dist-support__card--support {
+  background-image: url('../image/service-support.jpg');
+}
+
+.dist-support__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.dist-support__underline {
+  width: 40px;
+  height: 3px;
+  background: #C01C20;
+  margin: 0.5rem 0 1rem;
+}
+
+.dist-support__text {
+  flex: 1;  /* 占满中间空间 */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.dist-support__btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #C01C20;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  align-self: flex-start;
+  transition: background 0.3s;
+}
+
+.dist-support__btn:hover {
+  background: #991A1C;
+}
+
+/* 响应式：窄屏堆叠 */
+@media (max-width: 768px) {
+  .dist-support__card {
+    flex: 1 1 100%;
+    min-height: 250px;
+  }
+}
+
+/* ========== video-section ========== */
+.video-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto;
+  overflow: hidden;
+}
+
+.video-section__inner {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 比例 */
+}
+
+.video-section__poster,
+.video-section__player {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+/* 背景图 */
+.video-section__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 播放按钮 */
+.video-section__play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  background: transparent;
+  border: 3px solid #C01C20;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.video-section__play-btn:hover {
+  background: rgba(247, 29, 29, 0.2);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* 视频播放器占位，初始隐藏 */
+.video-section__player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 容器与左右分区 */
+.downloads-section {
+  padding: 3rem 1rem;
+  background: #fff;
+}
+.downloads-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* 左侧标题 */
+.downloads-left {
+  flex: 0 0 auto;
+}
+.downloads-title {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  margin: 0;
+}
+.downloads-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 3rem;
+  height: 0.25rem;
+  background: #C01C20;
+  border-radius: 2px;
+}
+
+/* 右侧列表：大屏横向排列，窄屏变纵向 */
+.downloads-right {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+@media (max-width: 768px) {
+  .downloads-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .downloads-right {
+    flex-direction: column;
+  }
+}
+
+/* 单个条目 */
+.download-item {
+  width: 100%;              /* 占满可用宽 */
+  border-bottom: 1px solid #333;
+  overflow: hidden;
+}
+
+/* 抬头按钮 */
+.download-header {
+  display: flex;
+  justify-content: space-between; /* 左文字、右图标 */
+  align-items: center;
+  padding: 1rem 0;                /* 只要上下内边距 */
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+
+.header-icon {
+  font-size: 1.5rem;
+  color: #C01C20;
+  transition: transform 0.3s ease;
+}
+
+/* 隐藏内容 */
+.download-content {
+  max-height: 0;
+  padding: 0 1rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  overflow: hidden;
+}
+.download-item.open .download-content {
+  padding: 1rem;
+  max-height: 500px; /* 足够显示内部所有内容 */
+}
+.download-item.open .header-icon {
+  transform: rotate(45deg);
+}
+
+/* 链接样式 */
+.download-link {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-decoration: none;
+}
+.download-link:hover {
+  color: #C01C20;
+  text-decoration: underline;
+}
+
+/* 元数据 */
+.download-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: #555;
+}
+.download-meta li + li {
+  margin-top: 0.25rem;
 }
 
   /* ========== Product Grid ========== */
