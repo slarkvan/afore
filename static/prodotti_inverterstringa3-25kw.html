@@ -76,56 +76,75 @@
 </section>
 
   <!-- 最外层容器 -->
-  <div class="contact-page">
-    <section class="about-afore">
-        <!-- 面包屑 -->
-        <div class="breadcrumb">
-          <a href="#">HOME</a> 
-          <span class="separator">&gt;</span>
-          <span class="current">Prodotti</span>
-          <span class="separator">&gt;</span>
-          <span class="current">Inverter di Stringa Trifase 3-25 kW</span>
-        </div>
-      
-      <!-- 别忘了在页面底部或合适位置引入这段脚本，处理 Tab 切换 -->
-      <script>
-        document.querySelectorAll('.about-tabs .tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-            // 切换激活状态
-            document.querySelectorAll('.about-tabs .tab').forEach(t => t.classList.remove('tab--active'));
-            tab.classList.add('tab--active');
-            // 切换面板
-            const panelId = tab.dataset.panel;
-            document.querySelectorAll('.panel').forEach(p => p.classList.remove('panel--active'));
-            document.getElementById(panelId).classList.add('panel--active');
-          });
-        });
-      </script>
-  
-<section class="milestones">
-    <h2 class="milestones__title">
-      Abbiamo Top Assistenza Afore in Italia <span class="highlight">7/24H</span>
-    </h2>
-  </section>
+<div class="contact-page">
+
+  <!-- 面包屑 + 下载区 均在同一 max-width 居中框内 -->
+  <div class="page-inner">
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+      <a href="#">HOME</a>
+      <span class="separator">&gt;</span>
+      <span class="current">Prodotti</span>
+      <span class="separator">&gt;</span>
+      <span class="current">Inverter di Stringa Trifase 3-25 kW</span>
+    </div>
+
+    <!-- 可折叠下载项 -->
+    <section class="download-section">
+      <div class="download-section__list">
+        <details class="download-item">
+          <summary class="download-item__summary">
+            Certificato di garanzia
+            <span class="download-item__arrow">+</span>
+          </summary>
+          <div class="download-item__content">
+            <img
+              src="../image/Certificato di garanzia.jpg"
+              alt="Certificato di garanzia"
+              class="certificate__img"
+            />
+            <a
+              href="../image/Certificato di garanzia.jpg"
+              download="Certificato-di-garanzia.jpg"
+              class="certificate__download"
+            >
+              Download PDF
+            </a>
+          </div>
+        </details>
+        <!-- 如有更多项，按同样结构再写一个 <details>…</details> -->
+      </div>
+    </section>
+
+  </div>
+</div>
+
   
 <!-- ===== 3D 模型 Section (就放在这里) ===== -->
 <section class="model-section">
+  
   <div id="KeyShotXR" class="xr-container"></div>
-</section>
 
 <!-- 引入 KeyShotXR 脚本，务必紧跟在 model-section 后面 -->
 <script src="../image/6-25KW.29/files/KeyShotXR.js"></script>
 <script>
   let xr;
-  function getSize() {
-    return { w: window.innerWidth, h: window.innerHeight };
+
+  // 用容器尺寸，而不是视口
+  function getContainerSize() {
+    const container = document.getElementById("KeyShotXR");
+    const w = container.clientWidth;
+    const h = w * (9 / 16); // 按 16:9 比例算高，改成你模型实际比例
+    return { w, h };
   }
+
   function initKeyShotXR() {
-    const { w, h } = getSize();
+    const { w, h } = getContainerSize();
     xr = new keyshotXR(
       "KeyShotXR",
       "../image/6-25KW.29",  // 模型文件夹的相对路径
-      w, h,
+      w, h,                 // ← 这里传容器宽高
       "rgba(0,0,0,0)",
       18, 9,
       true, false,
@@ -140,16 +159,19 @@
       {}
     );
   }
+
   window.addEventListener("load", initKeyShotXR);
   window.addEventListener("resize", () => {
-    const { w, h } = getSize();
-    if (xr?.setViewPortSize) xr.setViewPortSize(w, h);
-    else {
+    const { w, h } = getContainerSize();
+    if (xr?.setViewPortSize) {
+      xr.setViewPortSize(w, h);
+    } else {
       document.getElementById("KeyShotXR").innerHTML = "";
       initKeyShotXR();
     }
   });
 </script>
+</section>
 
   <!-- ====== FEATURES SECTION ====== -->
 <section class="features">
@@ -163,33 +185,33 @@
       </div>
       <div class="feature-item">
         <img src="../image/PV OVERSIZE.svg" alt="Max 120A" class="feature-icon">
-        <h4 class="feature-title">MAX. 120A</h4>
-        <p class="feature-sub">Max carica/scarica 120A</p>
+        <h4 class="feature-title">PV OVERSIZE</h4>
+        <p class="feature-sub">Capacita FV sovradimensionata/p>
       </div>
       <div class="feature-item">
         <img src="../image/DC 1100V.svg" alt="PV Oversize" class="feature-icon">
-        <h4 class="feature-title">PV OVERSIZE</h4>
-        <p class="feature-sub">Pv sovradimensionato</p>
+        <h4 class="feature-title">DC 1100V</h4>
+        <p class="feature-sub">Max. DC 1100V</p>
       </div>
       <div class="feature-item">
         <img src="../image/UNIBODY.svg" alt="MPPT Channels" class="feature-icon">
-        <h4 class="feature-title">MPPT CHANNELS</h4>
-        <p class="feature-sub">pv sovradimensionato</p>
+        <h4 class="feature-title">UNIBODY</h4>
+        <p class="feature-sub">Alloggiamento in alluminio</p>
       </div>
       <div class="feature-item">
         <img src="../image/PROTECTION.svg" alt="UPS Function" class="feature-icon">
-        <h4 class="feature-title">UPS FUNCTION</h4>
-        <p class="feature-sub">Tempo di commutazione &lt; 10 ms</p>
+        <h4 class="feature-title">PROTECTION</h4>
+        <p class="feature-sub">SPD incorporato di tipo II</p>
       </div>
       <div class="feature-item">
         <img src="../image/Smart.svg" alt="Parallel" class="feature-icon">
-        <h4 class="feature-title">PARALLEL</h4>
-        <p class="feature-sub">Max. 6 in parallelo</p>
+        <h4 class="feature-title">SMART</h4>
+        <p class="feature-sub">Scansione della curva</p>
       </div>
       <div class="feature-item">
         <img src="../image/Update.svg" alt="Parallel" class="feature-icon">
-        <h4 class="feature-title">PARALLEL</h4>
-        <p class="feature-sub">Max. 6 in parallelo</p>
+        <h4 class="feature-title">UPDATE</h4>
+        <p class="feature-sub">Aggiornamento firmware remoto</p>
       </div>
     </div>
 
@@ -366,6 +388,9 @@
   </div><!-- /.downloads-container -->
 </section>
 
+<!-- 确保在你的 <head> 里有这一行 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <!-- 所有产品区块容器 -->
 <div class="products-panels">
 

@@ -88,19 +88,41 @@
   }
   
   /* ========== Hero 区域 ========== */
-  .prodotti-hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4rem 5%;
-    height: 100vh;
-    overflow: hidden;
-    width: 100%;
-    color: white;
-  }
-  
+.prodotti-hero {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;           /* 允许换行 */
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 5%;
+  /* height: 100vh; */       /* → 去掉 */
+  min-height: 60vh;          /* 可选：给个最小高度 */
+  width: 100%;
+  background: url("image/product_bg.jpg") center/cover no-repeat;
+  color: white;
+  box-sizing: border-box;
+}
+
+.prodotti-hero__product {
+  position: relative;      /* 回到文档流 */
+  flex: 1 1 80%;           /* 产品的比例 */
+  max-width: 900px;        /* 防止过大，也可以不写 */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* 关键：给个最大高度，不超过视口 70% */
+  max-height: 70vh;
+
+  transition: transform .4s ease, filter .4s ease;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+.prodotti-hero__product:hover {
+  transform: translateY(-10px) scale(1.05);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+}
+
   /* 背景图 */
   .prodotti-hero__img {
     position: absolute;
@@ -112,19 +134,6 @@
     z-index: 0;
   }
   
-  /* 产品图 */
-  .prodotti-hero__product {
-    position: absolute;
-    bottom: 5%;       /* ✅ 向下留空间，避免被遮挡 */
-    left: 5%;
-    height: 100%;    /* ✅ 相对于 hero 区域缩放，保持完整 */
-    width: auto;
-    z-index: 2;
-    object-fit: contain;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-  }
 
   /* 横向布局容器 */
 .prodotti-hero__body {
@@ -141,15 +150,44 @@
 /* 右文 */
 /* ========== 字体调整 + 分隔线 ========== */
 
+/* 默认（大屏）用大字号 */
 .product-hero__content h2 {
-  font-size: 8rem; /* 原本是 2.5rem，放大 4 倍 */
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: clamp(3rem, 8vw, 8rem);
+}
+.product-hero__model {
+  font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
-.product-hero__model {
-  font-size: 3rem; /* 原本是 1rem，放大 3 倍 */
-  margin-bottom: 2rem;
+/* ===== 响应式：窄屏（<768px）时更小 ===== */
+@media (max-width: 768px) {
+  /* 整体垂直排列、居中 */
+  .prodotti-hero {
+    flex-direction: column;
+    padding: 2rem 5%;
+    text-align: center;
+  }
+  .prodotti-hero__body {
+    flex-direction: column;
+    align-items: center;
+  }
+  .prodotti-hero__product {
+    position: static;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .product-hero__content {
+    margin-top: 2rem;
+  }
+
+  /* 这里把 clamp 的上下限都再调小一点 */
+  .product-hero__content h2 {
+    /* 最小 2rem，最大 4rem，流体值用 10vw */
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+  .product-hero__model {
+    /* 最小 1rem，最大 2rem，流体值用 5vw */
+    font-size: clamp(1rem, 5vw, 2rem);
+  }
 }
 
 /* 红色短线 */
@@ -160,41 +198,6 @@
   margin: 1.5rem 0;
   border-radius: 4px;
 }/image/product_bg.jpg
-
-/* 响应式修复：让图片和文字垂直排列 */
-@media (max-width: 768px) {
-  .prodotti-hero {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 2rem 5%;
-    text-align: center;
-  }
-
-  .prodotti-hero__body {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .prodotti-hero__product {
-    position: static;
-    width: 60%;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-
-  .product-hero__content {
-    padding-left: 0;
-    margin-top: 2rem;
-  }
-
-  .product-hero__content h2 {
-    font-size: 3rem;
-  }
-
-  .product-hero__model {
-    font-size: 2rem;
-  }
   
   .product-hero__download:hover img {
     filter: brightness(0) saturate(100%) invert(13%) sepia(85%) saturate(6148%) hue-rotate(352deg) brightness(95%) contrast(100%);
@@ -203,18 +206,58 @@
 
 /* 响应式：文字移到产品图下 */
 @media (max-width: 768px) {
-  .prodotti-hero__body {
+  /* 整个 Hero 允许竖排并去掉视口高度限制 */
+  .prodotti-hero {
+    display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 5%;
+    min-height: auto;      /* 不再硬性撑满 100vh */
+    height: auto;
+    box-sizing: border-box;
   }
 
-  .product-hero__content {
-    padding-left: 0;
+  /* Body 容器也竖排 */
+  .prodotti-hero__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-top: 2rem;
+    width: 100%;
+  }
+
+  /* 图片块宽度 100%，居中显示 */
+  .prodotti-hero__product {
+    position: relative;    /* 回到文档流 */
+    width: 100%;
+    max-width: 400px;      /* 可以根据需要调大或调小 */
+    height: auto;
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+  }
+
+  /* 文字区也拉满 */
+  .product-hero__content {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  /* 标题和副标题缩小到一个合理范围 */
+  .product-hero__content h2 {
+    font-size: clamp(1.8rem, 8vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .product-hero__model {
+    font-size: clamp(1rem, 5vw, 2rem);
+    margin-bottom: 1.5rem;
+  }
+
+  /* 下载按钮下移且居中 */
+  .product-hero__download {
+    margin-top: 1rem;
   }
 }
-
   /* 悬浮动画 */
   .prodotti-hero__product:hover {
     transform: translateY(-10px) scale(1.05);
@@ -229,7 +272,17 @@
     height: 100vh;
     color: white;
   }
-  
+  .product-hero__download img {
+  width: 1.5rem;
+  height: auto;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+.product-hero__download:hover img {
+  color: #C01C20;  /* 红色 */
+  filter: brightness(0) saturate(100%) invert(16%) sepia(90%) saturate(6000%) hue-rotate(356deg) brightness(95%) contrast(104%);
+  transform: translateY(-2px) scale(1.05);
+}
+}
   .product-hero__content {
     max-width: 50%;
   }
@@ -277,14 +330,35 @@
     height: auto;
     object-fit: contain;
   }
-  
-  /* ========== About Afore 区块 ========== */
-.about-afore {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+
+/* 默认（横排）时：红线左右不自动居中 */
+.product-hero__divider {
+  width: 60px;
+  height: 5px;
+  background-color: #C01C20;
+  margin: 1.5rem 0; /* 上下 1.5rem，左右 0 */
+  border-radius: 4px;
+}
+
+/* ===== 响应式：窄屏（<768px）上下排布时 ===== */
+@media (max-width: 768px) {
+  /* 竖排时才居中 */
+  .product-hero__divider {
+    margin: 1rem auto; /* 上下 1rem，左右 auto */
   }
-  
+
+  .product-hero__content h2{
+    font-size: 2.5rem;
+    margin-bottom: %
+  };
+}
+
+.page-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 /* 面包屑容器 */
 .breadcrumb {
   font-size: 0.9rem;
@@ -315,91 +389,6 @@
   text-decoration: underline;
 }
 
-  /* Tab 导航 */
-  .about-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 2rem;
-  }
-  .about-tabs .tab {
-    background: none;
-    border: none;
-    padding: 0.5rem 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    position: relative;
-  }
-  .about-tabs .tab--active {
-    color: #C01C20;
-  }
-  .about-tabs .tab--active::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 4px;
-    background: #C01C20;
-    border-radius: 2px;
-  }
-  
-  /* 面板 */
-  .about-panels .panel {
-    display: none;
-  }
-  .about-panels .panel--active {
-    display: block;
-  }
-  
-  /* 标题 */
-  .about-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  .about-title .highlight {
-    color: #C01C20;
-  }
-  
-  /* 内容区域：左右并列 */
-  .about-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  /* 左侧文字 */
-  .about-text {
-    flex: 1 1 50%;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-  }
-  /* 右侧图片 */
-  .about-media {
-    flex: 1 1 50%;
-  }
-  .about-media img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  /* 响应式：≤768px 时上下堆叠 */
-  @media (max-width: 768px) {
-    .about-content {
-      flex-direction: column;
-      text-align: center;
-    }
-    .about-text {
-      margin-bottom: 1.5rem;
-    }
-  }
 
 //* 基础重置 */
 * {
@@ -412,158 +401,133 @@
     color: #333;
   }
   
-/* ======== Milestones Section ======== */
-/* 高亮色 & 背景色 */
-:root {
+  :root {
     --primary: #C01C20;
-    --bg: #f7f7f7;
+    --border: #ddd;
   }
   
-  /* 整体容器 */
-  .milestones {
-    padding: 2rem 1rem;
-    background: var(--bg);
-    overflow: hidden;
+  /* 1. 整体两列布局 */
+  .download-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 4rem;
   }
   
-  /* 标题 */
-  .milestones__title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-  .milestones__title .highlight {
+  /* 左侧标签 */
+  .download-section__label {
+    flex: 0 0 auto;         /* 固定宽度由内容决定 */
+    font-weight: bold;
+    font-size: 1.5rem;;
     color: var(--primary);
   }
   
-  /* 列表：水平排列，项之间留1px分隔 */
-  .milestones__list {
+  /* 右侧列表占满剩余空间 */
+  .download-section__list {
+    flex: 1 1 auto;
+  }
+  
+  /* 2. 隐藏默认 marker */
+  .download-item__summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  /* 3. summary 样式：水平分布文字 + 箭头 */
+  .download-item__summary {
     display: flex;
-    gap: 1px;
-    background: #ddd;
-  }
-  
-  /* 每一项默认平分宽度，统一背景图 */
-  .milestones__list .milestone {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: flex 0.5s ease;
-    background: url("image/desktopchieafore_image3.jpg") center/cover no-repeat;
-    background-size: cover;
-  }
-  
-  /* 悬停时放大 2 倍 */
-  .milestones__list .milestone:hover {
-    flex: 2;
-  }
-  
-  /* 年份竖排标签 */
-  .milestones__list .milestone__year {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%) rotate(180deg);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 1.2rem;
-    transition: background 0.3s;
-  }
-  
-  /* 悬停时年份背景高亮 */
-  .milestones__list .milestone:hover .milestone__year {
-    background: var(--primary);
-  }
-  
-  /* 悬停时显示内容层 */
-  .milestones__list .milestone__content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    text-align: center;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  .milestones__list .milestone:hover .milestone__content {
-    opacity: 1;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
   }
   
-  /* 内容标题 */
-  .milestones__list .milestone__heading {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  /* 4. 箭头样式 & 旋转动画 */
+  .download-item__arrow {
+    font-size: 1.25rem;
+    color: var(--primary);
+    transition: transform 0.3s;
+  }
+  /* 打开时把 + 旋转成 × */
+  .download-item[open] .download-item__arrow {
+    transform: rotate(45deg);
   }
   
-  /* 链接箭头 */
-  .milestones__list .milestone__link {
+  /* 5. 折叠内容：默认隐藏、展开后平滑过渡 */
+  .download-item__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    padding: 0 0;  /* 间距留到展开时 */
+  }
+  .download-item[open] .download-item__content {
+    padding: 1rem 0;
+    max-height: 1000px; /* 足够大以容纳真实内容 */
+  }
+  
+  /* 6. 内容内部（示例：证书图 + 下载按钮） */
+  .certificate__img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+    border: 1px solid var(--border);
+  }
+  .certificate__download {
+    display: inline-block;
     margin-top: 1rem;
-    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: #C01C20;
     color: #fff;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    border-radius: 4px;
+    transition: background 0.2s;
   }
-  .milestones__list .milestone__link:hover {
-    transform: translateX(4px);
+  .certificate__download:hover {
+    background: #991A1C;
   }
   
-  /* ======== 响应式：窄屏时改为纵向 ======== */
-  @media (max-width: 768px) {
-    .milestones__list {
+  /* 7. 响应式：窄屏时垂直堆叠 */
+  @media (max-width: 600px) {
+    .download-section {
       flex-direction: column;
     }
-    .milestones__list .milestone {
-      flex: none !important;
-      height: 200px;
-      margin-bottom: 1px;
-    }
-    .milestones__list .milestone__year {
-      position: relative;
-      transform: none;
-      writing-mode: horizontal-tb;
+    .download-section__label {
       margin-bottom: 0.5rem;
-      background: var(--primary);
-    }
-    .milestones__list .milestone__content {
-      position: relative;
-      opacity: 1;
-      background: var(--primary);
     }
   }
-
-/* 正确注释 */
+  
+/* 父容器，自由伸缩 */
 .model-section {
-  /* 让它填满父容器，而不是视口 */
   width: 100%;
-  height: 100%;
-  background: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start; /* 靠上，不要垂直居中 */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-/* XR 容器也同理，不要用 100vh 去撑它 */
+/* XR 容器响应式：宽度填满，等比高度 */
 .xr-container {
+  /* 宽度永远占视口的 90%，再加上最小/最大限制 */
   width: 100%;
-  max-width: 900px;
-  height: auto;      /* 或者一个具体的 px 值 */
-  max-height: 700px;
+  /* 宽高比按模型真实比例来定，浏览器会自动算出高度 */
+  aspect-ratio: 1 / 1.2;      /* 这里举例 5:6 的比例，你改成模型实际比例 */
+  position: relative;         /* 让内部绝对定位生效 */
+  overflow: visible;
   background: transparent !important;
 }
 
+/* 假设你用 <model-viewer> 标签或 canvas */
+.xr-container model-viewer,
+.xr-container canvas {
+  position: absolute;
+  inset: 0;     /* top:0;right:0;bottom:0;left:0 */
+  width: 100%;
+  height: 100%;
+}
 
 /* 父容器：垂直布局 */
 .features .container {
@@ -590,7 +554,7 @@
 .feature-item {
   flex: 1 1 calc(33.333% - 2rem);
   max-width: calc(33.333% - 2rem);
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -723,10 +687,14 @@
 
 /* 模糊和轻微放大 */
 .dist-support__card::before {
-  filter: blur(8px);
-  transform: scale(1.1);
-  transition: filter 0.3s ease, transform 0.3s ease;
-  z-index: 0;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  z-index: -1;
+  transition:
+    filter 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 /* 卡片内容要盖在最上层 */
@@ -735,14 +703,16 @@
   z-index: 1;
 }
 
-/* 悬浮时：背景缩小模糊、卡片放大 */
+/* 悬浮时：卡片微微抬升、放大 */
 .dist-support__card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
+
+/* 悬浮时：背景伪元素模糊并轻微放大 */
 .dist-support__card:hover::before {
-  filter: blur(4px);
-  transform: scale(1.05);
+  filter: blur(2px);
+  transform: scale(1.02);
 }
 
 .dist-support__card--distributors {
@@ -973,7 +943,8 @@
   margin-top: 0.25rem;
 }
 
-  /* ========== Product Grid ========== */
+
+/* ========== Product Grid ========== */
   /* 包裹标题和卡片整体 */
 .product-grid-wrapper {
     display: flex;
@@ -988,8 +959,8 @@
     font-weight: bold;
     text-align: left;
     margin: 0;
-    padding-left: 0.5rem;
   }
+  
   .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* 自动缩列 */
@@ -1059,54 +1030,33 @@
     margin: 3rem auto; /* 上下间距 */
     border-radius: 2px;
   }
-  
-  /* ========== Partner CTA ========== */
-  .partner-cta__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    margin: 4rem auto;
+
+  /* ========== 响应式断点 ========== */
+/* 手机竖屏：一列 */
+@media screen and (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  .partner-card {
-    background: #fff;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    padding: 2rem;
-    border-radius: 8px;
-    flex: 1 1 300px;
-    text-align: center;
-    transition: transform .2s, box-shadow .3s;
+  .product-grid-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
   }
-  .partner-card:hover {
-    transform: translateY(-4px);
-  }
-  /* 让图标、标题、文字自然堆叠，按钮推到最底部 */
-.partner-card__icon {
-    width: 48px;
-    margin-bottom: 1rem;
-    flex-shrink: 0;
-  }
-  .partner-card__title {
-    font-weight: 600;
-    margin-bottom: .5rem;
-    flex-shrink: 0;
-  }
-  /* 中间正文区域可随内容伸缩 */
-  .partner-card__text {
-    flex-grow: 1;
-  }
-  .partner-card__btn {
-    display: inline-block;
-    padding: .5rem 1rem;
-    background: #C01C20;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    /* 关键：上外边距自动，吸到底部 */
-    margin-top: auto;
 }
-.partner-card__btn:hover {
-    background: #991A1C;
+
+/* 小平板：两列 */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 大屏：三列或更多 */
+@media screen and (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
 }
   
   /* ========== 通用变量 & 重置 ========== */
