@@ -1,0 +1,945 @@
+/* ========== 全局字体 ========= */
+html {
+    font-family: 'Open Sans', sans-serif;
+  }
+  /* 正文 400 */
+  body {
+    font-weight: 400;
+  }
+  
+  /* 中等强调 600 */
+  strong,
+  h3, h4 {
+    font-weight: 600;
+  }
+  
+  /* 标题 700 或 800 */
+  h1, h2 {
+    font-weight: 700;
+  }
+  /* ========== Reset & Base ========== */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* —— 基础，把 html/body 拉满高度 —— */
+  html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* —— 外层容器 —— */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    
+    /* —— 主体内容区，会自动撑满空白 —— */
+    .page-content {
+      flex: 1;
+    }
+    
+    /* —— Footer 黏底 —— */
+    .site-footer {
+      flex-shrink: 0;      /* 不被压缩，保持自身高度 */
+      background: #000;
+      color: #fff;
+      padding: 2rem 0;
+    }
+    
+    /* —— Footer 内部布局 —— */
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* … 其余 .footer__socials/.footer__copyright/.footer__logo 样式照旧 … */
+    
+  /* ========== Header & Layout ========== */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 1rem 0
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .page-content {
+    padding-top: 0px; 
+  }
+    /* 留出 header 高度，避免内容被遮挡 */
+
+  
+  /* ========== Logo ========== */
+  .site-logo img {
+    display: block;
+    height: 50px;
+  }
+  
+  /* ========== Nav & Toggle ========== */
+  /* 移动端：隐藏主导航，只显示汉堡按钮 */
+  .site-nav {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* 菜单列表 */
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 0.5rem; /* 下拉菜单时给点间距 */
+  }
+  .nav-list a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  /* 当 .site-nav 加上 .is-open 时展开（移动端） */
+  .site-nav.is-open {
+    display: block;
+  }
+  
+  /* ========== Tablet & Desktop（≥768px） ========== */
+  @media (min-width: 768px) {
+    /* 隐藏汉堡，显示主导航 */
+    .mobile-menu-toggle {
+      display: none;
+    }
+    .site-nav {
+      display: block;
+      margin-left: auto; /* 把菜单推到右边 */
+    }
+  
+    /* 水平排列菜单 */
+    .nav-list {
+      flex-direction: row;
+      gap: 24px;
+      margin-top: 0; /* 取消下拉间距 */
+    }
+  }
+  
+  /* ========== Hero 区域 ========== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 60vh;          /* 整个视口高度 */
+    overflow: hidden;       /* 裁切超出的部分 */
+  }
+  
+  .hero-media {
+    position: absolute;
+    inset: 0;               /* top:0; right:0; bottom:0; left:0; */
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    z-index: 1;* 关键：开启动画并保持在中央缩放 */
+    transform-origin: center center;
+    animation: hero-zoom 20s ease-in-out infinite alternate;
+  }
+  
+  /* 2️⃣ 定义 keyframes：从 1 倍慢慢缩放到 1.05 倍，再反过来 */
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+  }
+  
+  .hero-media__overlay {
+    position: absolute;
+    /* 改用 bottom 保持距底部一定距离 */
+    bottom: 6%;            /* 距视频底部 10% */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;             /* 根据设计稿限制 overlay 宽度 */
+    max-width: 1200px;
+    color: #fff;
+    z-index: 2;
+  }
+  
+  /* 文本排版 */
+  .hero-media__overlay p {
+    font-size: 1rem;        /* 副标题 */
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-media__overlay h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);  
+    /* clamp(min, 弹性值, max)：视口越小，字体不会小于 1.5rem，越大不会超 2.5rem */
+    line-height: 1.2;
+  }
+  
+  /* ====== 响应式 ===== */
+  @media (max-width: 768px) {
+    .hero-media__overlay {
+      bottom: 10%;          /* 小屏时再往上挪一点 */
+      width: auto;
+      left: auto;
+      padding: 0 1rem;
+    }
+    .hero-media__overlay p {
+      font-size: 0.9rem;
+    }
+    .hero-media__overlay h2 {
+      font-size: clamp(1.25rem, 6vw, 2rem);
+    }
+  }
+
+  /* 面包屑容器 */
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #555;             /* HOME 等的灰色 */
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    gap: 0.25rem;
+    margin-top: 2rem;        /* 面包屑上方空白 */
+    margin-bottom: 2rem;     /* 面包屑下方空白 */
+  }
+  
+  /* “HOME” 链接 */
+  .breadcrumb a {
+    color: inherit;          /* 继承 #555 */
+    text-decoration: none;
+    font-weight: normal;
+  }
+  
+  /* “>” 分隔符 */
+  .breadcrumb .separator {
+    color: #555;
+  }
+  
+  /* 最后一个 当前页 文本 */
+  .breadcrumb .current:last-of-type {
+    color: #C01C20;          /* 红色 */
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  
+
+/* ====== Stats 区块基础样式 ====== */
+.stats {
+    margin: 4rem auto;             /* 与上下内容留白 */
+    padding: 0 1rem;               /* 两侧内边距防止贴边 */
+    max-width: 1200px;
+    margin-top: 2rem; /* 取消下拉间距 */
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 三列等宽 */
+    gap: 2rem;                              /* 列间距 */
+  }
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;                            /* 图标、数字、标签之间垂直间距 */
+  }
+  .stat-card__icon {
+    width: 48px;
+    height: auto;
+    margin-top: 0
+  rem; /* ← 这里自己调节距离 */
+    margin-bottom: 1rem;
+  }
+  .stat-card__value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+  }
+  .stat-card__label {
+    font-size: 1rem;
+    margin: 0;
+    color: #666;
+  }
+  
+  /* —— 圆形背景，默认透明 —— */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;                        /* 与 padding-top 对齐 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;                   /* 背景比图标略大 */
+  height: 72px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color .3s ease;
+  z-index: 0;                    /* 背景层 */
+}
+
+/* —— Hover 整体微微提升 —— */
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+/* —— Hover 时圆背景变橙，并把图标变白 —— */
+.stat-card:hover::before {
+  background-color: #C01C20;     /* 你的品牌橙色 */
+}
+.stat-card:hover .stat-card__icon {
+  filter: brightness(0) invert(1);
+}
+  
+  /* ====== 响应式：窄屏时一列 ====== */
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr;  /* 变成单列 */
+      gap: 1.5rem;                 /* 缩小间距 */
+    }
+    .stat-card__value {
+      font-size: 2rem;             /* 适当减小数字字号 */
+    }
+  }
+
+/* Container 中心布局 */
+.appointment-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+/* Appointment Page Styles */
+
+/* 基础重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: #f9f9f9;
+  }
+  
+  /* Container 居中 */
+  .appointment-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* 标题 */
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* 步骤区容器 */
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .step {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .step:hover {
+    transform: translateY(-4px);
+  }
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.75rem;
+    background: var(--primary, #C01C20);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* 表单 */
+  .appointment-form .form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .form-group--radio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group--radio > label {
+    flex: 0 0 auto;
+    font-weight: 600;
+  }
+  .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 1 auto;  /* 占满剩余空间 */
+  }
+  
+  /* 两列布局 */
+  @media (min-width: 768px) {
+    .appointment-form .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+  }
+  
+  /* 按钮 */
+  .btn-submit {
+    grid-column: span 2;
+    padding: 0.75rem 2rem;
+    background: var(--primary, #C01C20);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+  }
+  .btn-submit:hover {
+    background: #991A1C;
+  }
+  
+  
+  /* 窄屏单列 */
+  @media (max-width: 767px) {
+    .appointment-form .form {
+      display: block;
+    }
+    .btn-submit {
+      width: 100%;
+      grid-column: auto;
+    }
+  }
+
+  .btn-verify {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-verify span { color: red; }
+
+  /* —— 序列号 + 查询 按钮 —— */
+.form-group--serial .serial-wrapper {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .form-group--serial .serial-wrapper input {
+    flex: 1;
+  }
+  .btn-query {
+    padding: 0 1rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-query:hover {
+    background: darken(var(--primary), 10%);
+  }
+  
+  /* —— 图片预览 区域 —— */
+  .image-preview {
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--border);
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+  }
+  
+  
+  /* —— 保持原有表单两列布局规则 —— */
+  @media (min-width: 768px) {
+    .appointment-form .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+    /* 序列号 + 查询 横跨两列 */
+    .form-group--serial {
+      grid-column: span 2;
+    }
+    /* 图片预览 横跨两列 */
+    .form-group--preview {
+      grid-column: span 2;
+    }
+  }
+  
+  /* 窄屏单列时，仍保证按钮宽度和预览框铺满 */
+  @media (max-width: 767px) {
+    .btn-query {
+      width: 120px;
+    }
+    .form-group--serial .serial-wrapper {
+      flex-direction: column;
+    }
+    .btn-query {
+      margin-top: 0.5rem;
+    }
+    .form-group--preview .image-preview {
+      min-height: 150px;
+    }
+  }
+  
+  
+  /* 主题色 */
+  :root {
+    --primary: #C01C20;
+  }
+  
+
+  /* —— Assistance 区块 —— */
+.assistance {
+  background: #f4f4f4;      /* 或者你自己的背景色 */
+  padding: 6rem 0;
+}
+
+.assistance__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* — 左侧文字 — */
+.assistance__text {
+  position: right;
+}
+.assistance__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #111;
+}
+
+/* 橘色装饰条 */
+.assistance__decor {
+  width: 50px;
+  height: 4px;
+  background-color: #C01C20;
+  margin-bottom: 2rem;
+}
+
+/* 两栏文本 */
+.assistance__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.assistance__col p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* —— 右侧图片 — */
+.assistance__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* —— 响应式 —— */
+@media (max-width: 992px) {
+  .assistance__inner {
+    grid-template-columns: 1fr;
+  }
+  .assistance__columns {
+    grid-template-columns: 1fr;
+  }
+  .assistance__decor {
+    margin-bottom: 1.5rem;
+  }
+  .assistance__title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ====== Service Highlights 区块 ====== */
+.service-highlights {
+  padding: 4rem 0;
+  background: #f5f5f5;
+}
+.service-highlights__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* 单个条目基底 */
+.service-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 左右颠倒 */
+.service-item--reverse {
+  direction: rtl;
+}
+.service-item--reverse .service-item__media,
+.service-item--reverse .service-item__content {
+  direction: ltr;
+}
+
+/* 图片区域 */
+.service-item__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* 文本区域 */
+.service-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.service-item__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.service-item__text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+.service-item__btn {
+  align-self: start;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #C01C20;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+.service-item__btn:hover {
+  background-color: #9a1618;
+}
+
+/* 响应式：窄屏时上下堆叠 */
+@media (max-width: 768px) {
+  .service-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .service-item--reverse {
+    direction: ltr;
+  }
+  .service-item__btn {
+    align-self: center;
+  }
+}
+
+/* ========== Newsletter ========== */
+.newsletter {
+  padding: 4rem 0;
+}
+.newsletter__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+.newsletter__input {
+  flex: 1 1 300px;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #DDD;
+}
+.newsletter__btn {
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  background-color: #C01C20;
+  color: #FFF;
+}
+
+/* ========== Footer ========== */
+.site-footer {
+  background: #000;
+  color: #FFF;
+  padding: 2rem 0;
+}
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+.footer__socials a {
+  margin-right: 0.5rem;
+}
+.footer__socials img {
+  width: 24px;
+  height: auto;
+}
+
+/* ===== Newsletter Signup ===== */
+.newsletter {
+  background: #fff;
+  padding: 4rem 0;
+}
+
+.newsletter__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.newsletter__text {
+  flex: 1 1 300px;
+}
+
+.newsletter__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter__subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+.newsletter__form {
+  flex: 1 1 300px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  height: au;
+  border: 1px solid #ddd;
+  border-radius: 9999px 0 0 9999px;
+  font-size: 1rem;
+}
+
+.newsletter__btn {
+  padding: 0 1.5rem;
+  width: 30%;
+  background-color: #C01C20;
+  color: #fff;
+  border: none;
+  border-radius: 0 9999px 9999px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newsletter__btn:hover {
+  background-color: #621c1c;
+}
+
+/* Mobile: form 堆叠 */
+@media (max-width: 600px) {
+  .newsletter__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .newsletter__form {
+    flex-direction: column;
+  }
+  .newsletter__input,
+  .newsletter__btn {
+    border-radius: 9999px;
+  }
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background: #000;
+  color: #fff;
+  padding: 2rem 0;
+  height: 300px
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer__socials a img {
+  width: 24px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.footer__socials {
+  flex: 1 1 200px;
+}
+
+.footer__copyright {
+  flex: 1 1 200px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.footer__logo {
+  flex: 1 1 200px;
+  text-align: right;
+}
+
+/* Mobile: 堆叠居中 */
+@media (max-width: 600px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer__socials,
+  .footer__copyright,
+  .footer__logo {
+    flex: none;
+    margin-bottom: 1rem;
+  }
+  .footer__socials a img {
+    margin-right: 1rem;
+  }
+}
+
+/* 1) 让 html、body 占满整个视口高度 */
+html, body {
+  height: 100%;
+  margin: 0;          /* 清除默认 margin */
+  padding: 0;
+}
+
+/* 2) body 作为 flex 容器，纵向排列 */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3) 主内容区自动拉伸 */
+.page-content {
+  flex: 1;            /* 占据 header/footer 以外的所有剩余空间 */
+}
+
+/* 4) footer 固定在底部，不拉伸 */
+.site-footer {
+  flex-shrink: 0;
+}

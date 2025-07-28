@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soluzioni Commerciali Afore</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="Assistenza_prenotaservizio_stylel.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>
+      
+
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="container">        
+            <!-- ↓ video ↓ -->
+            <video
+              class="hero-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="../image/assistenza_prenotaservizio.jpg"
+              src="../image/assistenza_prenotaservizio.jpg"
+            >
+        </section>
+
+ <!-- 面包屑 -->
+ <div class="breadcrumb">
+    <a href="#">HOME</a>
+    <span class="separator">&gt;</span>
+    <span class="current">Prodotti</span>
+    <span class="separator">&gt;</span>
+    <span class="current">Inverter di Stringa Trifase 3-25 kW</span>
+  </div>
+
+<section class="appointment-page">
+    <!-- 页面标题 -->
+    <h1 class="section-title">Prenota il tuo intervento di assistenza</h1>
+    
+    <!-- 步骤导航 -->
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-icon">1</div>
+        <div class="step-title">Compila il modulo</div>
+        <div class="step-desc">Inserisci i tuoi dati e informazioni sul prodotto</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">2</div>
+        <div class="step-title">Scegli la fascia oraria</div>
+        <div class="step-desc">Prenota entro 48 ore disponibili</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">3</div>
+        <div class="step-title">Conferma</div>
+        <div class="step-desc">Riceverai conferma via email</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">4</div>
+        <div class="step-title">Door-to-door supporto</div>
+        <div class="step-desc">Verremo da te per l’assistenza post-vendita</div>
+      </div>
+    </div>
+    
+    <!-- 预约表单 -->
+    <div class="appointment-form">
+      <form class="form" novalidate>
+        <!-- 1. 序列号 + 查询 -->
+      <div class="form-group form-group--serial">
+        <label for="serial">Numero di serie Inverter *</label>
+        <div class="serial-wrapper">
+          <input type="text" id="serial" name="serial" required placeholder="Inserisci numero di serie">
+          <button type="button" class="btn-query">Verifica</button>
+        </div>
+      </div>
+
+      <!-- 2. Afore 单选 -->
+      <div class="form-group">
+        <label>Prodotto da Afore Italia?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="isAfore" value="yes" required> Sì</label>
+          <label><input type="radio" name="isAfore" value="no"> No</label>
+        </div>
+      </div>
+
+      <!-- 3. 姓名 -->
+      <div class="form-group">
+        <label for="name">Nome e Cognome *</label>
+        <input type="text" id="name" name="name" required placeholder="Nome e cognome">
+      </div>
+      <!-- 4. 电话 -->
+      <div class="form-group">
+        <label for="phone">Telefono *</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Numero di telefono">
+      </div>
+      <!-- 5. 日期 -->
+      <div class="form-group">
+        <label for="date">Data Prenotazione *</label>
+        <input type="date" id="date" name="date" required min="" max="">
+      </div>
+      <!-- 6. 时间段 -->
+      <div class="form-group">
+        <label for="slot">Fascia Oraria *</label>
+        <select id="slot" name="slot" required>
+          <option value="">Seleziona una fascia</option>
+          <option>Mattina</option>
+          <option>Pomeriggio</option>
+        </select>
+        <script>
+            // 初始化日期选择器
+            flatpickr("#date", {
+              locale: "it",
+              enableTime: false,
+              dateFormat: "d/m/Y",
+              minDate: new Date(new Date().getTime() + 48 * 60 * 60 * 1000), // ← 这就是开始可预约的时间点（当前时间 +48h）
+              maxDate: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000), // 未来 30 天内
+              disable: [function(date) {
+                // 禁用周六
+                return date.getDay() === 6;
+              }]
+            });
+          </script>          
+      </div>
+      <!-- 7. 问题描述 -->
+      <div class="form-group">
+        <label for="description">Descrizione del Problema *</label>
+        <textarea id="description" name="description" rows="4" required placeholder="Descrivi il problema"></textarea>
+      </div>
+
+      <!-- 8. 图片预览 -->
+      <div class="form-group form-group--preview form-group--full">
+        <label>Allega un file (zip, pdf, jpg, jpeg, png, max 5MB)</label>
+        <div class="image-preview" id="certificatePreview">
+          <!-- 修改: 图片预览区可插入图片 -->
+          <span style="color:red;">Nessuna anteprima disponibile</span>
+        </div>
+      </div>
+
+      <!-- 9. 提交 -->
+      <button type="submit" class="btn-submit">Invia Prenotazione</button>
+    </form>
+  </div>
+</section>
+  
+          <!-- ====== Assistance Section ====== -->
+<section class="assistance">
+  <div class="container assistance__inner">
+    <!-- 左侧文案区 -->
+    <div class="assistance__text">
+      <h2 class="assistance__title">
+        UNA VERA ASSISTENZA SIGNIFICA<br>
+        UNA RELAZIONE DURATURA
+      </h2>
+
+      <div class="assistance__decor"></div>
+
+      <div class="assistance__columns">
+        <div class="assistance__col">
+          <p>
+            Con AFORE, l’assistenza inizia ancora prima dell’acquisto: il nostro team di esperti ti accompagna nella progettazione dell’impianto fotovoltaico, offrendoti consulenza tecnica personalizzata e simulazioni di resa energetica.
+          </p>
+          <p>
+            Durante l’installazione, garantiamo un supporto costante in loco e formazione completa per i tuoi installatori, così da assicurare messa in servizio rapida e senza imprevisti.
+          </p>
+        </div>
+        <div class="assistance__col">
+          <p>
+            Una volta operativo, la rete AFORE ti assicura magazzini locali sempre riforniti di ricambi originali e un servizio di customer care attivo 7 giorni su 7, per minimizzare i tempi di fermo e massimizzare il ritorno sull’investimento.
+          </p>
+          <p>
+            Il nostro programma di manutenzione predittiva ti avvisa in anticipo sui controlli da effettuare, mentre i nostri tecnici certificati restano a tua disposizione per interventi rapidi e assistenza remota.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧图片区 -->
+    <div class="assistance__media">
+      <img src="../image/Tecnico Director 1.jpg" alt="Assistenza" />
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== Sezione Service Highlights ====== -->
+<section class="service-highlights">
+  <div class="container service-highlights__inner">
+    <!-- 第一行：文字在右，图片在左 -->
+    <div class="service-item service-item--reverse">
+      <div class="service-item__media">
+        <img src="image/desktopassistenza_servizio_image2.jpg" alt="Strategia di assistenza AFORE">
+      </div>
+      <div class="service-item__content">
+        <h3 class="service-item__title">LA STRATEGIA DI ASSISTENZA AFORE</h3>
+        <p class="service-item__text">
+          Il nostro team di tecnici certificati AFORE garantisce un’assistenza uniforme in tutto il territorio:  
+          formazione continua, help-desk 24/7 e interventi in loco entro 48 h.
+        </p>
+        <a href="#" class="service-item__btn">Leggi di più →</a>
+      </div>
+    </div>
+
+    <!-- 第二行：图片在右，文字在左 -->
+    <div class="service-item">
+      <div class="service-item__media">
+        <img src="image/desktopassistenza_servizio_image3.jpg" alt="Servizi in garanzia e gestione progetto">
+      </div>
+      <div class="service-item__content">
+        <h3 class="service-item__title">SERVIZI IN GARANZIA E GESTIONE PROGETTO</h3>
+        <p class="service-item__text">
+          Contratti O&M AFORE con garanzia estesa, SLA personalizzati e magazzini locali riforniti:  
+          consegna ricambi e supporto tecnico nei tempi prestabiliti.
+        </p>
+        <a href="#" class="service-item__btn">Leggi di più →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div class="newsletter__text">
+          <h2 class="newsletter__title">Rimani aggiornato sulle ultime novità!</h2>
+          <p class="newsletter__subtitle">
+            Qui trovate approfondimenti industriali e notizie su Afore.
+          </p>
+        </div>
+        <form class="newsletter__form">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="Email"
+            required>
+          <button type="submit" class="newsletter__btn">Invia</button>
+        </form>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__socials">
+        <a href="#"><img src="image/linkedin_social.svg"   alt="LinkedIn"></a>
+        <a href="#"><img src="image/whatsapp_social.svg"   alt="WhatsApp"></a>
+        <a href="#"><img src="image/facebook_social.svg"   alt="Facebook"></a>
+        <a href="#"><img src="image/instagram_social.svg"  alt="Instagram"></a>
+        <a href="#"><img src="image/x_social.svg"          alt="X"></a>
+        <a href="#"><img src="image/tiktok_social.svg"     alt="TikTok"></a>
+        <a href="#"><img src="image/youtube_social.svg"    alt="YouTube"></a>
+      </div>
+      <div class="footer__copyright">
+        © 2025 copyright @Afore Italia S.R.L.
+      </div>
+      <div class="footer__logo">
+        <img src="image/logo_afore_light.svg" alt="Afore Logo">
+      </div>
+    </div>
+  </footer>
+  </body>
+
+
