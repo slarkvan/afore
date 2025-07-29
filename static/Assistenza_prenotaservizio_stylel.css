@@ -222,32 +222,30 @@ html {
   }
 
   /* 面包屑容器 */
-.breadcrumb {
-    font-size: 0.9rem;
-    color: #555;             /* HOME 等的灰色 */
+  .breadcrumb {
     display: flex;
     align-items: center;
-    width: 1200px;
+    font-size: 0.9rem;
+    color: #555;
+    max-width: 1200px;      /* 限制最大宽度 */
+    width: 100%;
+    padding: 0 1rem;        /* 左右留白 1rem */
+    margin: 2rem auto;      /* 上下 2rem，左右居中 */
     gap: 0.25rem;
-    margin-top: 2rem;        /* 面包屑上方空白 */
-    margin-bottom: 2rem;     /* 面包屑下方空白 */
   }
   
-  /* “HOME” 链接 */
   .breadcrumb a {
-    color: inherit;          /* 继承 #555 */
+    color: inherit;
     text-decoration: none;
     font-weight: normal;
   }
   
-  /* “>” 分隔符 */
   .breadcrumb .separator {
     color: #555;
   }
   
-  /* 最后一个 当前页 文本 */
   .breadcrumb .current:last-of-type {
-    color: #C01C20;          /* 红色 */
+    color: #C01C20;
     font-weight: 600;
     text-decoration: underline;
   }
@@ -456,15 +454,34 @@ html {
     flex: 1 1 auto;  /* 占满剩余空间 */
   }
   
-  /* 两列布局 */
-  @media (min-width: 768px) {
-    .appointment-form .form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem 2rem;
-    }
+/* 大屏下两列布局 */
+@media (min-width: 768px) {
+  .appointment-form .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
   }
-  
+
+  /* 序列号 + 查询 一行占满两列 */
+  .form-group--serial {
+    grid-column: 1 / -1;
+  }
+
+  /* 证书预览 放在第 2 列 */
+  .form-group--preview {
+    grid-column: 2 / 3;
+  }
+
+  /* 提交按钮 一行占满两列 */
+  .btn-submit {
+    grid-column: 1 / -1;
+  }
+
+  .form-group--upload {
+    grid-column: 1 / 2;
+  }
+}
+
   /* 按钮 */
   .btn-submit {
     grid-column: span 2;
@@ -524,7 +541,16 @@ html {
     transition: background 0.3s;
   }
   .btn-query:hover {
-    background: darken(var(--primary), 10%);
+    background: #991A1C;       /* 鼠标移上时变深 */
+    transition: background 0.3s;
+  }
+  
+  /* 按下时变深 */
+  .btn-query:active,
+  .btn-query:focus {
+    background: #991A1C;
+    transform: translateY(1px);
+    outline: none;
   }
   
   /* —— 图片预览 区域 —— */
@@ -573,14 +599,20 @@ html {
     }
   }
   
-  
   /* 主题色 */
   :root {
     --primary: #C01C20;
   }
   
+/* 1. 通用居中容器 */
+.container {
+  padding: 0 3%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 
-  /* —— Assistance 区块 —— */
+/* —— Assistance 区块 —— */
 .assistance {
   background: #f4f4f4;      /* 或者你自己的背景色 */
   padding: 6rem 0;
@@ -653,138 +685,181 @@ html {
   }
 }
 
-/* ====== Service Highlights 区块 ====== */
-.service-highlights {
-  padding: 4rem 0;
-  background: #f5f5f5;
-}
-.service-highlights__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+/* ========== Location ========== */
+/* 1. Location 区块使用同样的侧边内边距（5%） */
+.location-section {
+  padding: 2rem 0;    /* 只保留上下内边距 */
+  background: #f7f7f7;
 }
 
-/* 单个条目基底 */
-.service-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* 左右颠倒 */
-.service-item--reverse {
-  direction: rtl;
-}
-.service-item--reverse .service-item__media,
-.service-item--reverse .service-item__content {
-  direction: ltr;
-}
-
-/* 图片区域 */
-.service-item__media img {
+/* 2. Container 最大宽度 & 居中 */
+.location-container {
+  padding: 0 3%;
+  box-sizing: border-box;
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
+  max-width: 1200px;       /* 与上方 .assistance__inner 一致 */
+  margin: 0 auto;          /* 水平居中 */
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
-/* 文本区域 */
-.service-item__content {
+/* 大屏：地图占更大比例 */
+.location-map {
+  order: 2;
+  flex: 1 1 70%;      /* 原来是60%，改成70% */
+  min-height: 250px;
+}
+
+/* 信息区占剩余 */
+.location-info {
+  order: 1;
+  flex: 1 1 28%;      /* 留下小一点给信息区 */
+}
+
+/* 确保 iframe 撑满地图容器 */
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+/* 1. 保证 .location-container 在一个 .container 内，与上方保持同样的左右内边距 */
+.location-section .location-container {
+  padding: 0 0%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* 2. 响应式断点上移到 992px 开始：*/
+@media (max-width: 992px) {
+  .location-container {
+    flex-direction: column;
+  }
+  .location-map,
+  .location-info {
+    flex: 0 0 100%;
+    margin-bottom: 2rem;
+  }
+  .location-map {
+    min-height: 300px;
+    width: 100%;
+  }
+}
+
+/* 3. 保留 768px 断点，仅微调 */
+@media (max-width: 768px) {
+  .location-map iframe {
+    height: 250px;
+    width: 100%;
+  }
+}
+
+/* —— 标题字号统一 —— */
+.location-info__title,
+.location-map > h3.location-info__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* 大屏下把 info 放左、map 放右 */
+.location-info { order: 1; }
+.location-map  { order: 2; }
+
+/* 如果想在小屏也反过来，只要在 media query 里再调整 */
+@media (max-width: 768px) {
+  .location-container { flex-direction: column; }
+  /* 如果小屏想把地图先显示，就： */
+  /* .location-map { order: -1; } */
+}
+
+/* 重置标题样式，让它成为 map 容器外的普通标题 */
+.location-map h3.location-info__title {
+  position: static;
+  margin: 0 0 1rem 0;    /* 标题下方留空 */
+  padding-left: 0;
+  color: #333;
+  font-size: 1.5rem;
+  background: transparent;
+  z-index: auto;
+}
+.location-map .btn-where {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.location-map .btn-where:hover {
+  background: #991A1C;
+}
+
+/* 地址和营业时间 */
+.location-info {
+  flex: 1 1 35%;               /* 默认占35%，可伸缩 */
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: flex-start;
 }
-.service-item__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0;
-}
-.service-item__text {
-  font-size: 1rem;
-  line-height: 1.6;
+.location-info__title {
+  font-size: 1.5rem;            /* 与地图标题保持一致 */
+  margin-bottom: 0.5rem;
   color: #333;
+}
+.location-info__address {
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  color: #333;
+}
+.location-info__hours-title {
+  font-size: 1.5rem;            /* 同上 */
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.location-info__hours {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
-.service-item__btn {
-  align-self: start;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #C01C20;
-  color: #fff;
+.location-info__hours li {
+  display: flex;
+  justify-content: space-between; /* 左右对齐 */
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.location-info__hours .day {
   font-weight: 600;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background 0.3s ease;
 }
-.service-item__btn:hover {
-  background-color: #9a1618;
+.location-info__hours .time {
+  text-align: right;
 }
 
-/* 响应式：窄屏时上下堆叠 */
+/* 响应式：窄屏上下排列 */
 @media (max-width: 768px) {
-  .service-item {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .location-container {
+    flex-direction: column;
   }
-  .service-item--reverse {
-    direction: ltr;
+  .location-map,
+  .location-info {
+    flex: 1 1 100%;
   }
-  .service-item__btn {
-    align-self: center;
+  .location-map {
+    min-height: 300px;
+    margin-bottom: 2rem;
   }
 }
 
-/* ========== Newsletter ========== */
-.newsletter {
-  padding: 4rem 0;
-}
-.newsletter__inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 2rem;
-}
-.newsletter__input {
-  flex: 1 1 300px;
-  padding: 0.75rem 1rem;
-  border-radius: 9999px;
-  border: 1px solid #DDD;
-}
-.newsletter__btn {
-  padding: 0.75rem 2rem;
-  border-radius: 9999px;
-  border: none;
-  background-color: #C01C20;
-  color: #FFF;
-}
-
-/* ========== Footer ========== */
-.site-footer {
-  background: #000;
-  color: #FFF;
-  padding: 2rem 0;
-}
-.footer__inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-.footer__socials a {
-  margin-right: 0.5rem;
-}
-.footer__socials img {
-  width: 24px;
-  height: auto;
+/* 主题色变量 */
+:root {
+  --primary: #C01C20;
 }
 
 /* ===== Newsletter Signup ===== */

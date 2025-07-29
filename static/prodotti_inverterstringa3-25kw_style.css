@@ -105,7 +105,7 @@
 
 .prodotti-hero__product {
   position: relative;      /* 回到文档流 */
-  flex: 1 1 80%;           /* 产品的比例 */
+  flex: 1 1 10080%;           /* 产品的比例 */
   max-width: 900px;        /* 防止过大，也可以不写 */
   width: 100%;
   height: auto;
@@ -529,6 +529,31 @@
   height: 100%;
 }
 
+/* 放到你的 main.css 里 */
+.xr-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.xr-overlay {
+  background: rgba(255,255,255,0.32);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.video-section__close-btn {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  display: none;
+  z-index: 11;
+}
+
 /* 父容器：垂直布局 */
 .features .container {
   display: flex;
@@ -941,6 +966,18 @@
 }
 .download-meta li + li {
   margin-top: 0.25rem;
+}
+
+/* 鼠标滑过整个条目时展开 */
+.download-item:hover .download-content {
+  /* 和 .open 状态下保持一致 */
+  padding: 1rem;
+  max-height: 500px; /* 或者调整成刚好能包下你内容的值 */
+}
+
+/* 同时让 + 号旋转成 × */
+.download-item:hover .header-icon {
+  transform: rotate(45deg);
 }
 
 

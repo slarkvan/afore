@@ -123,6 +123,27 @@
   
 <!-- ===== 3D 模型 Section (就放在这里) ===== -->
 <section class="model-section">
+
+<!-- 播放前的占位海报/占位背景（可用第一帧或纯色） -->
+    <div class="video-section__poster"
+         style="width: 100%; padding-top: 56.25%; background: #000;">
+    </div>
+    
+    <!-- Play 按钮 -->
+    <button id="playXrBtn" class="video-section__play-btn"
+            style="position: absolute; top: 50%; left: 50%;
+                   transform: translate(-50%, -50%);
+                   z-index: 10;">
+      ▶︎ PLAY 360°
+    </button>
+    
+    <!-- Close 按钮，初始隐藏 -->
+    <button id="closeXrBtn" class="video-section__close-btn"
+            style="position: absolute; top: 16px; right: 16px;
+                   font-size: 24px; color: #fff; display: none;
+                   background: transparent; border: none; z-index: 10;">
+      ✕
+    </button>
   
   <div id="KeyShotXR" class="xr-container"></div>
 
