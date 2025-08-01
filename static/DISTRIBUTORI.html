@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DISTRIBUTORI / INSTALLATORIe</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="map.css" />
+  <meta charset="UTF-8" />
+  <title>Mappa delle Regioni Italiane</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <body>
+    <div class="page-wrapper">
+      <!-- page-content 会撑满 header/footer 以外的区域 -->
+      <main class="page-content">
+        <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+        
+        <!-- Header -->
+        <header class="site-header">
+          <div class="container">
+            <!-- Logo -->
+            <a href="/" class="site-logo" aria-label="Afore Home">
+              <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+            </a>
+        
+            <!-- Main Navigation -->
+            <nav class="site-nav" aria-label="Primary">
+              <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+              </ul>
+            </nav>
+        
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+              ☰
+            </button>
+          </div>
+        </header>
+  <style>
+    :root {
+      --map-highlight: #C01C20; /* 可以替换为 var(--primary) */
+      --map-default-fill: #e5e5e5;
+      --map-stroke: #666;
+      --tooltip-bg: rgba(0,0,0,0.8);
+    }
+
+    body {
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #fafafa;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .map-wrapper {
+      max-width: 900px;
+      margin: 2rem auto;
+      position: relative;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .svg-container {
+      width: 100%;
+      display: block;
+    }
+
+    .region {
+      fill: var(--map-default-fill);
+      stroke: var(--map-stroke);
+      stroke-width: 0.5;
+      cursor: pointer;
+      transition: fill .2s ease, filter .2s ease;
+    }
+    .region:hover,
+    .region.active {
+      fill: var(--map-highlight);
+      filter: brightness(1.1);
+    }
+
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--tooltip-bg);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      transform: translate(-50%, -120%);
+      display: none;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    /* 简单的说明区域 */
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    @media (max-width: 700px) {
+      .map-wrapper {
+        padding: 0.75rem;
+      }
+      .tooltip {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mappa delle Regioni Italiane</h1>
+
+  <div class="map-wrapper" id="italyMapContainer">
+    <div class="tooltip" id="regionTooltip" aria-hidden="true"></div>
+    <div id="svgHolder" class="svg-container" aria-label="Mappa delle regioni italiane" role="img">
+      <!-- fallback inline simplified if external fails -->
+      <svg viewBox="0 0 600 1000" aria-label="Mappa semplificata d'Italia">
+        <path class="region" data-name="Piemonte" d="M100,200 L180,190 L170,260 L90,270 Z"></path>
+        <path class="region" data-name="Lombardia" d="M190,180 L260,170 L250,230 L180,240 Z"></path>
+        <path class="region" data-name="Veneto" d="M270,180 L340,170 L330,230 L260,240 Z"></path>
+        <path class="region" data-name="Toscana" d="M180,300 L260,290 L250,340 L170,350 Z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-color" style="background: var(--map-default-fill); border:1px solid var(--map-stroke)"></span>
+      <span>Regione (normale)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: var(--map-highlight)"></span>
+      <span>Hover / selezionata</span>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('italyMapContainer');
+    const tooltip = document.getElementById('regionTooltip');
+    const svgHolder = document.getElementById('svgHolder');
+
+    // 加载外部 SVG（如果存在），插入后覆盖 fallback
+    fetch('../image/italy.svg')
+      .then(res => {
+        if (!res.ok) throw new Error('SVG load failed');
+        return res.text();
+      })
+      .then(text => {
+        // 插入 SVG（覆盖 fallback）
+        svgHolder.innerHTML = text;
+
+        bindRegions(); // 绑定交互
+      })
+      .catch(err => {
+        console.warn('加载 italy.svg 失败，使用内联示意版。', err);
+        // fallback 已存在于 DOM，不需要再做
+        bindRegions();
+      });
+
+    function bindRegions() {
+      // 所有可能表示区域的 path 或 g
+      const regions = svgHolder.querySelectorAll('path, g');
+
+      regions.forEach(region => {
+        // 只处理有可识别名称的
+        const name = getRegionName(region);
+        if (!name) return;
+
+        region.classList.add('region');
+
+        region.addEventListener('mouseenter', (e) => {
+          tooltip.textContent = name;
+          tooltip.style.display = 'block';
+          region.classList.add('active');
+        });
+
+        region.addEventListener('mousemove', (e) => {
+          const rect = container.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          tooltip.style.left = x + 'px';
+          tooltip.style.top = y + 'px';
+        });
+
+        region.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+          region.classList.remove('active');
+        });
+
+        region.addEventListener('click', () => {
+          alert('Hai cliccato su ' + name);
+        });
+      });
+    }
+
+    // 取区域名字：data-name > id > title > aria-label
+    function getRegionName(el) {
+      return el.getAttribute('data-name') ||
+             el.id ||
+             (el.querySelector('title')?.textContent) ||
+             el.getAttribute('aria-label') ||
+             '';
+    }
+  </script>
+</body>
+</html>

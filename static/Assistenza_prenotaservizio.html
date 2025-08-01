@@ -156,17 +156,17 @@
   
         <script>
           // 计算“现在 +48 小时”的 Date 对象
-          const nowPlus48h = new Date(Date.now() + 48 * 60 * 60 * 1000);
+          const nowPlus24h = new Date(Date.now() + 48 * 60 * 60 * 1000);
         
           flatpickr("#date", {
             locale: "it",              // 意大利语
             dateFormat: "d/m/Y",       // 显示为 29/07/2025 这种格式
-            minDate: nowPlus48h,       // 最早只能选 now+48h
+            minDate: nowPlus24h,       // 最早只能选 now+48h
             maxDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 可选至 30 天后（可删）
             disable: [
               // 禁用比 nowPlus48h 更早的日期（多一重保险）
               function(date) {
-                return date < nowPlus48h;
+                return date < nowPlus24h;
               },
               // 禁用所有周六
               function(date) {
