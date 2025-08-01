@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soluzioni Commerciali Afore</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="prodotti_inverterstringa1-3kw_style.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- page-content 会撑满 header/footer 以外的区域 -->
+    <main class="page-content">
+      <!-- Header + hero + products + partner-cta + newsletter 在这里 -->
+      
+      <!-- Header -->
+      <header class="site-header">
+        <div class="container">
+          <!-- Logo -->
+          <a href="/" class="site-logo" aria-label="Afore Home">
+            <img src="image/logo_afore_dark.svg" alt="Afore Logo" height="50">
+          </a>
+      
+          <!-- Main Navigation -->
+          <nav class="site-nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CHI È AFORE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">SOLUZIONI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">PRODOTTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">ASSISTENZA E SUPPORTO</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">DOCUMENTAZIONE</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">EVENTI</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">CONTATTI</a></li>
+            </ul>
+          </nav>
+      
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </header>
+
+<!-- ===== Hero Section ===== -->
+<section class="prodotti-hero">
+  <!-- 背景图 -->
+  <img src="../image/product_bg.jpg" alt="Background" class="prodotti-hero__img" />
+
+  <!-- 容器：左图右文 -->
+  <div class="prodotti-hero__body">
+    
+    <!-- 左：产品图 -->
+    <div class="prodotti-hero__left">
+      <img src="../image/desktopprodotti_stringa_30kw.png" alt="Product" class="prodotti-hero__product" />
+    </div>
+
+    <!-- 右：文字内容 -->
+    <div class="product-hero__content">
+      <h2>Inverter di Stringa Trifase 
+        <br> 30kW<br>
+    </h2>
+      <div class="product-hero__divider"></div>
+      <a href="#" class="product-hero__download">
+        BNT030KTL
+        <img src="../image/download.svg" alt="Download Icon" />
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!-- 最外层容器 -->
+<div class="contact-page">
+
+  <!-- 面包屑 + 下载区 均在同一 max-width 居中框内 -->
+  <div class="page-inner">
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+      <a href="#">HOME</a>
+      <span class="separator">&gt;</span>
+      <span class="current">Prodotti</span>
+      <span class="separator">&gt;</span>
+      <span class="current">Inverter di Stringa Trifase 30 kW</span>
+    </div>
+
+    <!-- 可折叠下载项 -->
+    <section class="download-section">
+      <div class="download-section__list">
+        <details class="download-item">
+          <summary class="download-item__summary">
+            Certificato di garanzia
+            <span class="download-item__arrow">+</span>
+          </summary>
+          <div class="download-item__content">
+            <img
+              src="../image/Certificato di garanzia.jpg"
+              alt="Certificato di garanzia"
+              class="certificate__img"
+            />
+            <a
+              href="../image/Certificato di garanzia.jpg"
+              download="Certificato-di-garanzia.jpg"
+              class="certificate__download"
+            >
+              Download PDF
+            </a>
+          </div>
+        </details>
+        <!-- 如有更多项，按同样结构再写一个 <details>…</details> -->
+      </div>
+    </section>
+
+  </div>
+</div>
+
+  
+<!-- ===== 3D 模型 Section (就放在这里) ===== -->
+<section class="model-section">
+  
+  <div id="KeyShotXR" class="xr-container"></div>
+
+<!-- 引入 KeyShotXR 脚本，务必紧跟在 model-section 后面 -->
+<script src="../image/30kW(stringa）/files/KeyShotXR.js"></script>
+<script>
+  let xr;
+
+  // 用容器尺寸，而不是视口
+  function getContainerSize() {
+    const container = document.getElementById("KeyShotXR");
+    const w = container.clientWidth;
+    const h = w * (9 / 16); // 按 16:9 比例算高，改成你模型实际比例
+    return { w, h };
+  }
+
+  function initKeyShotXR() {
+    const { w, h } = getContainerSize();
+    xr = new keyshotXR(
+      "KeyShotXR",
+      "../image/30kW(stringa）",  // 模型文件夹的相对路径
+      w, h,                 // ← 这里传容器宽高
+      "rgba(0,0,0,0)",
+      18, 9,
+      true, false,
+      -0.05, 0.05625,
+      9, 4,
+      1, 1.5,
+      0.65,
+      true, false, false,
+      "png",
+      true, "ks_logo.png",
+      true, false, false,
+      {}
+    );
+  }
+
+  window.addEventListener("load", initKeyShotXR);
+  window.addEventListener("resize", () => {
+    const { w, h } = getContainerSize();
+    if (xr?.setViewPortSize) {
+      xr.setViewPortSize(w, h);
+    } else {
+      document.getElementById("KeyShotXR").innerHTML = "";
+      initKeyShotXR();
+    }
+  });
+</script>
+</section>
+
+  <!-- ====== FEATURES SECTION ====== -->
+<section class="features">
+  <div class="container">
+    <!-- 顶排图标区域 -->
+    <div class="features-grid">
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon1.svg" alt="AI EMS" class="feature-icon">
+        <h4 class="feature-title">MAX. 20Adc</h4>
+        <p class="feature-sub">Corrente di stringa massima: 20 A</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon2.svg" alt="Max 120A" class="feature-icon">
+        <h4 class="feature-title">PV OVERSIZE</h4>
+        <p class="feature-sub">Sovradimensionamento FV: fino al 150%</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon3.svg" alt="PV Oversize" class="feature-icon">
+        <h4 class="feature-title">PROTECTION</h4>
+        <p class="feature-sub">Protezione intelligente multifunzione</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon4.svg" alt="MPPT Channels" class="feature-icon">
+        <h4 class="feature-title">ANTI-FLOW</h4>
+        <p class="feature-sub">Zero immissione in rete</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon5.svg" alt="UPS Function" class="feature-icon">
+        <h4 class="feature-title">Wi-Fi</h4>
+        <p class="feature-sub">Comunicazione: Wi-Fi / Ethernet / GPRS (opzionale)</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon6.svg" alt="Parallel" class="feature-icon">
+        <h4 class="feature-title">CONFIGURATION</h4>
+        <p class="feature-sub">Configurazione facile e veloce via Wi-Fi</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_stringa_30kw_icon7.svg" alt="Parallel" class="feature-icon">
+        <h4 class="feature-title">MODBUS</h4>
+        <p class="feature-sub">Comunicazione MODBUS</p>
+      </div>
+    </div>
+
+    <!-- 底部更多优势 -->
+
+    <div class="advantages">
+      <ul class="adv-list">
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon01.svg" alt="" class="adv-icon">Efficienza MPPT > 99,9%</li>
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon03.svg" alt="" class="adv-icon">Controllo intelligente della temperatura</li>
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon05.svg" alt="" class="adv-icon">Compensazione potenza attiva/reattiva, regolazione del fattore di potenza</li>
+      </ul>
+      <ul class="adv-list">
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon02.svg" alt="" class="adv-icon">Ventola di raffreddamento, protezione IP68</li>
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon04.svg" alt="" class="adv-icon">Protezione da sovratensione lato CC e CA</li>
+        <li><img src="../image/desktopprodotti_stringa_30kw_icon06.svg" alt="" class="adv-icon">Uscita AC sovradimensionata 1,1x in funzionamento continuo</li>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DISTRIBUTORS & SUPPORT SECTION ===== -->
+<section class="dist-support">
+  <div class="dist-support__card dist-support__card--distributors">
+    <h2 class="dist-support__title">DISTRIBUTORI / INSTALLATORI</h2>
+    <div class="dist-support__underline"></div>
+    <p class="dist-support__text">Sei un installatore o distributore? Contattaci direttamente: la nostra fabbrica è pronta a supportarti!</p>
+    <a href="#" class="dist-support__btn">Leggi di più</a>
+  </div>
+  <div class="dist-support__card dist-support__card--support">
+    <h2 class="dist-support__title">SERVIZIO / SUPPORTO</h2>
+    <div class="dist-support__underline"></div>
+    <p class="dist-support__text">Servizio post-vendita senza pensieri. Nessuna pressione di stock o assistenza: ci occupiamo noi del post-vendita per te!</p>
+    <a href="#" class="dist-support__btn">Leggi di più</a>
+  </div>
+</section>
+
+<!-- ===== VIDEO SECTION ===== -->
+<section class="video-section">
+  <div class="video-section__inner">
+    <!-- 背景图 -->
+    <div class="video-section__poster">
+      <img src="../image/desktopprodotti_stringa_30kw.jpg" alt="Inverter" />
+    </div>
+    <!-- 播放按钮 -->
+    <button class="video-section__play-btn" id="playVideoBtn">
+      ▶︎ PLAY
+    </button>
+    <!-- 播放器容器，初始隐藏 -->
+    <div class="video-section__player" id="videoPlayerContainer"></div>
+  </div>
+</section>
+
+<!-- 在页面底部或合适位置，引入这段脚本 -->
+<script>
+  document.getElementById('playVideoBtn').addEventListener('click', function() {
+    const container = document.getElementById('videoPlayerContainer');
+    // YouTube 嵌入地址，参数 autoplay=1
+    const src = 'https://www.youtube.com/embed/GwWCYEdqQsg?autoplay=1';
+    // 替换成 <iframe>
+    container.innerHTML = '<iframe width="560" height="315" src="'+src+'" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    // 隐藏海报和播放按钮
+    document.querySelector('.video-section__poster').style.display = 'none';
+    this.style.display = 'none';
+  });
+</script>
+
+<section class="downloads-section">
+  <div class="downloads-container">
+
+    <!-- 左侧：标题 -->
+    <div class="downloads-left">
+      <h2 class="downloads-title">DOWNLOAD</h2>
+    </div>
+
+    <!-- 右侧：可展开的下载列表 -->
+    <div class="downloads-right">
+      <!-- 每一项 -->
+      <div class="download-item">
+        <button class="download-header">
+          Schede Tecnica
+          <span class="header-icon">+</span>
+        </button>
+        <div class="download-content">
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Scheda_Tecnica.pdf"
+             class="download-link"
+             target="_blank">
+            <span class="download-icon"></span>
+            IT_Inverter_Stringa_Monofase_1-3kW_Scheda_Tecnica.pdf
+          </a>
+          <ul class="download-meta">
+            <li>Tipo: <strong>Schede Tecnica</strong></li>
+            <li>Lingua: <strong>Italiano</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="download-item">
+        <button class="download-header">
+          Manuale d'uso
+          <span class="header-icon">+</span>
+        </button>
+        <div class="download-content">
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Manuale.pdf"
+             class="download-link"
+             target="_blank">
+            <span class="download-icon"></span>
+            IT_Inverter_Stringa_Monofase_1-3kW_Manuale.pdf
+          </a>
+          <ul class="download-meta">
+            <li>Tipo: <strong>Manuale d'uso</strong></li>
+            <li>Lingua: <strong>Italiano</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="download-item">
+        <button class="download-header">
+          Certificazioni CEI 0-21
+          <span class="header-icon">+</span>
+        </button>
+        <div class="download-content">
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_CEI_021_BNT.pdf"
+             class="download-link"
+             target="_blank">
+            <span class="download-icon"></span>
+            IT_Inverter_Stringa_Monofase_1-3kW_CEI_021_BNT.pdf
+          </a>
+          <ul class="download-meta">
+            <li>Tipo: <strong>Certificazioni CEI 0-21</strong></li>
+            <li>Lingua: <strong>Italiano</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="download-item">
+        <button class="download-header">
+          Rapporti di Prova 
+          <span class="header-icon">+</span>
+        </button>
+        <div class="download-content">
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/EN_Inverter_Stringa_Monofase_1-3kW_Test_Report.pdf"
+             class="download-link"
+             target="_blank">
+            <span class="download-icon"></span>
+            EN_Inverter_Stringa_Monofase_1-3kW_Test_Report.pdf
+          </a>
+          <ul class="download-meta">
+            <li>Tipo: <strong>Rapporti di Prova</strong></li>
+            <li>Lingua: <strong>Inglese</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="download-item">
+        <button class="download-header">
+          Guida alla Compilazione del Regolamento di Esercizio
+          <span class="header-icon">+</span>
+        </button>
+        <div class="download-content">
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf"
+             class="download-link"
+             target="_blank">
+            <span class="download-icon"></span>
+            IT_Inverter_Stringa_Monofase_1-3kW_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf
+          </a>
+          <ul class="download-meta">
+            <li>Tipo: <strong>Guida alla Compilazione del Regolamento di Esercizio</strong></li>
+            <li>Lingua: <strong>Italiano</strong></li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /.downloads-right -->
+  </div><!-- /.downloads-container -->
+</section>
+
+<!-- 确保在你的 <head> 里有这一行 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 所有产品区块容器 -->
+<div class="products-panels">
+
+      <!-- Products INVERTER 区块 -->
+      <section class="products-section products-panel panel--active" id="products-intro">
+        <div class="container">
+          <div class="product-grid-wrapper">
+            <h2 class="product-grid-title">Inverter di Stringa</h2>
+            <div class="product-grid">
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_1-3.6kw.png" alt="Inverter di Stringa Monofase 1-3.6kW">
+              <h3>Inverter di Stringa Monofase 1-3.6kW</h3>
+              <p class="models">HNS1000TL-1, HNS1500TL-1, HNS2000TL-1, HNS2500TL-1, HNS3000TL-1</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_3-6kw.png" alt="Inverter di Stringa Monofase 3-6kW">
+              <h3>Inverter di Stringa Monofase 3-6kW</h3>
+              <p class="models">HNS3000TL, HNS3600TL, HNS4000TL, HNS5000TL, HNS6000TL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_7-10kw.png" alt="Inverter di Stringa Monofase 7-10kW">
+              <h3>Inverter di Stringa Monofase 7-10kW</h3>
+              <p class="models">HNS7000TL, HNS8000TL, HNS9000TL, HNS10000TL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_3-25kw.png" alt="Inverter Ibrido Monofase 1-3.6kW">
+              <h3>Inverter di Stringa Trifase 3-25kW</h3>
+              <p class="models">BNT003KTL, BNT004KTL, BNT005KTL, BNT006KTL, BNT010KTL, BNT012KTL, BNT013KTL, BNT015KTL, BNT017KTL, BNT020KTL, BNT025KTL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_30kw.png" alt="Inverter Ibrido Monofase Serie Plus 4-6kW">
+              <h3>Inverter di Stringa Trifase 30kW</h3>
+              <p class="models">BNT030KTL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_36-60kw.png" alt="Inverter Ibrido Monofase Serie Plus 4-6kW">
+              <h3>Inverter di Stringa Trifase 36-60kW</h3>
+              <p class="models">BNT036KTL, BNT040KTL, BNT050KTL, BNT060KTL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_stringa_70-110kw.png" alt="Inverter Ibrido Monofase 8-12kW">
+              <h3>Inverter di Stringa Trifase 70-110kW</h3>
+              <p class="models">BNT070KTL, BNT075KTL, BNT080KTL, BNT090KTL, BNT100KTL, BNT110KTL</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <div class="section-divider"></div>
+
+    <section class="products-section">
+        <div class="container">
+          <div class="product-grid-wrapper">
+            <h2 class="product-grid-title">EV Charger</h2>
+            <div class="product-grid">
+            <div class="product-card">
+              <img src="image/desktopprodotti_evcharger_1.png" alt="Inverter di Stringa Monofase 1-3.6kW">
+              <h3>EV Charger 01</h3>
+              <p class="models">SWG5E-7/32, SWG5E-11/16, SWG5E-22/32</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+                <img src="image/desktopprodotti_evcharger_2.png" alt="Inverter di Stringa Monofase 7-10kW">
+                <h3>EV Charger 02</h3>
+                <p class="models">TB-332EA-7, TB-316EA-11, TB-332EA-22</p>
+                <a href="#" class="btn">Avanti →</a>
+            </div>
+            <div class="product-card">
+              <img src="image/desktopprodotti_evcharger_3.png" alt="Inverter di Stringa Monofase 3-6kW">
+              <h3>EV Charger 03</h3>
+              <p class="models">TB-348UB, TB-332EB-SV</p>
+              <a href="#" class="btn">Avanti →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="newsletter">
+        <div class="container newsletter__inner">
+          <div class="newsletter__text">
+            <h2 class="newsletter__title">Rimani aggiornato sulle ultime novità!</h2>
+            <p class="newsletter__subtitle">
+              Qui trovate approfondimenti industriali e notizie su Afore.
+            </p>
+          </div>
+          <form class="newsletter__form">
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="Email"
+              required>
+            <button type="submit" class="newsletter__btn">Invia</button>
+          </form>
+        </div>
+      </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <div class="footer__socials">
+          <a href="#"><img src="image/linkedin_social.svg"   alt="LinkedIn"></a>
+          <a href="#"><img src="image/whatsapp_social.svg"   alt="WhatsApp"></a>
+          <a href="#"><img src="image/facebook_social.svg"   alt="Facebook"></a>
+          <a href="#"><img src="image/instagram_social.svg"  alt="Instagram"></a>
+          <a href="#"><img src="image/x_social.svg"          alt="X"></a>
+          <a href="#"><img src="image/tiktok_social.svg"     alt="TikTok"></a>
+          <a href="#"><img src="image/youtube_social.svg"    alt="YouTube"></a>
+        </div>
+        <div class="footer__copyright">
+          © 2025 copyright @Afore Italia S.R.L.
+        </div>
+        <div class="footer__logo">
+          <img src="image/logo_afore_light.svg" alt="Afore Logo">
+        </div>
+      </div>
+    </footer>
+    </body>
+
+    
+
