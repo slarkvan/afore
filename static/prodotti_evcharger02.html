@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soluzioni Commerciali Afore</title>
+  <title>EV Charger 02 Prodotti Afore</title>
 
   <!-- Google Fonts -->
   <link
@@ -12,7 +12,7 @@
   >
 
   <!-- 样式表 -->
-  <link rel="stylesheet" href="prodotti_inverter_style.css" />
+  <link rel="stylesheet" href="prodotti_evcharger_style.css" />
 </head>
 
 <body>
@@ -60,17 +60,17 @@
     
     <!-- 左：产品图 -->
     <div class="prodotti-hero__left">
-      <img src="../image/desktopprodotti_ibridi_3-12kw_plusseries.png" alt="Product" class="prodotti-hero__product" />
+      <img src="../image/desktopprodotti_evcharger_2.png" alt="Product" class="prodotti-hero__product" />
     </div>
 
     <!-- 右：文字内容 -->
     <div class="product-hero__content">
-      <h2>Inverter Ibrido Trifase 
-        <br>3-12kW Plus Series<br>
+      <h2>EV Charger
+        <br>Quadrato<br>
     </h2>
       <div class="product-hero__divider"></div>
       <a href="#" class="product-hero__download">
-        AF3K/4K/5K/6K/8K/10K/12K-THP
+        SWG5E-7/32-11/16-22/32
         <img src="../image/download.svg" alt="Download Icon" />
       </a>
     </div>
@@ -89,7 +89,7 @@
       <span class="separator">&gt;</span>
       <span class="current">Prodotti</span>
       <span class="separator">&gt;</span>
-      <span class="current">Inverter Ibrido Trifase 3-12kW Plus Series</span>
+      <span class="current">EV Charger SWG5</span>
     </div>
 
     <!-- 可折叠下载项 -->
@@ -122,57 +122,6 @@
   </div>
 </div>
 
-  
-<!-- ===== 3D 模型 Section (就放在这里) ===== -->
-<section class="model-section">
-  
-  <div id="KeyShotXR" class="xr-container"></div>
-
-<!-- 引入 KeyShotXR 脚本，务必紧跟在 model-section 后面 -->
-<script src="../image/3-12KW Plus Series（Ibrido）/files/KeyShotXR.js"></script>
-<script>
-  let xr;
-
-  // 用容器尺寸，而不是视口
-  function getContainerSize() {
-    const container = document.getElementById("KeyShotXR");
-    const w = container.clientWidth;
-    const h = w * (9 / 16); // 按 16:9 比例算高，改成你模型实际比例
-    return { w, h };
-  }
-
-  function initKeyShotXR() {
-    const { w, h } = getContainerSize();
-    xr = new keyshotXR(
-      "KeyShotXR",
-      "../image/3-12KW Plus Series（Ibrido）",  // 模型文件夹的相对路径
-      w, h,                 // ← 这里传容器宽高
-      "rgba(0,0,0,0)",
-      18, 9,
-      true, false,
-      -0.05, 0.05625,
-      9, 4,
-      1, 1.5,
-      0.65,
-      true, false, false,
-      "png",
-      true, "ks_logo.png",
-      true, false, false,
-      {}
-    );
-  }
-
-  window.addEventListener("load", initKeyShotXR);
-  window.addEventListener("resize", () => {
-    const { w, h } = getContainerSize();
-    if (xr?.setViewPortSize) {
-      xr.setViewPortSize(w, h);
-    } else {
-      document.getElementById("KeyShotXR").innerHTML = "";
-      initKeyShotXR();
-    }
-  });
-</script>
 </section>
 
   <!-- ====== FEATURES SECTION ====== -->
@@ -181,39 +130,34 @@
     <!-- 顶排图标区域 -->
     <div class="features-grid">
       <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon1.svg" alt="AI EMS" class="feature-icon">
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon1.svg" alt="AI EMS" class="feature-icon">
         <h4 class="feature-title">AI EMS</h4>
-        <p class="feature-sub">Automazione e Tariffe Elettriche Intelligenti</p>
+        <p class="feature-sub">Gestione dinamica della tariffazione elettrica</p>
       </div>
       <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon2.svg" alt="Max 120A" class="feature-icon">
-        <h4 class="feature-title">BATTERIA AGLI IONI DI SODIO</h4>
-        <p class="feature-sub">Compatibile con batterie agli ioni di sodio</p>
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon2.svg" alt="Max 120A" class="feature-icon">
+        <h4 class="feature-title">MAX. 120A</h4>
+        <p class="feature-sub">Corrente max di carica/scarica 120A</p>
       </div>
       <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon4.svg" alt="MPPT Channels" class="feature-icon">
-        <h4 class="feature-title">MIN. 80V</h4>
-        <p class="feature-sub">Tensione minima della batteria: 80V</p>
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon3.svg" alt="PV Oversize" class="feature-icon">
+        <h4 class="feature-title">PV OVERSIZE</h4>
+        <p class="feature-sub">Fino a 1.5 volte la potenza nominale</p>
       </div>
       <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon5.svg" alt="UPS Function" class="feature-icon">
-        <h4 class="feature-title">MAX. 50A</h4>
-        <p class="feature-sub">Corrente massima di carica/scarica: 50A<10 ms</p>
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon4.svg" alt="MPPT Channels" class="feature-icon">
+        <h4 class="feature-title">MPPT CHANNELS</h4>
+        <p class="feature-sub">Fino a 2 ingressi MPPT</p>
       </div>
       <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon6.svg" alt="Parallel" class="feature-icon">
-        <h4 class="feature-title">100% UNBALANCE</h4>
-        <p class="feature-sub">Mantiene l’equilibrio su carichi sbilanciati</p>
-      </div>
-      <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon7.svg" alt="GENERATOR" class="feature-icon">
-        <h4 class="feature-title">MAX. 20Adc</h4>
-        <p class="feature-sub">Corrente di stringa fino a 20 A</p>
-      </div>
-      <div class="feature-item">
-        <img src="../image/desktopprodotti_ibrido_3-12kwplusseries_icon3.svg" alt="PV Oversize" class="feature-icon">
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon5.svg" alt="UPS Function" class="feature-icon">
         <h4 class="feature-title">UPS FUNCTION</h4>
-        <p class="feature-sub">Tempo di commutazione <10 ms</p>
+        <p class="feature-sub">Commutazione rapida (<10 ms)</p>
+      </div>
+      <div class="feature-item">
+        <img src="../image/desktopprodotti_ibrido_4-6kw_icon6.svg" alt="Parallel" class="feature-icon">
+        <h4 class="feature-title">PARALLEL</h4>
+        <p class="feature-sub">Fino a 6 unità in parallelo</p>
       </div>
     </div>
 
@@ -224,11 +168,13 @@
         <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon01.svg" alt="" class="adv-icon">Supporto per l’ottimizzazione dell’autoconsumo</li>
         <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon03.svg" alt="" class="adv-icon">Modalità operative configurabili</li>
         <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon05.svg" alt="" class="adv-icon">AFCI opzionale e funzione di spegnimento rapido integrata</li>
+        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon07.svg" alt="" class="adv-icon">Maggiore potenza di carica/scarica della batteria</li>
       </ul>
       <ul class="adv-list">
-        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon02.svg" alt="" class="adv-icon">Funzione feed-in integrata</li>
-        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon04.svg" alt="" class="adv-icon">Uscita sbilanciata al 100%, ciascuna fase</li>
+        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon02.svg" alt="" class="adv-icon">Integra la funzione di zero emissioni</li>
+        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon04.svg" alt="" class="adv-icon">Dimensioni compatte e facile installazione</li>
         <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon06.svg" alt="" class="adv-icon">Monitoraggio intelligente e aggiornamento firmware remoto</li>
+        <li><img src="../image/desktopprodotti_ibrido_4-6kw_icon08.svg" alt="" class="adv-icon">Modalità off-grid con capacità di carico fino a 6kVA</li>
     </div>
   </div>
 </section>
@@ -254,7 +200,7 @@
   <div class="video-section__inner">
     <!-- 背景图 -->
     <div class="video-section__poster">
-      <img src="../image/desktopprodotti_ibridi_3-12kw.jpg" alt="Inverter" />
+      <img src="../image/desktopprodotti_ibrido_4-6kwplusseries.jpg" alt="Inverter" />
     </div>
     <!-- 播放按钮 -->
     <button class="video-section__play-btn" id="playVideoBtn">
@@ -297,11 +243,11 @@
         </button>
         <div class="download-content">
           <!-- 链接里同时放图标和文字 -->
-          <a href="files/IT_Inverter_Ibrido_Trifase_3-12kW_Plus_Scheda_Tecnica.pdf"
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Scheda_Tecnica.pdf"
              class="download-link"
              target="_blank">
             <span class="download-icon"></span>
-            IT_Inverter_Ibrido_Trifase_3-12kW_Plus_Scheda_Tecnica.pdf
+            IT_Inverter_Stringa_Monofase_1-3kW_Scheda_Tecnica.pdf
           </a>
           <ul class="download-meta">
             <li>Tipo: <strong>Schede Tecnica</strong></li>
@@ -317,15 +263,15 @@
         </button>
         <div class="download-content">
           <!-- 链接里同时放图标和文字 -->
-          <a href="files/EN_Inverter_Ibrido_Trifase_3-12kW_Plus_Manuale.pdf"
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Manuale.pdf"
              class="download-link"
              target="_blank">
             <span class="download-icon"></span>
-            EN_Inverter_Ibrido_Trifase_3-12kW_Plus_Manuale.pdf
+            IT_Inverter_Stringa_Monofase_1-3kW_Manuale.pdf
           </a>
           <ul class="download-meta">
             <li>Tipo: <strong>Manuale d'uso</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
+            <li>Lingua: <strong>Italiano</strong></li>
           </ul>
         </div>
       </div>
@@ -336,184 +282,15 @@
           <span class="header-icon">+</span>
         </button>
         <div class="download-content">
-          <!-- Certificazioni CEI 0-21 -->
-          <a href="files/EN_Inverter_Ibrido_Trifase_3-12kW_Plus_DEKRA_Test_Certificate_CEI_021.pdf"
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_CEI_021_BNT.pdf"
              class="download-link"
              target="_blank">
             <span class="download-icon"></span>
-            EN_Inverter_Ibrido_Trifase_3-12kW_Plus_DEKRA_Test_Certificate_CEI_021.pdf
+            IT_Inverter_Stringa_Monofase_1-3kW_CEI_021_BNT.pdf
           </a>
           <ul class="download-meta">
             <li>Tipo: <strong>Certificazioni CEI 0-21</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul>
-        </div>
-      </div>
- 
-      <div class="download-item">
-        <button class="download-header">
-          Batteria Afore
-          <span class="header-icon">+</span>
-        </button>
-        <div class="download-content">
-          <!-- AF7500W/10000W/12500W/15000W/17500W/20000W/22500W-HB -->
-          <button class="download-header">
-            <h5>AF7500W/10000W/12500W/15000W/17500W/20000W/22500W-HB</h5>
-            <span class="header-icon">+</span>
-          </button>
-          <a href="files/IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HB_Dichiarazione_di_conformità_alla_Norma_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HB_Dichiarazione_di_conformità_alla_Norma_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Afore</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-
-          <a href="files/IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HB_Guida_alla_compilazione_delladdendum_tecnico.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HB_Guida_alla_compilazione_delladdendum_tecnico.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Afore</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>         
-          </ul>
-          
-          <!-- AF10000W/15000W/20000W/25000W/30000W-HC -->
-          <button class="download-header">
-            <h5>AF10000W/15000W/20000W/25000W/30000W-HC</h5>
-            <span class="header-icon">+</span>
-          </button>
-          <a href="files/IT_AF10000W_5000W_20000W_25000W_30000W_HC_Dichiarazione_di_conformità_alla_Norma_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_AF10000W_5000W_20000W_25000W_30000W_HC_Dichiarazione_di_conformità_alla_Norma_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Afore</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-
-          <!-- Guida_alla_compilazione_delladdendum_tecnico -->
-          <a href="files/IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HC_Guida_alla_compilazione_delladdendum_tecnico.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_AF7500W_10000W_12500W_15000W_17500W_20000W_22500W_HC_Guida_alla_compilazione_delladdendum_tecnico.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Afore</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="download-item">
-        <button class="download-header">
-          Batteria Hailei
-          <span class="header-icon">+</span>
-        </button>
-        <div class="download-content">
-          <!-- ATOM-HS -->
-          <button class="download-header">
-            <h5>ATOM-HS</h5>
-            <span class="header-icon">+</span>
-          </button>
-          <a href="files/IT_ATOM-HS_Dichiarazione_di_conformità_del_Generatore_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_ATOM-HS_Dichiarazione_di_conformità_del_Generatore_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-
-          <a href="files/IT_ATOM-HS_Guida_alla_compilazione_delladdendum_tecnico.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_ATOM-HS_Guida_alla_compilazione_delladdendum_tecnico.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-
-          <a href="files/EN_ATOM-HS_DEKRA_Test_Certificate_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_ATOM_WB_512100_DEKRA_Test_Certificate_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul>
-          
-          <a href="files/EN_ATOM-HS_DEKRA_LVD_Attestation_of_Conformity.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_ATOM-HS_DEKRA_LVD_Attestation_of_Conformity.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul>
-          
-          <a href="files/EN_ATOM-HS_DEKRA_EMC_Attestation_of_Conformity.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_ATOM-HS_DEKRA_EMC_Attestation_of_Conformity.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul>
-
-          <!-- Hero-HV -->
-          <button class="download-header">
-            <h5>Hero-HV</h5>
-            <span class="header-icon">+</span>
-          </button>
-          <a href="files/files/IT_Hero-HV_Dichiarazione_di_conformità_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_Hero-HV_Dichiarazione_di_conformità_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>  
-          </ul>
-
-          <a href="files/IT_Hero-HV_Guida_alla_compilazione_delladdendum_tecnico.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            IT_Hero-HV_Guida_alla_compilazione_delladdendum_tecnico.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
-            <li>Lingua: <strong>Italiano</strong></li>
-          </ul>
-
-          <a href="files/EN_Hero-HV_DEKRA_Test_Certificate_CEI_021.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_Hero-HV_DEKRA_Test_Certificate_CEI_021.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Batteria Hailei</strong></li>
             <li>Lingua: <strong>Italiano</strong></li>
           </ul>
         </div>
@@ -525,41 +302,17 @@
           <span class="header-icon">+</span>
         </button>
         <div class="download-content">
-          <!-- Test Report -->
-          <a href="files/EN_Inverter_Ibrido_3-30kW_Test_Report_Part01.pdf"
+          <!-- 链接里同时放图标和文字 -->
+          <a href="files/EN_Inverter_Stringa_Monofase_1-3kW_Test_Report.pdf"
              class="download-link"
              target="_blank">
             <span class="download-icon"></span>
-            EN_Inverter_Ibrido_3-30kW_Test_Report_Part01.pdf
+            EN_Inverter_Stringa_Monofase_1-3kW_Test_Report.pdf
           </a>
           <ul class="download-meta">
             <li>Tipo: <strong>Rapporti di Prova</strong></li>
             <li>Lingua: <strong>Inglese</strong></li>
-          </ul>  
-
-          <!-- Test Report -->
-          <a href="files/EN_Inverter_Ibrido_3-30kW_Test_Report_Part02.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_Inverter_Ibrido_3-30kW_Test_Report_Part02.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Rapporti di Prova</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul>  
-
-          <!-- Test Report -->
-          <a href="files/EN_Inverter_Ibrido_3-30kW_EMC_Test_Report.pdf"
-             class="download-link"
-             target="_blank">
-            <span class="download-icon"></span>
-            EN_Inverter_Ibrido_3-30kW_EMC_Test_Report.pdf
-          </a>
-          <ul class="download-meta">
-            <li>Tipo: <strong>Rapporti di Prova</strong></li>
-            <li>Lingua: <strong>Inglese</strong></li>
-          </ul> 
+          </ul>
         </div>
       </div>
 
@@ -570,11 +323,11 @@
         </button>
         <div class="download-content">
           <!-- 链接里同时放图标和文字 -->
-          <a href="files/IT_Inverter_Ibrido_Trifase_3-12kW_Plus_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf"
+          <a href="files/IT_Inverter_Stringa_Monofase_1-3kW_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf"
              class="download-link"
              target="_blank">
             <span class="download-icon"></span>
-            IT_Inverter_Ibrido_Trifase_3-12kW_Plus_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf
+            IT_Inverter_Stringa_Monofase_1-3kW_Guida_alla_Compilazione_del_Regolamento_di_Esercizio.pdf
           </a>
           <ul class="download-meta">
             <li>Tipo: <strong>Guida alla Compilazione del Regolamento di Esercizio</strong></li>
@@ -612,7 +365,6 @@
     </div><!-- /.downloads-right -->
   </div><!-- /.downloads-container -->
 </section>
-
 <!-- 确保在你的 <head> 里有这一行 -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -735,7 +487,7 @@
             </div>
           </div>
         </section>
-        
+
     <div class="section-divider"></div>
 
     <section class="products-section">
